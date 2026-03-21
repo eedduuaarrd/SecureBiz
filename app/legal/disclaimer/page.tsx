@@ -33,6 +33,7 @@ export default function DisclaimerPage() {
         <PageToc
           items={[
             { id: "nature", label: "Nature of the service" },
+            { id: "trust-domain", label: "This domain, safety & downloads" },
             { id: "not-advice", label: "Not legal or professional advice" },
             { id: "accuracy", label: "Accuracy & updates" },
             { id: "responsibility", label: "Your responsibilities" },
@@ -53,6 +54,29 @@ export default function DisclaimerPage() {
             cybersecurity topics. The site may include forms for audit requests and links to third-party tools. We aim to
             be practical and actionable, but we are not a law firm, consultancy, or insured professional services
             practice unless expressly stated in a separate written agreement.
+          </p>
+        </section>
+
+        <section id="trust-domain" className="scroll-mt-24">
+          <h2 className="text-xl font-semibold text-slate-900">This domain, safety & downloads</h2>
+          <p className="mt-3 text-sm leading-relaxed">
+            The public project for this service is served from the canonical host configured for{" "}
+            <strong>SecureBiz AI</strong> (see our sitemap and <code className="text-slate-800">robots.txt</code>). This
+            website is a <strong>read-only informational web application</strong>: HTML pages, articles, and links to
+            public resources. We do <strong>not</strong> operate a software download portal, and we do{" "}
+            <strong>not</strong> host or distribute executable files (for example <code className="text-slate-800">.exe</code>
+            installers) from this codebase or production deployment.
+          </p>
+          <p className="mt-3 text-sm leading-relaxed">
+            Names similar to “SecureBiz” exist on other top-level domains and belong to unrelated organisations. When
+            assessing trust, rely on the <strong>exact hostname</strong> shown in your browser, HTTPS, and this site’s
+            legal pages—not on third-party rumours or outdated malware feeds that may confuse unrelated domains or
+            historical abuse of a hostname.
+          </p>
+          <p className="mt-3 text-sm leading-relaxed">
+            For <strong>authoritative</strong> regulatory text and supervision, always use official EU and national
+            sources (e.g. EDPB, European Commission, your national DPA, ENISA). SecureBiz AI is a complementary layer of
+            sector-oriented education and structure—it is not a government or standards body.
           </p>
         </section>
 
@@ -150,6 +174,11 @@ export default function DisclaimerPage() {
                 title: "Who do I contact if I find an error?",
                 content:
                   "Use the contact options published on the site. We appreciate corrections that improve accuracy for everyone.",
+              },
+              {
+                title: "Is this site a malware or download site?",
+                content:
+                  "No. SecureBiz AI is an informational website (guides, hubs, legal pages). We do not provide executable downloads or a /dl software channel. If you see claims linking this project to random file paths or installers, verify the exact URL and hostname—many look-alike domains exist on the internet.",
               },
             ]}
           />
