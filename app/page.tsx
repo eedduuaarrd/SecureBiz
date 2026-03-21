@@ -1,65 +1,517 @@
-import Image from "next/image";
+import type { Metadata } from "next";
+import Link from "next/link";
+import {
+  AdSenseDisplayAuto,
+  AdSenseFluid,
+  AdSenseInArticle,
+  AdSenseMultiplex,
+} from "@/components/adsense-units";
+import { BrandLogo } from "@/components/brand-logo";
+import { SeoAccordion } from "@/components/seo-accordion";
+import { UsefulContextCallout, UsefulDataTable } from "@/components/site-education-blocks";
+import { buildSeedSectors, seedRegulations } from "@/lib/catalog";
+import {
+  DEFAULT_DESCRIPTION,
+  SITE_NAME,
+  getDefaultOgImageUrl,
+  getDefaultOgImages,
+  getRobotsAllowAll,
+} from "@/lib/seo";
+import { absoluteUrl, getSiteUrl } from "@/lib/site";
+
+export const metadata: Metadata = {
+  title: {
+    absolute: "SecureBiz AI | GDPR, ISO 27001 & Cybersecurity Guides by Sector",
+  },
+  description: DEFAULT_DESCRIPTION,
+  alternates: {
+    canonical: "/",
+  },
+  openGraph: {
+    type: "website",
+    url: "/",
+    title: "SecureBiz AI | GDPR, ISO 27001 & Cybersecurity Guides by Sector",
+    description: DEFAULT_DESCRIPTION,
+    images: getDefaultOgImages(),
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "SecureBiz AI | GDPR, ISO 27001 & Cybersecurity Guides by Sector",
+    description: DEFAULT_DESCRIPTION,
+    images: [getDefaultOgImageUrl()],
+  },
+  robots: getRobotsAllowAll(),
+};
 
 export default function Home() {
+  const allSectors = buildSeedSectors();
+  const featuredSectors = allSectors.slice(0, 9);
+  const siteUrl = getSiteUrl();
+  const rgpdSlug =
+    seedRegulations.find((r) => r.slug === "rgpd")?.slug ?? "rgpd";
+
+  const organizationSchema = {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    name: SITE_NAME,
+    alternateName: ["SecureBiz", "securebiz.org"],
+    url: siteUrl,
+    logo: absoluteUrl("/logo.png"),
+    description: DEFAULT_DESCRIPTION,
+    knowsAbout: [
+      "GDPR",
+      "ISO 27001",
+      "Cookie law",
+      "Cybersecurity",
+      "Data protection compliance",
+    ],
+  };
+
+  const websiteSchema = {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    name: SITE_NAME,
+    url: siteUrl,
+    description: DEFAULT_DESCRIPTION,
+    publisher: {
+      "@type": "Organization",
+      name: SITE_NAME,
+      url: siteUrl,
+      logo: {
+        "@type": "ImageObject",
+        url: absoluteUrl("/logo.png"),
+      },
+    },
+  };
+
+  const featuredItemListSchema = {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    name: "Featured niches",
+    numberOfItems: featuredSectors.length,
+    itemListElement: featuredSectors.map((sector, index) => ({
+      "@type": "ListItem",
+      position: index + 1,
+      name: sector.name,
+      url: absoluteUrl(`/guia/${sector.slug}/rgpd`),
+    })),
+  };
+
+  const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: [
+      {
+        "@type": "Question",
+        name: "Is this legal advice or does it replace a lawyer?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "No. SecureBiz AI provides informational guides to help you understand what you need to implement. For specific legal decisions, consult a qualified professional.",
+        },
+      },
+      {
+        "@type": "Question",
+        name: "What do you collect in the audit form?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "Your sector and basic contact details to tailor recommendations and show relevant tool options with clear calls to action.",
+        },
+      },
+      {
+        "@type": "Question",
+        name: "Do the guides work on mobile?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "Yes. Content is structured for quick reading with short sections, visible calls to action, and sticky CTAs on key pages.",
+        },
+      },
+      {
+        "@type": "Question",
+        name: "How much information is on each guide page?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "Each guide includes professional structure, actionable checklists, and FAQs aligned with real compliance and cybersecurity questions—for both humans and search engines.",
+        },
+      },
+      {
+        "@type": "Question",
+        name: "How do I choose between sector hub, regulation hub, and a guide?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "Use the sector hub to see risks and regulations for your industry; use the regulations hub to compare frameworks; open a guide when you want sector-specific implementation steps for one regulation.",
+        },
+      },
+      {
+        "@type": "Question",
+        name: "Is SecureBiz AI only for the EU?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "Many guides focus on EU frameworks like GDPR, but we also cover global standards such as ISO 27001 and sector-relevant US rules where applicable. Always confirm jurisdiction-specific obligations.",
+        },
+      },
+    ],
+  };
+
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
+    <div className="mx-auto w-full max-w-6xl px-4 py-10 sm:px-6 sm:py-14">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(featuredItemListSchema),
+        }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+      />
+      <section className="rounded-2xl bg-gradient-to-br from-slate-900 via-blue-900 to-slate-800 p-6 text-white sm:p-10">
+        <div className="flex items-center gap-3 sm:gap-4">
+          <BrandLogo
+            width={64}
+            height={64}
+            className="h-14 w-14 rounded-lg shadow-lg ring-1 ring-white/20 sm:h-16 sm:w-16"
+          />
+          <p className="text-xs uppercase tracking-[0.2em] text-slate-100 sm:text-sm">
+            SecureBiz AI
           </p>
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+        <h1 className="mt-4 max-w-3xl text-3xl font-bold leading-tight sm:mt-3 sm:text-4xl">
+          GDPR and cybersecurity guides for your sector in seconds.
+        </h1>
+        <p className="mt-4 max-w-2xl text-sm text-slate-200 sm:text-base">
+          Templates, checklists, and actionable guides to implement compliance and cybersecurity today.
+        </p>
+        <div className="mt-6 flex flex-col gap-2 sm:mt-8 sm:flex-row sm:flex-wrap sm:gap-3">
+          <Link
+            href={`/guia/${featuredSectors[0].slug}/${rgpdSlug}`}
+            className="rounded-md bg-white px-5 py-3 text-center text-sm font-semibold text-slate-900 sm:py-2.5"
           >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+            Enter a real guide
+          </Link>
+          <Link
+            href="/sectors#catalog-search"
+            className="rounded-md border border-white/30 px-5 py-3 text-center text-sm font-semibold text-white sm:py-2.5"
           >
-            Documentation
-          </a>
+            Explore sectors
+          </Link>
+          <Link
+            href="/legal/disclaimer"
+            className="rounded-md border border-white/30 px-5 py-3 text-center text-sm font-semibold text-white sm:py-2.5"
+          >
+            Legal disclaimer
+          </Link>
         </div>
-      </main>
+      </section>
+
+      <section className="mt-10 space-y-6">
+        <UsefulContextCallout title="How to get maximum value from this site">
+          <p>
+            SecureBiz AI is built for <strong>operators</strong>: owners, IT leads, office managers, and consultants who
+            need a credible plan fast. Start from the problem you have this quarter—personal data, security assurance,
+            or website tracking—then drill into sector-specific language so nothing feels generic.
+          </p>
+          <p>
+            Every long-form URL pairs a <strong>regulation</strong> with a <strong>sector</strong>. That pairing is
+            intentional: search engines and teams alike look for “ISO 27001 + dental clinic” or “cookies + ecommerce”,
+            not a single 10,000-word article that tries to cover everyone.
+          </p>
+        </UsefulContextCallout>
+
+        <div className="rounded-2xl border border-slate-200 bg-white p-6">
+          <h2 className="text-xl font-semibold text-slate-900">Pick your entry path (in one minute)</h2>
+          <p className="mt-2 text-sm text-slate-600">
+            Use this table to route yourself to the most useful page type—then use search on hub pages to narrow results.
+          </p>
+          <UsefulDataTable caption="Where to start">
+            <thead>
+              <tr className="border-b border-slate-200 bg-slate-50">
+                <th className="px-3 py-2 font-semibold text-slate-900">If your priority is…</th>
+                <th className="px-3 py-2 font-semibold text-slate-900">Open first</th>
+                <th className="px-3 py-2 font-semibold text-slate-900">Why</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr className="border-b border-slate-100">
+                <td className="px-3 py-2">You know your industry but not which law matters</td>
+                <td className="px-3 py-2">
+                  <Link className="text-blue-700 underline" href="/sectors#catalog-search">
+                    Sector hub
+                  </Link>
+                </td>
+                <td className="px-3 py-2">See sector risks and every regulation available for that niche.</td>
+              </tr>
+              <tr className="border-b border-slate-100">
+                <td className="px-3 py-2">You know the law but need industry wording</td>
+                <td className="px-3 py-2">
+                  <Link className="text-blue-700 underline" href="/regulations#catalog-search">
+                    Regulations hub
+                  </Link>
+                </td>
+                <td className="px-3 py-2">Compare frameworks, then jump into sector guides.</td>
+              </tr>
+              <tr className="border-b border-slate-100">
+                <td className="px-3 py-2">You want a single actionable document</td>
+                <td className="px-3 py-2">
+                  <Link className="text-blue-700 underline" href={`/guia/${featuredSectors[0].slug}/${rgpdSlug}`}>
+                    A full guide
+                  </Link>
+                </td>
+                <td className="px-3 py-2">Checklists, FAQs, tools, and lead capture in one flow.</td>
+              </tr>
+              <tr>
+                <td className="px-3 py-2">You need deep sector resources (playbooks)</td>
+                <td className="px-3 py-2">
+                  <Link className="text-blue-700 underline" href={`/sector/${featuredSectors[0].slug}`}>
+                    Sector hub page
+                  </Link>
+                </td>
+                <td className="px-3 py-2">Subpages cover checklists, vendors, incidents, and more.</td>
+              </tr>
+            </tbody>
+          </UsefulDataTable>
+        </div>
+      </section>
+
+      <div className="my-10 min-h-[100px] w-full overflow-hidden rounded-xl border border-slate-200 bg-slate-50/90 p-4">
+        <AdSenseDisplayAuto />
+      </div>
+
+      <section className="mt-10 rounded-2xl border border-slate-200 bg-white p-6">
+        <h2 className="text-2xl font-semibold text-slate-900">
+          GDPR vs ISO 27001 vs cookie law — which page should you open first?
+        </h2>
+        <p className="mt-2 text-sm text-slate-600">
+          Use this table to pick the right guide. Every cell links to a real long-form guide pattern.
+        </p>
+        <div className="mt-5 overflow-x-auto">
+          <table className="w-full min-w-[520px] border-collapse text-left text-sm">
+            <thead>
+              <tr className="border-b border-slate-200 bg-slate-50">
+                <th className="px-3 py-2 font-semibold text-slate-900">Topic</th>
+                <th className="px-3 py-2 font-semibold text-slate-900">Best when…</th>
+                <th className="px-3 py-2 font-semibold text-slate-900">Start here</th>
+              </tr>
+            </thead>
+            <tbody className="text-slate-700">
+              <tr className="border-b border-slate-100">
+                <td className="px-3 py-3 font-medium">GDPR</td>
+                <td className="px-3 py-3">You process personal data, run marketing, or store client records.</td>
+                <td className="px-3 py-3">
+                  <Link href="/regulations#catalog-search" className="text-blue-700 underline-offset-2 hover:underline">
+                    Regulations hub
+                  </Link>
+                </td>
+              </tr>
+              <tr className="border-b border-slate-100">
+                <td className="px-3 py-3 font-medium">ISO 27001</td>
+                <td className="px-3 py-3">Clients ask for an ISMS, RFPs require security proof, or you scale a SaaS.</td>
+                <td className="px-3 py-3">
+                  <Link href="/sectors#catalog-search" className="text-blue-700 underline-offset-2 hover:underline">
+                    Pick your sector
+                  </Link>
+                </td>
+              </tr>
+              <tr className="border-b border-slate-100">
+                <td className="px-3 py-3 font-medium">Cookie law</td>
+                <td className="px-3 py-3">You run ads, analytics, chat widgets, or A/B tests on your site.</td>
+                <td className="px-3 py-3">
+                  <Link href={`/guia/${featuredSectors[0].slug}/llei-cookies`} className="text-blue-700 underline-offset-2 hover:underline">
+                    Example cookie guide
+                  </Link>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <div className="my-10 min-h-[100px] w-full overflow-hidden rounded-xl border border-slate-200 bg-slate-50/90 p-4">
+        <AdSenseFluid />
+      </div>
+
+      <section className="mt-10">
+        <h2 className="text-2xl font-semibold text-slate-900">
+          Deep dives (interactive)
+        </h2>
+        <p className="mt-2 max-w-3xl text-sm text-slate-600">
+          Open any section—content is in the HTML for crawlers and assistants, not hidden behind a paywall.
+        </p>
+        <div className="mt-4">
+          <SeoAccordion
+            items={[
+              {
+                title: "Why pSEO clusters beat a single “pillar page”",
+                content:
+                  "Long-tail URLs match real queries and reduce competition per page. A single article cannot cover every sector × regulation combination. Clustered guides let you capture qualified traffic while keeping each page specific enough to convert.",
+              },
+              {
+                title: "How lead capture works without feeling spammy",
+                content:
+                  "The audit form sits after value: the reader already understands risks and next steps. The CTA is framed as implementation help, not a newsletter—so it fits high-intent commercial traffic.",
+              },
+              {
+                title: "Affiliate monetization that stays aligned with trust",
+                content:
+                  "Tool recommendations appear in context (security, consent, backups). Visitors click when they have a decision to make, which improves conversion quality over random banner ads.",
+              },
+              {
+                title: "What happens if the database is offline",
+                content:
+                  "Guides still render a rich long-form structure. That means uptime for SEO and user trust: no blank pages during incidents, and crawlers still see complete text.",
+              },
+              {
+                title: "Mobile performance and sticky CTAs",
+                content:
+                  "On phones, guides use short sections and a sticky CTA on key templates so users can move from reading to action without hunting for the form.",
+              },
+              {
+                title: "How to use this site for AI search (AEO)",
+                content:
+                  "Clear headings, FAQs, and factual checklists improve extractability for AI answers. The goal is to be cited as a useful source when buyers ask compliance questions in chat tools.",
+              },
+            ]}
+          />
+        </div>
+      </section>
+
+      <div className="my-10 min-h-[100px] w-full overflow-hidden rounded-xl border border-slate-200 bg-slate-50/90 p-4">
+        <AdSenseInArticle />
+      </div>
+
+      <section className="mt-10">
+        <h2 className="text-2xl font-semibold text-slate-900">Featured niches</h2>
+        <div className="mt-5 grid gap-3 md:grid-cols-2 lg:grid-cols-3">
+          {featuredSectors.map((sector) => (
+            <Link
+              key={sector.slug}
+              href={`/guia/${sector.slug}/rgpd`}
+              className="rounded-lg border border-slate-200 bg-white p-4 text-slate-800 shadow-sm hover:border-blue-300"
+            >
+              <p className="font-medium">{sector.name}</p>
+              <p className="mt-1 text-sm text-slate-600">GDPR applied + checklist</p>
+            </Link>
+          ))}
+        </div>
+      </section>
+
+      <section className="mt-10 grid gap-4 md:grid-cols-2">
+        <Link
+          href="/sectors#catalog-search"
+          className="rounded-xl border border-slate-200 bg-white p-5 hover:border-blue-300"
+        >
+          <h3 className="text-lg font-semibold text-slate-900">Sector hub</h3>
+          <p className="mt-1 text-sm text-slate-600">
+            Browse all professional niches and find your guide.
+          </p>
+        </Link>
+        <Link
+          href="/regulations#catalog-search"
+          className="rounded-xl border border-slate-200 bg-white p-5 hover:border-blue-300"
+        >
+          <h3 className="text-lg font-semibold text-slate-900">Regulations hub</h3>
+          <p className="mt-1 text-sm text-slate-600">
+            GDPR, ISO 27001, and cookie law with sector links.
+          </p>
+        </Link>
+      </section>
+
+      <div className="my-10 min-h-[100px] w-full overflow-hidden rounded-xl border border-slate-200 bg-slate-50/90 p-4">
+        <AdSenseMultiplex />
+      </div>
+
+      <section className="mt-10 rounded-2xl border border-slate-200 bg-white p-6">
+        <h2 className="text-2xl font-semibold text-slate-900">
+          Turn a search into an audit (in 3 steps)
+        </h2>
+        <ol className="mt-4 space-y-3 text-sm text-slate-700">
+          <li>
+            <span className="font-semibold text-slate-900">Pick your sector</span>:
+            you land on the correct guide for compliance intent (not generic content).
+          </li>
+          <li>
+            <span className="font-semibold text-slate-900">
+              Get the action plan
+            </span>
+            : checklist, digital risk sections, and operational security to justify priorities.
+          </li>
+          <li>
+            <span className="font-semibold text-slate-900">
+              Request an audit
+            </span>
+            : the form captures your context and tells you the next step (lead capture + affiliate).
+          </li>
+        </ol>
+      </section>
+
+      <section className="mt-8 rounded-2xl border border-slate-200 bg-white p-6">
+        <h2 className="text-2xl font-semibold text-slate-900">
+          Frequently asked questions
+        </h2>
+        <dl className="mt-4 space-y-4 text-sm text-slate-700">
+          <div>
+            <dt className="font-semibold text-slate-900">
+              Is this legal or does it replace a lawyer?
+            </dt>
+            <dd className="mt-1">
+              No. It’s an informational guide to help you understand what you need to implement.
+              For specific legal decisions, consult a professional.
+            </dd>
+          </div>
+          <div>
+            <dt className="font-semibold text-slate-900">
+              What do you collect in the audit form?
+            </dt>
+            <dd className="mt-1">
+              Your sector and basic data to tailor recommendations and show tool options with CTAs.
+            </dd>
+          </div>
+          <div>
+            <dt className="font-semibold text-slate-900">
+              Do the guides work on mobile?
+            </dt>
+            <dd className="mt-1">
+              Yes. The format is designed for quick reading: short sections, visible calls to action,
+              and a “sticky” CTA on key pages.
+            </dd>
+          </div>
+          <div>
+            <dt className="font-semibold text-slate-900">
+              How much information is on each page?
+            </dt>
+            <dd className="mt-1">
+              Each page includes professional structure, actionable checklists, and FAQs designed to resolve
+              decision questions (for humans, and for search engines/AI systems).
+            </dd>
+          </div>
+          <div>
+            <dt className="font-semibold text-slate-900">
+              Sector hub vs regulation hub vs guide—what’s the difference?
+            </dt>
+            <dd className="mt-1">
+              The sector hub explains risks for your business type and lists regulations. The regulation hub explains
+              each framework and links sectors. A guide is the long-form implementation page for one sector × one
+              regulation.
+            </dd>
+          </div>
+          <div>
+            <dt className="font-semibold text-slate-900">
+              Is this only for EU companies?
+            </dt>
+            <dd className="mt-1">
+              Much content references EU rules (e.g. GDPR), but standards like ISO 27001 are global. Always map guides to
+              your country and contracts—use professionals for jurisdictional certainty.
+            </dd>
+          </div>
+        </dl>
+      </section>
     </div>
   );
 }

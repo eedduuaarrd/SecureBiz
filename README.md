@@ -1,36 +1,96 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# SecureBiz AI
 
-## Getting Started
+Programmatic SEO (**pSEO**) (Next.js App Router) to generate sector-specific compliance and cybersecurity guides (e.g. **GDPR / ISO 27001 / cookie law**) with **lead capture**, **affiliate tool links**, and **JSON-LD** (Article, FAQ, Breadcrumb).
 
-First, run the development server:
+## Requirements
+
+- Node.js 20+
+- Postgres account (e.g. [Vercel Postgres](https://vercel.com/docs/storage/vercel-postgres/overview) or similar)
+- [Google AI (Gemini)](https://aistudio.google.com/apikey) API key
+
+## Configuration
+
+1. Copy the env example and fill real values:
+
+   ```bash
+   cp .env.example .env.local
+   ```
+
+2. Main variables:
+
+   | Variable | Description |
+   |----------|------------|
+  | `DATABASE_URL` | Postgres connection string (with SSL if applicable) |
+  | `GEMINI_API_KEY` | Gemini API key |
+  | `NEXT_PUBLIC_SITE_URL` | Public URL (`http://localhost:3000` locally; production `https://securebiz.org`) |
+  | `NEXT_PUBLIC_GTM_ID` | Google Tag Manager container (`GTM-XXXX`); default `GTM-5F2SKDDX` in code if unset |
+  | `NEXT_PUBLIC_GA_MEASUREMENT_ID` | Optional GA4 ID (`G-XXXX`); prefer loading GA via GTM to avoid double tags |
+  | `PREBUILD_GUIDE_SECTORS` | Optional: how many sectors to pre-generate at build time (0 = only on-demand) |
+
+3. Seed the database:
+
+   ```bash
+   npm run seed
+   ```
+
+## Development
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Development uses **Webpack** (not Turbopack) to avoid common **memory (OOM)** issues on Windows with large projects.  
+Open [http://localhost:3000](http://localhost:3000).  
+Example guide: `/guia/clinica-dental-independent/rgpd` (after seeding).
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+If you still run out of RAM, run this in PowerShell before starting:
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```powershell
+$env:NODE_OPTIONS="--max-old-space-size=4096"
+npm run dev
+```
 
-## Learn More
+## Production
 
-To learn more about Next.js, take a look at the following resources:
+```bash
+npm run build
+npm start
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Massive generation (autopilot)
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Run the guide batch and save to Postgres:
 
-## Deploy on Vercel
+```bash
+npm run generate:guides -- --limit=30 --delayMs=900
+```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Useful parameters:
+- `--dryRun=true` simulates without calling Gemini
+- `--sector=<slug>` or `--regulation=<slug>` to filter
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## GA4 events (optional)
+
+- `generate_lead` — audit form submitted successfully
+- `affiliate_click` — click on a recommended affiliate tool (`tool_name`, `link_url`)
+
+## SEO structure
+
+- Guide route: `app/guia/[sector-slug]/[regulations-slug]/page.tsx`
+- Shared defaults & OG helpers: `lib/seo.ts`
+- Sitemap: `app/sitemap.ts` (sectors, regulations, guides)
+- `robots.txt`: `app/robots.ts` (allows `/`, blocks `/admin`)
+- Web app manifest: `app/manifest.ts` (PWA-style install metadata)
+- Home: Organization + WebSite + FAQ JSON-LD; guides: Article + FAQ + Breadcrumb (with sector step)
+- Set **`NEXT_PUBLIC_SITE_URL`** to your production URL (`https://securebiz.org`) so canonicals, sitemap, and Open Graph use absolute URLs
+
+### Deploy (Vercel)
+
+1. Push to Git and import the repo in Vercel, or run `npx vercel` from this folder (CLI must be logged in).
+2. Add environment variables (same as `.env.local`, especially `NEXT_PUBLIC_SITE_URL` and `DATABASE_URL`).
+3. Production: **Deployments → Redeploy** or `npx vercel --prod`.
+
+## Legal notice
+
+This content is **informational** and generated with AI; it does not replace professional legal advice (see `app/legal/disclaimer`).
