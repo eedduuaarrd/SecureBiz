@@ -1,11 +1,5 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import {
-  AdSenseDisplayAuto,
-  AdSenseFluid,
-  AdSenseInArticle,
-  AdSenseMultiplex,
-} from "@/components/adsense-units";
 import { CatalogSearchInput } from "@/components/catalog-search-input";
 import { SeoAccordion } from "@/components/seo-accordion";
 import { HubFooterLinks, UsefulContextCallout, UsefulDataTable } from "@/components/site-education-blocks";
@@ -197,10 +191,6 @@ export default function SectorsHubPage() {
         </div>
       </section>
 
-      <div className="my-10 min-h-[100px] w-full overflow-hidden rounded-xl border border-slate-200 bg-slate-50/90 p-4">
-        <AdSenseDisplayAuto />
-      </div>
-
       <section className="mt-8 rounded-xl border border-slate-200 bg-white p-5">
         <h2 className="text-lg font-semibold text-slate-900">
           Start today (GDPR)
@@ -258,10 +248,6 @@ export default function SectorsHubPage() {
         </div>
       </section>
 
-      <div className="my-10 min-h-[100px] w-full overflow-hidden rounded-xl border border-slate-200 bg-slate-50/90 p-4">
-        <AdSenseFluid />
-      </div>
-
       <section className="mt-10 rounded-xl border border-slate-200 bg-white p-5">
         <h2 className="text-lg font-semibold text-slate-900">What you’ll find in every guide</h2>
         <p className="mt-2 text-sm text-slate-600">
@@ -281,10 +267,6 @@ export default function SectorsHubPage() {
           </p>
         </div>
       </section>
-
-      <div className="my-10 min-h-[100px] w-full overflow-hidden rounded-xl border border-slate-200 bg-slate-50/90 p-4">
-        <AdSenseInArticle />
-      </div>
 
       <section className="mt-10 rounded-xl border border-slate-200 bg-white p-5">
         <h2 className="text-lg font-semibold text-slate-900">
@@ -404,10 +386,6 @@ export default function SectorsHubPage() {
           />
         </div>
       </section>
-
-      <div className="my-10 min-h-[100px] w-full overflow-hidden rounded-xl border border-slate-200 bg-slate-50/90 p-4">
-        <AdSenseMultiplex />
-      </div>
 
       <HubFooterLinks />
     </div>

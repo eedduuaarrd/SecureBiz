@@ -1,11 +1,5 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import {
-  AdSenseDisplayAuto,
-  AdSenseFluid,
-  AdSenseInArticle,
-  AdSenseMultiplex,
-} from "@/components/adsense-units";
 import { BrandLogo } from "@/components/brand-logo";
 import { SeoAccordion } from "@/components/seo-accordion";
 import { UsefulContextCallout, UsefulDataTable } from "@/components/site-education-blocks";
@@ -405,10 +399,6 @@ export default function Home() {
         </ul>
       </section>
 
-      <div className="my-10 min-h-[120px] w-full overflow-hidden rounded-xl border border-dashed border-slate-200 bg-slate-50/90 p-4">
-        <AdSenseDisplayAuto />
-      </div>
-
       <section className="mt-10 rounded-2xl border border-slate-200 bg-white p-6">
         <h2 className="text-2xl font-semibold text-slate-900">
           GDPR vs ISO 27001 vs cookie law — which page should you open first?
@@ -458,10 +448,6 @@ export default function Home() {
         </div>
       </section>
 
-      <div className="my-10 min-h-[120px] w-full overflow-hidden rounded-xl border border-dashed border-slate-200 bg-slate-50/90 p-4">
-        <AdSenseFluid />
-      </div>
-
       <section className="mt-10">
         <h2 className="text-2xl font-semibold text-slate-900">
           Deep dives (interactive)
@@ -507,10 +493,6 @@ export default function Home() {
         </div>
       </section>
 
-      <div className="my-10 min-h-[120px] w-full overflow-hidden rounded-xl border border-dashed border-slate-200 bg-slate-50/90 p-4">
-        <AdSenseInArticle />
-      </div>
-
       <section className="mt-10">
         <h2 className="text-2xl font-semibold text-slate-900">Featured niches</h2>
         <div className="mt-5 grid gap-3 md:grid-cols-2 lg:grid-cols-3">
@@ -547,10 +529,6 @@ export default function Home() {
           </p>
         </Link>
       </section>
-
-      <div className="my-10 min-h-[120px] w-full overflow-hidden rounded-xl border border-dashed border-slate-200 bg-slate-50/90 p-4">
-        <AdSenseMultiplex />
-      </div>
 
       <section className="mt-10 rounded-2xl border border-slate-200 bg-white p-6">
         <h2 className="text-2xl font-semibold text-slate-900">

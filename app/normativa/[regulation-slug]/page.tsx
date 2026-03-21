@@ -1,12 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import {
-  AdSenseDisplayAuto,
-  AdSenseFluid,
-  AdSenseInArticle,
-  AdSenseMultiplex,
-} from "@/components/adsense-units";
 import { CatalogSearchInput } from "@/components/catalog-search-input";
 import { SeoAccordion } from "@/components/seo-accordion";
 import { UsefulContextCallout, UsefulDataTable } from "@/components/site-education-blocks";
@@ -150,10 +144,6 @@ export default async function RegulationPage({ params }: RegulationPageProps) {
         </ol>
       </section>
 
-      <div className="my-10 min-h-[100px] w-full overflow-hidden rounded-xl border border-slate-200 bg-slate-50/90 p-4">
-        <AdSenseDisplayAuto />
-      </div>
-
       <section className="mt-8 space-y-6">
         <UsefulContextCallout title={`What “${regulation.name}” means in practice`}>
           <p>
@@ -208,10 +198,6 @@ export default async function RegulationPage({ params }: RegulationPageProps) {
         </div>
       </section>
 
-      <div className="my-10 min-h-[100px] w-full overflow-hidden rounded-xl border border-slate-200 bg-slate-50/90 p-4">
-        <AdSenseFluid />
-      </div>
-
       <section className="mt-6 rounded-xl border border-slate-200 bg-white p-5">
         <h2 className="text-lg font-semibold text-slate-900">
           What you’ll find in the guides for this regulation
@@ -224,10 +210,6 @@ export default async function RegulationPage({ params }: RegulationPageProps) {
           even when the remote data layer is unavailable.
         </p>
       </section>
-
-      <div className="my-10 min-h-[100px] w-full overflow-hidden rounded-xl border border-slate-200 bg-slate-50/90 p-4">
-        <AdSenseInArticle />
-      </div>
 
       <section className="mt-6 rounded-xl border border-blue-100 bg-blue-50 p-5">
         <h2 className="text-lg font-semibold text-slate-900">Why this page drives revenue</h2>
@@ -281,10 +263,6 @@ export default async function RegulationPage({ params }: RegulationPageProps) {
             </li>
           ))}
         </ul>
-      </div>
-
-      <div className="my-10 min-h-[100px] w-full overflow-hidden rounded-xl border border-slate-200 bg-slate-50/90 p-4">
-        <AdSenseMultiplex />
       </div>
 
       <section className="mt-10 rounded-2xl border border-slate-200 bg-white p-6">

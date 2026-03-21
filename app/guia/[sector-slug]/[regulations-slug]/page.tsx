@@ -1,11 +1,5 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import {
-  AdSenseDisplayAuto,
-  AdSenseFluid,
-  AdSenseInArticle,
-  AdSenseMultiplex,
-} from "@/components/adsense-units";
 import { AffiliateHub } from "@/components/affiliate-hub";
 import { GuideCrossLinks } from "@/components/guide-cross-links";
 import { GuideImplementationExtras } from "@/components/guide-implementation-extras";
@@ -444,15 +438,7 @@ export default async function GuidePage({ params }: GuidePageProps) {
             </details>
           </section>
 
-          <div className="my-8 min-h-[100px] w-full overflow-hidden rounded-xl border border-slate-200 bg-slate-50/90 p-4">
-            <AdSenseDisplayAuto />
-          </div>
-
           <MarkdownArticle markdown={effectiveGuide.full_text} />
-
-          <div className="my-8 min-h-[100px] w-full overflow-hidden rounded-xl border border-slate-200 bg-slate-50/90 p-4">
-            <AdSenseInArticle />
-          </div>
 
           <GuideImplementationExtras
             sectorName={effectiveSectorName}
@@ -468,9 +454,6 @@ export default async function GuidePage({ params }: GuidePageProps) {
           <div id="tools">
             <AffiliateHub />
           </div>
-          <div className="min-h-[100px] w-full overflow-hidden rounded-xl border border-slate-200 bg-slate-50/90 p-3">
-            <AdSenseFluid />
-          </div>
           <div className="rounded-xl border border-slate-200 bg-white p-4 text-sm text-slate-600">
             <p className="font-medium text-slate-900">Quick response</p>
             <p className="mt-1">
@@ -479,10 +462,6 @@ export default async function GuidePage({ params }: GuidePageProps) {
             </p>
           </div>
         </div>
-      </div>
-
-      <div className="mt-10 min-h-[100px] w-full overflow-hidden rounded-xl border border-slate-200 bg-slate-50/90 p-4">
-        <AdSenseMultiplex />
       </div>
 
       <GuideCrossLinks

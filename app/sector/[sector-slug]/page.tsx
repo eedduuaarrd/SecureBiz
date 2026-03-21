@@ -1,12 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import {
-  AdSenseDisplayAuto,
-  AdSenseFluid,
-  AdSenseInArticle,
-  AdSenseMultiplex,
-} from "@/components/adsense-units";
 import { SeoAccordion } from "@/components/seo-accordion";
 import { UsefulContextCallout, UsefulDataTable } from "@/components/site-education-blocks";
 import {
@@ -128,10 +122,6 @@ export default async function SectorPage({ params }: SectorPageProps) {
         ))}
       </div>
 
-      <div className="my-10 min-h-[100px] w-full overflow-hidden rounded-xl border border-slate-200 bg-slate-50/90 p-4">
-        <AdSenseDisplayAuto />
-      </div>
-
       <section className="mt-10 rounded-2xl border border-slate-200 bg-white p-5 shadow-sm sm:p-8">
         <h2 className="text-lg font-semibold text-slate-900 sm:text-xl">
           Deep-dive pages for {sector.name}
@@ -158,10 +148,6 @@ export default async function SectorPage({ params }: SectorPageProps) {
           ))}
         </ul>
       </section>
-
-      <div className="my-10 min-h-[100px] w-full overflow-hidden rounded-xl border border-slate-200 bg-slate-50/90 p-4">
-        <AdSenseFluid />
-      </div>
 
       <section className="mt-10 rounded-2xl border border-slate-200 bg-white p-5 shadow-sm sm:p-8">
         <h2 className="text-lg font-semibold text-slate-900 sm:text-xl">
@@ -215,10 +201,6 @@ export default async function SectorPage({ params }: SectorPageProps) {
           ))}
         </ul>
       </section>
-
-      <div className="my-10 min-h-[100px] w-full overflow-hidden rounded-xl border border-slate-200 bg-slate-50/90 p-4">
-        <AdSenseInArticle />
-      </div>
 
       <section className="mt-10 rounded-xl border border-blue-100 bg-blue-50/60 p-5 sm:p-6">
         <h2 className="text-lg font-semibold text-slate-900">
@@ -299,10 +281,6 @@ export default async function SectorPage({ params }: SectorPageProps) {
           </UsefulDataTable>
         </div>
       </section>
-
-      <div className="my-10 min-h-[100px] w-full overflow-hidden rounded-xl border border-slate-200 bg-slate-50/90 p-4">
-        <AdSenseMultiplex />
-      </div>
 
       <section className="mt-10 rounded-2xl border border-slate-200 bg-white p-5 sm:p-8">
         <h2 className="text-xl font-semibold text-slate-900 sm:text-2xl">
