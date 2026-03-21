@@ -1,0 +1,104 @@
+import type { Metadata } from "next";
+import Link from "next/link";
+import { PageToc } from "@/components/site-education-blocks";
+import { SITE_NAME, getRobotsAllowAll } from "@/lib/seo";
+
+export const metadata: Metadata = {
+  title: "About",
+  description: `${SITE_NAME}: sector GDPR, ISO 27001 & NIS2 guides—informational education, not government or legal advice. How we help and what we are not.`,
+  alternates: { canonical: "/about" },
+  robots: getRobotsAllowAll(),
+};
+
+export default function AboutPage() {
+  return (
+    <div className="mx-auto w-full max-w-4xl px-6 py-12">
+      <h1 className="text-3xl font-bold text-slate-900">About {SITE_NAME}</h1>
+      <p className="mt-3 text-sm leading-relaxed text-slate-600">
+        {SITE_NAME} is an independent educational website that helps teams translate{" "}
+        <strong>GDPR</strong>, <strong>ISO 27001</strong>, <strong>cookie law</strong>,{" "}
+        <strong>NIS2</strong>, and related frameworks into <strong>sector-specific</strong> language—so owners,
+        operators, and consultants can prioritise controls without wading through generic filler.
+      </p>
+
+      <div className="mt-8">
+        <PageToc
+          items={[
+            { id: "mission", label: "What we publish" },
+            { id: "not", label: "What we are not" },
+            { id: "trust", label: "Trust, domain & downloads" },
+            { id: "official", label: "Use official sources for binding rules" },
+            { id: "contact", label: "Errors & feedback" },
+          ]}
+        />
+      </div>
+
+      <div className="mt-10 space-y-10 text-slate-700">
+        <section id="mission" className="scroll-mt-24">
+          <h2 className="text-xl font-semibold text-slate-900">What we publish</h2>
+          <ul className="mt-3 list-disc space-y-2 pl-5 text-sm leading-relaxed">
+            <li>
+              <strong>Sector hubs</strong> and <strong>regulation hubs</strong> that link to long-form guides (one
+              industry × one framework per URL).
+            </li>
+            <li>
+              <strong>Checklists, FAQs, and structured explanations</strong> aimed at implementation and evidence—not
+              replacing your DPO, lawyer, or auditor.
+            </li>
+            <li>Optional <strong>lead forms</strong> and contextual links to tools where that helps you move from reading to action.</li>
+          </ul>
+        </section>
+
+        <section id="not" className="scroll-mt-24">
+          <h2 className="text-xl font-semibold text-slate-900">What we are not</h2>
+          <ul className="mt-3 list-disc space-y-2 pl-5 text-sm leading-relaxed">
+            <li>We are not the European Commission, EDPB, ENISA, ISO, or your national DPA.</li>
+            <li>We do not issue certifications, fines, or binding interpretations.</li>
+            <li>We are not a law firm; content is informational. See our full{" "}
+              <Link className="text-blue-700 underline" href="/legal/disclaimer">
+                Legal disclaimer
+              </Link>
+              .
+            </li>
+          </ul>
+        </section>
+
+        <section id="trust" className="scroll-mt-24">
+          <h2 className="text-xl font-semibold text-slate-900">Trust, domain & downloads</h2>
+          <p className="mt-3 text-sm leading-relaxed">
+            This project is a normal public website (guides and legal pages). We do not run a software download portal
+            or distribute executables from this service. If you need the detailed wording, read{" "}
+            <Link className="font-medium text-blue-700 underline" href="/legal/disclaimer#trust-domain">
+              Safety & downloads in the disclaimer
+            </Link>
+            .
+          </p>
+        </section>
+
+        <section id="official" className="scroll-mt-24">
+          <h2 className="text-xl font-semibold text-slate-900">Use official sources for binding rules</h2>
+          <p className="mt-3 text-sm leading-relaxed">
+            For authoritative GDPR text, supervisory guidance, NIS2 transposition, and ISO standards, always rely on{" "}
+            <strong>official institutions</strong> (e.g. EUR-Lex, EDPB, your DPA, ENISA, ISO) and qualified advisors.
+            Use {SITE_NAME} to <strong>structure</strong> work inside your organisation and to compare how the same
+            obligation shows up across sectors—not as a substitute for primary legal sources.
+          </p>
+        </section>
+
+        <section id="contact" className="scroll-mt-24">
+          <h2 className="text-xl font-semibold text-slate-900">Errors & feedback</h2>
+          <p className="mt-3 text-sm leading-relaxed">
+            Compliance content changes. If you spot a factual issue or a broken link, we appreciate concise reports so we
+            can improve the site for everyone—see contact options when published on the site.
+          </p>
+        </section>
+      </div>
+
+      <p className="mt-12 text-sm text-slate-500">
+        <Link href="/" className="text-blue-700 underline">
+          ← Back to home
+        </Link>
+      </p>
+    </div>
+  );
+}

@@ -79,6 +79,11 @@ export function HubFooterLinks() {
           </Link>
         </li>
         <li>
+          <Link href="/about" className="font-medium text-blue-700 hover:underline">
+            About SecureBiz AI
+          </Link>
+        </li>
+        <li>
           <Link href="/sectors#catalog-search" className="font-medium text-blue-700 hover:underline">
             All sectors (searchable)
           </Link>

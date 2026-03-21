@@ -11,6 +11,7 @@ import { SECTOR_SUBPAGE_SLUGS } from "@/lib/sector-subpage-content";
 /** Marketing / hub pages (no trailing slash; "" = home). */
 export const HUB_PATHS = [
   "",
+  "/about",
   "/sectors",
   "/regulations",
   "/normatives",
