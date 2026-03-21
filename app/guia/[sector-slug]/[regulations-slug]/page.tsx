@@ -342,7 +342,7 @@ export default async function GuidePage({ params }: GuidePageProps) {
   );
 
   return (
-    <div className="mx-auto w-full max-w-6xl px-4 py-8 sm:px-6 sm:py-10">
+    <div className="mx-auto w-full max-w-6xl px-4 py-8 pb-28 sm:px-6 sm:py-10 md:pb-10">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }}

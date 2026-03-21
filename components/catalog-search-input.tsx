@@ -54,7 +54,7 @@ export function CatalogSearchInput({
           value={q}
           onChange={(e) => setQ(e.target.value)}
           placeholder={searchPlaceholder}
-          className="w-full rounded-lg border border-slate-200 bg-white px-4 py-3 text-sm text-slate-900 shadow-sm placeholder:text-slate-400 focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500/25"
+          className="min-h-12 w-full touch-manipulation rounded-lg border border-slate-200 bg-white px-4 py-3 text-base text-slate-900 shadow-sm placeholder:text-slate-400 focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500/25 sm:min-h-0 sm:text-sm"
           autoComplete="off"
           spellCheck={false}
           enterKeyHint="search"

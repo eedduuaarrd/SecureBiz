@@ -36,11 +36,8 @@ export default function NotFound() {
         </Link>
       </div>
       <p className="mt-10 text-xs text-slate-500">
-        Looking for everything we publish? See the{" "}
-        <Link href="/sitemap.xml" className="text-blue-700 underline-offset-2 hover:underline">
-          XML sitemap
-        </Link>
-        .
+        Search engines discover all public URLs via the standard <code className="text-slate-600">/robots.txt</code>{" "}
+        endpoint (no need to open raw XML from here).
       </p>
     </div>
   );

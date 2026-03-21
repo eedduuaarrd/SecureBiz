@@ -12,6 +12,7 @@ import { UsefulContextCallout, UsefulDataTable } from "@/components/site-educati
 import { buildSeedSectors, seedRegulations } from "@/lib/catalog";
 import { SECTOR_VERTICAL_CLUSTERS } from "@/lib/expanded-content";
 import {
+  BRAND_ALTERNATE_NAMES,
   DEFAULT_DESCRIPTION,
   SITE_NAME,
   getDefaultOgImageUrl,
@@ -68,7 +69,7 @@ export default function Home() {
     "@context": "https://schema.org",
     "@type": "Organization",
     name: SITE_NAME,
-    alternateName: ["SecureBiz", "securebiz.org"],
+    alternateName: [...BRAND_ALTERNATE_NAMES],
     url: siteUrl,
     logo: absoluteUrl("/logo.png"),
     description: DEFAULT_DESCRIPTION,
@@ -85,6 +86,7 @@ export default function Home() {
     "@context": "https://schema.org",
     "@type": "WebSite",
     name: SITE_NAME,
+    alternateName: [...BRAND_ALTERNATE_NAMES],
     url: siteUrl,
     description: DEFAULT_DESCRIPTION,
     publisher: {
@@ -253,19 +255,19 @@ export default function Home() {
         <div className="mt-6 flex flex-col gap-2 sm:mt-8 sm:flex-row sm:flex-wrap sm:gap-3">
           <Link
             href={`/guia/${featuredSectors[0].slug}/${rgpdSlug}`}
-            className="rounded-md bg-white px-5 py-3 text-center text-sm font-semibold text-slate-900 sm:py-2.5"
+            className="rounded-xl bg-white px-5 py-3.5 text-center text-sm font-semibold text-slate-900 touch-manipulation min-h-12 flex items-center justify-center sm:min-h-0 sm:py-2.5"
           >
             Enter a real guide
           </Link>
           <Link
             href="/sectors#catalog-search"
-            className="rounded-md border border-white/30 px-5 py-3 text-center text-sm font-semibold text-white sm:py-2.5"
+            className="rounded-xl border border-white/30 px-5 py-3.5 text-center text-sm font-semibold text-white touch-manipulation min-h-12 flex items-center justify-center sm:min-h-0 sm:py-2.5"
           >
             Explore sectors
           </Link>
           <Link
             href="/legal/disclaimer"
-            className="rounded-md border border-white/30 px-5 py-3 text-center text-sm font-semibold text-white sm:py-2.5"
+            className="rounded-xl border border-white/30 px-5 py-3.5 text-center text-sm font-semibold text-white touch-manipulation min-h-12 flex items-center justify-center sm:min-h-0 sm:py-2.5"
           >
             Legal disclaimer
           </Link>

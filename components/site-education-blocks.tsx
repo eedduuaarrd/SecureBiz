@@ -69,7 +69,8 @@ export function HubFooterLinks() {
     <section className="mt-10 rounded-2xl border border-slate-200 bg-white p-6">
       <h2 className="text-xl font-semibold text-slate-900">More resources</h2>
       <p className="mt-2 text-sm text-slate-600">
-        Hubs, long-form guides, machine-readable discovery, and legal transparency—stay inside one coherent journey.
+        Hubs, long-form guides, and legal transparency. Crawler discovery files (sitemap, robots) are not linked from the
+        main navigation on purpose.
       </p>
       <ul className="mt-4 grid gap-2 text-sm sm:grid-cols-2">
         <li>
@@ -95,16 +96,6 @@ export function HubFooterLinks() {
         <li>
           <Link href="/normativa/iso-27001" className="font-medium text-blue-700 hover:underline">
             ISO 27001 — all sector guides
-          </Link>
-        </li>
-        <li>
-          <Link href="/llms.txt" className="font-medium text-blue-700 hover:underline">
-            llms.txt (AI / crawler hints)
-          </Link>
-        </li>
-        <li>
-          <Link href="/sitemap.xml" className="font-medium text-blue-700 hover:underline">
-            Sitemap
           </Link>
         </li>
         <li>

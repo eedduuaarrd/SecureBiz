@@ -70,6 +70,13 @@ export const metadata: Metadata = {
   },
 };
 
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  viewportFit: "cover",
+  themeColor: "#f8fafc",
+};
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -83,7 +90,7 @@ export default function RootLayout({
         <link rel="dns-prefetch" href="https://fundingchoicesmessages.google.com" />
         <link rel="dns-prefetch" href="https://googleads.g.doubleclick.net" />
       </head>
-      <body className="min-h-full flex flex-col bg-slate-50 text-slate-900">
+      <body className="min-h-full flex flex-col bg-slate-50 text-slate-900 text-base antialiased sm:text-[15px]">
         <a href="#main-content" className="skip-to-content">
           Skip to main content
         </a>
@@ -122,9 +129,6 @@ export default function RootLayout({
               </Link>
               <Link href="/normatives" className="hover:text-slate-800">
                 Normatives
-              </Link>
-              <Link href="/sitemap.xml" className="hover:text-slate-800">
-                Sitemap
               </Link>
               <Link href="/legal/privacy" className="hover:text-slate-800">
                 Privacy
