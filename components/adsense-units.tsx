@@ -25,6 +25,9 @@ function AdSlotWrapper({ className, label, children }: WrapperProps) {
       aria-label={label ?? "Advertisement"}
       data-ad-slot-wrapper
     >
+      <p className="mb-2 text-center text-[10px] font-medium uppercase tracking-wide text-slate-400">
+        Advertisement
+      </p>
       {children}
     </aside>
   );

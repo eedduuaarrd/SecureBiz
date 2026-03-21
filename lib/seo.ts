@@ -7,7 +7,7 @@ export const DEFAULT_TITLE =
   "SecureBiz AI | GDPR, ISO 27001 & Cybersecurity Guides by Sector";
 
 export const DEFAULT_DESCRIPTION =
-  "SecureBiz AI (securebiz.org): free GDPR, ISO 27001, and cookie-law guides by industry — cybersecurity checklists, sector hubs, and audit-ready steps for teams and SMBs.";
+  "Free GDPR, ISO 27001, NIS2, and cookie-law guides by industry: sector hubs, regulation pages, checklists, and audit-ready steps for SMBs and compliance teams — SecureBiz AI (securebiz.org).";
 
 /** Default keywords for the global layout (pages can extend). */
 export const DEFAULT_KEYWORDS = [

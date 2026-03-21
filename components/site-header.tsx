@@ -4,6 +4,8 @@ import { BrandLogo } from "@/components/brand-logo";
 const NAV_LINKS = [
   { href: "/sectors#catalog-search", label: "Sectors" },
   { href: "/regulations#catalog-search", label: "Regulations" },
+  { href: "/sitemap.xml", label: "Sitemap" },
+  { href: "/llms.txt", label: "LLMs" },
   { href: "/legal/privacy", label: "Privacy" },
   { href: "/legal/cookies", label: "Cookies" },
   { href: "/legal/disclaimer", label: "Disclaimer" },

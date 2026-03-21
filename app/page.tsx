@@ -21,7 +21,8 @@ import { absoluteUrl, getSiteUrl } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: {
-    absolute: "SecureBiz AI | GDPR, ISO 27001 & Cybersecurity Guides by Sector",
+    absolute:
+      "SecureBiz AI | GDPR, ISO 27001, NIS2 & Cybersecurity Guides by Sector",
   },
   description: DEFAULT_DESCRIPTION,
   alternates: {
@@ -30,13 +31,13 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     url: "/",
-    title: "SecureBiz AI | GDPR, ISO 27001 & Cybersecurity Guides by Sector",
+    title: "SecureBiz AI | GDPR, ISO 27001, NIS2 & Cybersecurity Guides by Sector",
     description: DEFAULT_DESCRIPTION,
     images: getDefaultOgImages(),
   },
   twitter: {
     card: "summary_large_image",
-    title: "SecureBiz AI | GDPR, ISO 27001 & Cybersecurity Guides by Sector",
+    title: "SecureBiz AI | GDPR, ISO 27001, NIS2 & Cybersecurity Guides by Sector",
     description: DEFAULT_DESCRIPTION,
     images: [getDefaultOgImageUrl()],
   },
@@ -49,6 +50,18 @@ export default function Home() {
   const siteUrl = getSiteUrl();
   const rgpdSlug =
     seedRegulations.find((r) => r.slug === "rgpd")?.slug ?? "rgpd";
+
+  const topRegulationSlugs = [
+    "rgpd",
+    "iso-27001",
+    "llei-cookies",
+    "nis2",
+    "dora",
+    "soc-2",
+  ] as const;
+  const topRegulations = topRegulationSlugs
+    .map((slug) => seedRegulations.find((r) => r.slug === slug))
+    .filter((r): r is (typeof seedRegulations)[number] => Boolean(r));
 
   const organizationSchema = {
     "@context": "https://schema.org",
@@ -97,10 +110,52 @@ export default function Home() {
     })),
   };
 
+  const howToSchema = {
+    "@context": "https://schema.org",
+    "@type": "HowTo",
+    name: "Get from search intent to a compliance audit request",
+    description:
+      "Pick a sector, open a regulation-specific guide, then submit the audit form when you want a tailored implementation sequence.",
+    totalTime: "PT3M",
+    step: [
+      {
+        "@type": "HowToStep",
+        name: "Choose your sector",
+        text: "Use the sector hub or catalog search to match your real business type so vocabulary and risks align with your workflows.",
+      },
+      {
+        "@type": "HowToStep",
+        name: "Open the right guide",
+        text: "Select GDPR, ISO 27001, cookie law, or NIS2 depending on your current pressure (privacy, assurance, website tracking, or cyber resilience).",
+      },
+      {
+        "@type": "HowToStep",
+        name: "Request an audit",
+        text: "Use the on-page form to capture context and see contextual tool options—structured lead capture without cold outreach.",
+      },
+    ],
+  };
+
   const faqSchema = {
     "@context": "https://schema.org",
     "@type": "FAQPage",
     mainEntity: [
+      {
+        "@type": "Question",
+        name: "How do I find a GDPR guide for my specific sector?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "Open the sector hub, search for your industry, then pick GDPR from the regulation cards. Each guide URL pairs one sector with one regulation so examples stay concrete.",
+        },
+      },
+      {
+        "@type": "Question",
+        name: "What is the difference between ISO 27001 and NIS2 for SMBs?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "ISO 27001 is a certifiable ISMS standard for systematic security management. NIS2 is an EU directive with sector scope and reporting obligations—often complementary, not interchangeable. Use sector guides to map both to your stack.",
+        },
+      },
       {
         "@type": "Question",
         name: "Is this legal advice or does it replace a lawyer?",
@@ -164,6 +219,10 @@ export default function Home() {
       />
       <script
         type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(howToSchema) }}
+      />
+      <script
+        type="application/ld+json"
         dangerouslySetInnerHTML={{
           __html: JSON.stringify(featuredItemListSchema),
         }}
@@ -184,10 +243,11 @@ export default function Home() {
           </p>
         </div>
         <h1 className="mt-4 max-w-3xl text-3xl font-bold leading-tight sm:mt-3 sm:text-4xl">
-          GDPR and cybersecurity guides for your sector in seconds.
+          GDPR, ISO 27001 &amp; NIS2 guides built for your sector—not generic compliance filler.
         </h1>
         <p className="mt-4 max-w-2xl text-sm text-slate-200 sm:text-base">
-          Templates, checklists, and actionable guides to implement compliance and cybersecurity today.
+          Actionable checklists, risk framing, and regulation-specific wording for real businesses. Pick your industry,
+          open a guide, and move from reading to an audit request in one flow.
         </p>
         <div className="mt-6 flex flex-col gap-2 sm:mt-8 sm:flex-row sm:flex-wrap sm:gap-3">
           <Link
@@ -280,7 +340,41 @@ export default function Home() {
         </div>
       </section>
 
-      <div className="my-10 min-h-[100px] w-full overflow-hidden rounded-xl border border-slate-200 bg-slate-50/90 p-4">
+      <section className="mt-10 rounded-2xl border border-slate-200 bg-white p-6">
+        <h2 className="text-xl font-semibold text-slate-900 sm:text-2xl">
+          Top frameworks &amp; laws (hub pages)
+        </h2>
+        <p className="mt-2 text-sm text-slate-600">
+          Each page lists sector-specific guides for that regulation—ideal when you already know the law name and need
+          industry context (healthcare, SaaS, retail, professional services, and more).
+        </p>
+        <ul className="mt-4 grid gap-2 sm:grid-cols-2 lg:grid-cols-3">
+          {topRegulations.map((reg) => (
+            <li key={reg.slug}>
+              <Link
+                href={`/normativa/${reg.slug}`}
+                className="flex flex-col rounded-lg border border-slate-200 bg-slate-50/80 px-3 py-2.5 text-sm transition hover:border-blue-300 hover:bg-white"
+              >
+                <span className="font-semibold text-slate-900">{reg.name}</span>
+                <span className="mt-0.5 text-xs text-slate-500">{reg.country}</span>
+              </Link>
+            </li>
+          ))}
+        </ul>
+        <p className="mt-4 text-sm text-slate-600">
+          Prefer the full catalog?{" "}
+          <Link href="/regulations#catalog-search" className="font-medium text-blue-700 underline-offset-2 hover:underline">
+            Browse every regulation A–Z
+          </Link>{" "}
+          or{" "}
+          <Link href="/sectors#catalog-search" className="font-medium text-blue-700 underline-offset-2 hover:underline">
+            start from your sector
+          </Link>
+          .
+        </p>
+      </section>
+
+      <div className="my-10 min-h-[120px] w-full overflow-hidden rounded-xl border border-dashed border-slate-200 bg-slate-50/90 p-4">
         <AdSenseDisplayAuto />
       </div>
 
@@ -333,7 +427,7 @@ export default function Home() {
         </div>
       </section>
 
-      <div className="my-10 min-h-[100px] w-full overflow-hidden rounded-xl border border-slate-200 bg-slate-50/90 p-4">
+      <div className="my-10 min-h-[120px] w-full overflow-hidden rounded-xl border border-dashed border-slate-200 bg-slate-50/90 p-4">
         <AdSenseFluid />
       </div>
 
@@ -382,7 +476,7 @@ export default function Home() {
         </div>
       </section>
 
-      <div className="my-10 min-h-[100px] w-full overflow-hidden rounded-xl border border-slate-200 bg-slate-50/90 p-4">
+      <div className="my-10 min-h-[120px] w-full overflow-hidden rounded-xl border border-dashed border-slate-200 bg-slate-50/90 p-4">
         <AdSenseInArticle />
       </div>
 
@@ -423,7 +517,7 @@ export default function Home() {
         </Link>
       </section>
 
-      <div className="my-10 min-h-[100px] w-full overflow-hidden rounded-xl border border-slate-200 bg-slate-50/90 p-4">
+      <div className="my-10 min-h-[120px] w-full overflow-hidden rounded-xl border border-dashed border-slate-200 bg-slate-50/90 p-4">
         <AdSenseMultiplex />
       </div>
 
@@ -456,6 +550,36 @@ export default function Home() {
           Frequently asked questions
         </h2>
         <dl className="mt-4 space-y-4 text-sm text-slate-700">
+          <div>
+            <dt className="font-semibold text-slate-900">
+              How do I find a GDPR guide for my specific sector?
+            </dt>
+            <dd className="mt-1">
+              Use the{" "}
+              <Link href="/sectors#catalog-search" className="text-blue-700 underline-offset-2 hover:underline">
+                sector hub
+              </Link>
+              , search for your industry, then choose GDPR from the regulation list. Every guide URL is{" "}
+              <strong>one sector × one regulation</strong> so the language stays specific.
+            </dd>
+          </div>
+          <div>
+            <dt className="font-semibold text-slate-900">
+              What is the difference between ISO 27001 and NIS2 for SMBs?
+            </dt>
+            <dd className="mt-1">
+              ISO 27001 is a certifiable security management system (ISMS). NIS2 is an EU directive with reporting and
+              governance expectations in scope sectors—they solve different questions. Use{" "}
+              <Link href="/normativa/iso-27001" className="text-blue-700 underline-offset-2 hover:underline">
+                ISO 27001 hub
+              </Link>{" "}
+              and{" "}
+              <Link href="/normativa/nis2" className="text-blue-700 underline-offset-2 hover:underline">
+                NIS2 hub
+              </Link>{" "}
+              to pick sector guides, then validate scope with professionals.
+            </dd>
+          </div>
           <div>
             <dt className="font-semibold text-slate-900">
               Is this legal or does it replace a lawyer?
