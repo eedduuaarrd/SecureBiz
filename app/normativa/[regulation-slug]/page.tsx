@@ -15,6 +15,7 @@ import {
   seedRegulations,
   isRegulationAllowedForSectorSlug,
 } from "@/lib/catalog";
+import { getRegulationNarrativeExtra } from "@/lib/expanded-content";
 import { getDefaultOgImageUrl, getDefaultOgImages, getRobotsAllowAll } from "@/lib/seo";
 
 type RegulationPageProps = {
@@ -39,17 +40,21 @@ export async function generateMetadata({
   }
 
   const path = `/normativa/${regulation.slug}`;
+  const metaDescription = (() => {
+    const core = `${regulation.description} Evidence, pitfalls, and phased rollout—guides for every sector.`;
+    return core.length > 158 ? `${core.slice(0, 155)}…` : core;
+  })();
 
   return {
     title: `${regulation.name} | Related sectors and guides`,
-    description: `Access guides for ${regulation.name} across professional sectors.`,
+    description: metaDescription,
     alternates: {
       canonical: path,
     },
     openGraph: {
       type: "website",
       title: `${regulation.name} | Related sectors and guides`,
-      description: `Access guides for ${regulation.name} across professional sectors.`,
+      description: metaDescription,
       url: path,
       siteName: "SecureBiz AI",
       locale: "en_US",
@@ -58,7 +63,7 @@ export async function generateMetadata({
     twitter: {
       card: "summary_large_image",
       title: `${regulation.name} | Related sectors and guides`,
-      description: `Access guides for ${regulation.name} across professional sectors.`,
+      description: metaDescription,
       images: [getDefaultOgImageUrl()],
     },
     robots: getRobotsAllowAll(),
@@ -80,18 +85,70 @@ export default async function RegulationPage({ params }: RegulationPageProps) {
     notFound();
   }
 
+  const extra = getRegulationNarrativeExtra(regulation.slug);
+
   return (
     <div className="mx-auto w-full max-w-6xl px-4 py-8 sm:px-6 sm:py-10">
       <h1 className="text-3xl font-bold text-slate-900">
         {regulation.name} for professional sectors
       </h1>
       <p className="mt-2 text-slate-600">{regulation.description}</p>
+      <div className="mt-6 space-y-3 text-sm leading-relaxed text-slate-700">
+        {extra.deepDiveParagraphs.map((p, i) => (
+          <p key={i}>{p}</p>
+        ))}
+      </div>
       <p className="mt-4 text-sm leading-relaxed text-slate-700">
         Below you’ll find a large grid of sector-specific guides. Each URL targets a unique combination of{" "}
         <strong>{regulation.name}</strong> vocabulary plus industry context—exactly how teams search when they need to
         implement controls, not read theory. More indexed pages with internal links raise the chance that Google (and AI
         overviews) surface your answers without paid distribution.
       </p>
+
+      <section className="mt-8 rounded-xl border border-slate-200 bg-white p-5">
+        <h2 className="text-lg font-semibold text-slate-900">Evidence teams usually need</h2>
+        <p className="mt-2 text-sm text-slate-600">
+          Not legal advice—this is what auditors, insurers, and enterprise buyers often ask to see when a claim is tested.
+        </p>
+        <ul className="mt-4 list-disc space-y-2 pl-5 text-sm text-slate-700">
+          {extra.evidenceBullets.map((b, i) => (
+            <li key={`e-${i}`}>{b}</li>
+          ))}
+        </ul>
+      </section>
+
+      <section className="mt-6 rounded-xl border border-amber-100 bg-amber-50/80 p-5">
+        <h2 className="text-lg font-semibold text-slate-900">Common early mistakes</h2>
+        <ul className="mt-3 list-disc space-y-2 pl-5 text-sm text-slate-800">
+          {extra.pitfalls.map((b, i) => (
+            <li key={`p-${i}`}>{b}</li>
+          ))}
+        </ul>
+      </section>
+
+      <section className="mt-6 rounded-xl border border-slate-200 bg-slate-50/90 p-5">
+        <h2 className="text-lg font-semibold text-slate-900">Phased rollout (practical framing)</h2>
+        <p className="mt-2 text-sm text-slate-600">
+          Use this as a planning spine—then adapt months to your capacity and regulator timelines.
+        </p>
+        <ol className="mt-4 space-y-4">
+          {extra.phases.map((phase, idx) => (
+            <li
+              key={phase.title}
+              className="rounded-lg border border-slate-200 bg-white p-4"
+            >
+              <p className="text-sm font-semibold text-slate-900">
+                {idx + 1}. {phase.title}
+              </p>
+              <ul className="mt-2 list-disc space-y-1.5 pl-5 text-sm text-slate-700">
+                {phase.bullets.map((b, j) => (
+                  <li key={`${idx}-${j}`}>{b}</li>
+                ))}
+              </ul>
+            </li>
+          ))}
+        </ol>
+      </section>
 
       <div className="my-10 min-h-[100px] w-full overflow-hidden rounded-xl border border-slate-200 bg-slate-50/90 p-4">
         <AdSenseDisplayAuto />

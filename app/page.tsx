@@ -10,6 +10,7 @@ import { BrandLogo } from "@/components/brand-logo";
 import { SeoAccordion } from "@/components/seo-accordion";
 import { UsefulContextCallout, UsefulDataTable } from "@/components/site-education-blocks";
 import { buildSeedSectors, seedRegulations } from "@/lib/catalog";
+import { SECTOR_VERTICAL_CLUSTERS } from "@/lib/expanded-content";
 import {
   DEFAULT_DESCRIPTION,
   SITE_NAME,
@@ -372,6 +373,34 @@ export default function Home() {
           </Link>
           .
         </p>
+      </section>
+
+      <section className="mt-10 rounded-2xl border border-slate-200 bg-white p-6">
+        <h2 className="text-xl font-semibold text-slate-900">Vertical examples (same laws, different workflows)</h2>
+        <p className="mt-2 text-sm text-slate-600">
+          Jump to a representative sector hub—then open GDPR, ISO 27001, NIS2, or cookie guides from the regulation cards.
+        </p>
+        <ul className="mt-4 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+          {SECTOR_VERTICAL_CLUSTERS.map((cluster) => {
+            const example =
+              allSectors.find((s) => s.slug === cluster.exampleSlug) ?? allSectors[0];
+            return (
+              <li
+                key={cluster.label}
+                className="rounded-lg border border-slate-100 bg-slate-50/90 p-4"
+              >
+                <p className="font-semibold text-slate-900">{cluster.label}</p>
+                <p className="mt-1 text-xs text-slate-600">{cluster.hint}</p>
+                <Link
+                  href={`/sector/${example.slug}`}
+                  className="mt-2 inline-block text-sm font-medium text-blue-700 underline-offset-2 hover:underline"
+                >
+                  {example.name} →
+                </Link>
+              </li>
+            );
+          })}
+        </ul>
       </section>
 
       <div className="my-10 min-h-[120px] w-full overflow-hidden rounded-xl border border-dashed border-slate-200 bg-slate-50/90 p-4">

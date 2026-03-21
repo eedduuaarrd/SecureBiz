@@ -158,6 +158,7 @@ export function getSectorPersonaIntro(sectorName: string): {
       title: `Storefront compliance: payments, cookies, CRM`,
       paragraphs: [
         `${sectorName} teams juggle checkout flows, newsletters, and logistics partners. Regulations on this page connect to real stacks: payment gateways, analytics pixels, CRMs, and return fraud—so you can align marketing growth with consent and security.`,
+        `Prioritise cookie and tracker hygiene before scaling ad spend: enforcement and chargebacks both punish “growth first, privacy later”. The guides below spell out tag inventories, consent UX, and what to log when you change tools.`,
       ],
     };
   }
@@ -172,6 +173,7 @@ export function getSectorPersonaIntro(sectorName: string): {
       title: `B2B security assurances & regulatory overlap`,
       paragraphs: [
         `Product and ops teams need DPAs, subprocessors, and incident playbooks customers can read. These guides tie GDPR, security standards, and emerging EU rules to how ${sectorName} actually ships software and handles production access.`,
+        `When enterprise procurement asks for ISO 27001 or SOC 2, they are buying evidence of operation—change control, access reviews, monitoring—not a PDF library. Use the sector subpages for playbooks and vendor maps before you commit to audit scope.`,
       ],
     };
   }
@@ -181,6 +183,7 @@ export function getSectorPersonaIntro(sectorName: string): {
     paragraphs: [
       `Generic compliance text wastes your time. This hub keeps only the frameworks that match how ${sectorName} processes data and faces cyber risk—then explains them with sector vocabulary and next steps you can execute without a marketing department driving traffic: SEO and internal links do the acquisition work.`,
       `Open any regulation card for a full guide that pairs this niche with the law: risks, 30-day plans, FAQs, audit CTA, and tools—structured for Google, AI overviews, and humans skimming on mobile.`,
+      `If you are unsure where to start, pick GDPR when you store identifiable client or employee data, ISO 27001 when contracts demand an ISMS, and cookie law when your site runs analytics or ads. NIS2 or DORA may apply depending on sector and size—use the cards only when your profile matches.`,
     ],
   };
 }

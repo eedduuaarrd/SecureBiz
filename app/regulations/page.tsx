@@ -10,21 +10,22 @@ import { CatalogSearchInput } from "@/components/catalog-search-input";
 import { SeoAccordion } from "@/components/seo-accordion";
 import { HubFooterLinks, UsefulContextCallout, UsefulDataTable } from "@/components/site-education-blocks";
 import { buildSeedSectors, seedRegulations } from "@/lib/catalog";
+import { SECTOR_VERTICAL_CLUSTERS } from "@/lib/expanded-content";
 import { getRobotsAllowAll } from "@/lib/seo";
 import { absoluteUrl } from "@/lib/site";
 
 export const metadata: Metadata = {
-  title: "Regulations | GDPR, ISO 27001, and Cookie Law",
+  title: "Regulations | GDPR, ISO 27001, NIS2, DORA & more",
   description:
-    "Compliance and security regulations hub: GDPR, ISO 27001, and the cookie law.",
+    "Compare GDPR, ISO 27001, cookie law, NIS2, DORA, SOC 2—then open sector-specific guides with evidence, pitfalls, and rollout phases.",
   alternates: {
     canonical: "/regulations",
   },
   openGraph: {
     url: "/regulations",
-    title: "Regulations | GDPR, ISO 27001, and Cookie Law",
+    title: "Regulations | GDPR, ISO 27001, NIS2, DORA & more",
     description:
-      "Compliance and security regulations hub: GDPR, ISO 27001, and the cookie law.",
+      "Compare frameworks and jump into sector guides: GDPR, ISO 27001, cookies, NIS2, DORA, SOC 2.",
   },
   robots: getRobotsAllowAll(),
 };
@@ -41,7 +42,7 @@ export default function RegulationsHubPage() {
     "@type": "CollectionPage",
     name: "Regulations",
     description:
-      "Compliance and security regulations hub: GDPR, ISO 27001, and the cookie law.",
+      "Hub for GDPR, ISO 27001, cookie law, NIS2, DORA, SOC 2—with sector-specific implementation guides.",
     url: absoluteUrl("/regulations"),
   };
 
@@ -80,6 +81,35 @@ export default function RegulationsHubPage() {
         mean more entry points from organic search—without paying for ads—while each page keeps a monetization path
         (audit + tools).
       </p>
+      <p className="mt-3 text-sm leading-relaxed text-slate-700">
+        EU operators often stack <strong>privacy</strong> (GDPR), <strong>cyber resilience</strong> (NIS2), and{" "}
+        <strong>financial operational resilience</strong> (DORA) depending on sector and size—plus{" "}
+        <strong>SOC 2</strong> when US enterprise buyers demand trust criteria evidence. Use the regulation pages for
+        deep dives, then pick your sector from the grid on each hub.
+      </p>
+
+      <section className="mt-8 rounded-xl border border-slate-200 bg-white p-5">
+        <h2 className="text-lg font-semibold text-slate-900">See regulations in context (by vertical)</h2>
+        <p className="mt-2 text-sm text-slate-600">
+          Open a representative sector hub, then choose GDPR, ISO 27001, NIS2, or cookies from the regulation cards.
+        </p>
+        <ul className="mt-4 flex flex-wrap gap-2">
+          {SECTOR_VERTICAL_CLUSTERS.map((cluster) => {
+            const example =
+              sectors.find((s) => s.slug === cluster.exampleSlug) ?? sectors[0];
+            return (
+              <li key={cluster.label}>
+                <Link
+                  href={`/sector/${example.slug}`}
+                  className="inline-block rounded-full border border-slate-200 bg-slate-50 px-3 py-1.5 text-xs font-medium text-slate-800 hover:border-blue-300 hover:bg-white"
+                >
+                  {cluster.label}
+                </Link>
+              </li>
+            );
+          })}
+        </ul>
+      </section>
 
       <section className="mt-6 rounded-xl border border-blue-100 bg-blue-50 p-5">
         <h2 className="text-lg font-semibold text-slate-900">
@@ -308,6 +338,16 @@ export default function RegulationsHubPage() {
                 title: "Where should legal and IT align first?",
                 content:
                   "On the data map and vendor list. If those two are wrong, every policy is theatre. Start there, then layer standards and web tracking rules.",
+              },
+              {
+                title: "NIS2 vs ISO 27001—which comes first?",
+                content:
+                  "They answer different questions. NIS2 (where in scope) emphasizes governance, supply-chain security, and incident reporting under EU law. ISO 27001 is a certifiable ISMS for systematic risk management. Many teams use ISO-style discipline to operationalize NIS2 expectations—confirm scope with qualified advisors.",
+              },
+              {
+                title: "When does DORA matter if I am not a bank?",
+                content:
+                  "If you are a financial entity or critical ICT provider to one, contractual and oversight expectations may flow into your roadmap. Start from your regulator’s classification and customer DPAs, then map to resilience testing and third-party risk.",
               },
             ]}
           />

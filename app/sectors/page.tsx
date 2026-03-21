@@ -11,6 +11,7 @@ import { SeoAccordion } from "@/components/seo-accordion";
 import { HubFooterLinks, UsefulContextCallout, UsefulDataTable } from "@/components/site-education-blocks";
 import { VisualStepTimeline } from "@/components/visual-step-timeline";
 import { buildSeedSectors } from "@/lib/catalog";
+import { SECTOR_VERTICAL_CLUSTERS } from "@/lib/expanded-content";
 import { getRobotsAllowAll } from "@/lib/seo";
 import { absoluteUrl } from "@/lib/site";
 
@@ -20,7 +21,7 @@ export const dynamic = "force-dynamic";
 export const metadata: Metadata = {
   title: "Professional sectors | GDPR & cybersecurity guides",
   description:
-    "Browse professional sectors with compliance and digital security guides.",
+    "Search 500+ sector profiles: GDPR, ISO 27001, NIS2, cookies—guides per industry with checklists, risks, and audit paths.",
   alternates: {
     canonical: "/sectors",
   },
@@ -28,7 +29,7 @@ export const metadata: Metadata = {
     url: "/sectors",
     title: "Professional sectors | GDPR & cybersecurity guides",
     description:
-      "Browse professional sectors with compliance and digital security guides.",
+      "Search 500+ sector profiles: GDPR, ISO 27001, NIS2, cookies—guides per industry with checklists, risks, and audit paths.",
   },
   robots: getRobotsAllowAll(),
 };
@@ -42,7 +43,7 @@ export default function SectorsHubPage() {
     "@type": "CollectionPage",
     name: "Professional sectors",
     description:
-      "Browse professional sectors with compliance and digital security guides.",
+      "Search sector profiles with GDPR, ISO 27001, NIS2, and cookie-law guides—checklists, risks, and audit paths per industry.",
     url: absoluteUrl("/sectors"),
   };
 
@@ -59,6 +60,53 @@ export default function SectorsHubPage() {
     })),
   };
 
+  const sectorsFaqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: [
+      {
+        "@type": "Question",
+        name: "Do I need every regulation on day one?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "No. Start with the framework that matches your biggest external pressure (often GDPR). Add ISO 27001 when procurement or insurers require it, and cookie law when marketing tags create consent risk.",
+        },
+      },
+      {
+        "@type": "Question",
+        name: "Is this a replacement for consultants?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "It’s an accelerator: structured guidance and checklists. Complex cases still need professionals; the guides help you ask better questions and prioritize spend.",
+        },
+      },
+      {
+        "@type": "Question",
+        name: "How do audits and tools fit together?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "The audit form captures your context. Affiliate links suggest tools when you’re ready to implement—so monetization aligns with problem solving, not intrusive ads.",
+        },
+      },
+      {
+        "@type": "Question",
+        name: "Can I share these guides with my team?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "Yes—use them as a shared baseline for discussions. For external distribution or commercial reuse, respect copyright and link back to the canonical URL.",
+        },
+      },
+      {
+        "@type": "Question",
+        name: "What if we operate in multiple countries?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "Start from the strictest client or regulator requirement you cannot ignore, then map overlaps. The hubs help you reuse work across frameworks instead of duplicating effort.",
+        },
+      },
+    ],
+  };
+
   return (
     <div className="mx-auto w-full max-w-6xl px-4 py-8 sm:px-6 sm:py-10">
       <script
@@ -71,6 +119,10 @@ export default function SectorsHubPage() {
           __html: JSON.stringify(sectorItemListSchema),
         }}
       />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(sectorsFaqSchema) }}
+      />
       <h1 className="text-3xl font-bold text-slate-900">Professional sectors</h1>
       <p className="mt-2 text-slate-600">
         Choose your niche and get a practical compliance guide (GDPR, ISO 27001,
@@ -82,6 +134,34 @@ export default function SectorsHubPage() {
         answer the exact questions owners type into Google—implementation steps, evidence, and tooling—then offer a
         clear audit request path.
       </p>
+
+      <section className="mt-8 rounded-xl border border-slate-200 bg-white p-5">
+        <h2 className="text-lg font-semibold text-slate-900">Browse by vertical (examples)</h2>
+        <p className="mt-2 text-sm text-slate-600">
+          Same regulations, different workflows—these clusters jump to representative sector hubs. Use the A–Z list below for the full catalog.
+        </p>
+        <ul className="mt-4 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+          {SECTOR_VERTICAL_CLUSTERS.map((cluster) => {
+            const example =
+              sectors.find((s) => s.slug === cluster.exampleSlug) ?? sectors[0];
+            return (
+              <li
+                key={cluster.label}
+                className="rounded-lg border border-slate-200 bg-slate-50/80 p-4"
+              >
+                <p className="font-semibold text-slate-900">{cluster.label}</p>
+                <p className="mt-1 text-xs text-slate-600">{cluster.hint}</p>
+                <Link
+                  href={`/sector/${example.slug}`}
+                  className="mt-3 inline-block text-sm font-medium text-blue-800 underline-offset-2 hover:underline"
+                >
+                  Open example: {example.name}
+                </Link>
+              </li>
+            );
+          })}
+        </ul>
+      </section>
 
       <div className="mt-8">
         <VisualStepTimeline

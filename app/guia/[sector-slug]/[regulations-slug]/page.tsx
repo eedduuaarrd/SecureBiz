@@ -7,6 +7,7 @@ import {
   AdSenseMultiplex,
 } from "@/components/adsense-units";
 import { AffiliateHub } from "@/components/affiliate-hub";
+import { GuideCrossLinks } from "@/components/guide-cross-links";
 import { GuideImplementationExtras } from "@/components/guide-implementation-extras";
 import { GuideFaqSection } from "@/components/guide-faq-section";
 import { GuideRichIntro } from "@/components/guide-rich-intro";
@@ -483,6 +484,13 @@ export default async function GuidePage({ params }: GuidePageProps) {
       <div className="mt-10 min-h-[100px] w-full overflow-hidden rounded-xl border border-slate-200 bg-slate-50/90 p-4">
         <AdSenseMultiplex />
       </div>
+
+      <GuideCrossLinks
+        sectorName={effectiveSectorName}
+        sectorSlug={effectiveGuide.sector_slug}
+        regulationSlug={effectiveGuide.regulation_slug}
+        regulationName={effectiveRegulationName}
+      />
 
       <RelatedGuides guides={relatedGuides} />
     </div>
