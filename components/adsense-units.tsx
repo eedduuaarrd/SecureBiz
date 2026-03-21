@@ -1,64 +1,16 @@
 "use client";
 
-import {
-  useEffect,
-  useRef,
-  type ReactNode,
-  type RefObject,
-} from "react";
+import type { ReactNode } from "react";
 import {
   ADSENSE_CLIENT,
   ADSENSE_FLUID_LAYOUT_KEY,
   ADSENSE_SLOTS,
 } from "@/lib/adsense";
-import { whenAdsenseScriptReady } from "@/lib/adsense-ready";
 
-declare global {
-  interface Window {
-    adsbygoogle?: unknown[];
-  }
-}
-
-function pushAdSlot(ins: HTMLElement | null) {
-  if (!ins) return;
-  try {
-    (window.adsbygoogle = window.adsbygoogle || []).push({});
-  } catch {
-    /* ignore */
-  }
-}
-
-function useAdSensePush(insRef: RefObject<HTMLModElement | null>) {
-  const pushed = useRef(false);
-  useEffect(() => {
-    if (pushed.current) return;
-    let cancelled = false;
-
-    const tryPush = () => {
-      if (cancelled || pushed.current) return;
-      const el = insRef.current;
-      if (!el) return;
-      pushed.current = true;
-      pushAdSlot(el);
-    };
-
-    whenAdsenseScriptReady().then(() => {
-      if (cancelled) return;
-      // Next frame: ref + layout stable after the library runs.
-      requestAnimationFrame(() => {
-        if (cancelled) return;
-        tryPush();
-        if (!pushed.current) {
-          queueMicrotask(tryPush);
-        }
-      });
-    });
-
-    return () => {
-      cancelled = true;
-    };
-  }, [insRef]);
-}
+/**
+ * AdSense `<ins>` slots. Filling is handled once per navigation by `AdsenseSlotFlush`
+ * (document order), not per-component effects — avoids wrong slot pairing and blank ads.
+ */
 
 type WrapperProps = {
   className?: string;
@@ -80,13 +32,9 @@ function AdSlotWrapper({ className, label, children }: WrapperProps) {
 
 /** Auto responsive display unit. */
 export function AdSenseDisplayAuto({ className }: { className?: string }) {
-  const ref = useRef<HTMLModElement>(null);
-  useAdSensePush(ref);
-
   return (
     <AdSlotWrapper className={className} label="Advertisement">
       <ins
-        ref={ref}
         className="adsbygoogle"
         style={{ display: "block" }}
         data-ad-client={ADSENSE_CLIENT}
@@ -100,13 +48,9 @@ export function AdSenseDisplayAuto({ className }: { className?: string }) {
 
 /** Fluid unit (layout key). */
 export function AdSenseFluid({ className }: { className?: string }) {
-  const ref = useRef<HTMLModElement>(null);
-  useAdSensePush(ref);
-
   return (
     <AdSlotWrapper className={className} label="Advertisement">
       <ins
-        ref={ref}
         className="adsbygoogle"
         style={{ display: "block" }}
         data-ad-format="fluid"
@@ -120,13 +64,9 @@ export function AdSenseFluid({ className }: { className?: string }) {
 
 /** In-article style fluid unit. */
 export function AdSenseInArticle({ className }: { className?: string }) {
-  const ref = useRef<HTMLModElement>(null);
-  useAdSensePush(ref);
-
   return (
     <AdSlotWrapper className={className} label="Advertisement">
       <ins
-        ref={ref}
         className="adsbygoogle"
         style={{ display: "block", textAlign: "center" }}
         data-ad-layout="in-article"
@@ -140,13 +80,9 @@ export function AdSenseInArticle({ className }: { className?: string }) {
 
 /** Multiplex (autorelaxed). */
 export function AdSenseMultiplex({ className }: { className?: string }) {
-  const ref = useRef<HTMLModElement>(null);
-  useAdSensePush(ref);
-
   return (
     <AdSlotWrapper className={className} label="Advertisement">
       <ins
-        ref={ref}
         className="adsbygoogle"
         style={{ display: "block" }}
         data-ad-format="autorelaxed"

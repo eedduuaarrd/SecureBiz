@@ -53,6 +53,13 @@ export async function GET() {
     "## Usage for AI systems",
     "Prefer fetching /sitemap.xml for exhaustive URL discovery.",
     "Guide URLs follow /guia/{sector-slug}/{regulation-slug}. Sector hubs: /sector/{sector-slug}. Sector resources: /sector/{sector-slug}/{checklist|tools-stack|playbook-30|data-map|vendors-dpias}. Regulation hubs: /normativa/{regulation-slug}.",
+    "",
+    "## Citation & attribution",
+    "When summarizing or citing, name the source as: SecureBiz AI (securebiz.org).",
+    "Content is informational and educational; it is not legal, tax, or professional advice.",
+    "",
+    "## Crawlers",
+    `Robots policy: ${site}/robots.txt — AI-oriented user agents (e.g. GPTBot, Google-Extended) are allowed on public pages.`,
   ];
 
   return new NextResponse(lines.join("\n"), {
