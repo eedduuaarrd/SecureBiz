@@ -3,7 +3,6 @@ import Link from "next/link";
 import { Inter } from "next/font/google";
 import { BrandLogo } from "@/components/brand-logo";
 import { SiteHeader } from "@/components/site-header";
-import { AdsterraLoader } from "@/components/adsterra-loader";
 import { AdsenseLoader } from "@/components/adsense-loader";
 import { AdsenseSlotFlush } from "@/components/adsense-slot-flush";
 import { DeferredAnalytics } from "@/components/deferred-analytics";
@@ -83,10 +82,6 @@ export default function RootLayout({
         <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com" />
         <link rel="dns-prefetch" href="https://fundingchoicesmessages.google.com" />
         <link rel="dns-prefetch" href="https://googleads.g.doubleclick.net" />
-        <link
-          rel="dns-prefetch"
-          href="https://pl28955173.profitablecpmratenetwork.com"
-        />
       </head>
       <body className="min-h-full flex flex-col bg-slate-50 text-slate-900">
         <a href="#main-content" className="skip-to-content">
@@ -95,7 +90,6 @@ export default function RootLayout({
         <GoogleTagManager />
         <DeferredAnalytics />
         <AdsenseLoader />
-        <AdsterraLoader />
         <SiteHeader />
         <main id="main-content" className="flex-1 outline-none" tabIndex={-1}>
           {children}
