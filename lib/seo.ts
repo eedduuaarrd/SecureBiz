@@ -47,19 +47,6 @@ export const DEFAULT_KEYWORDS = [
   "sector compliance guide",
 ];
 
-/**
- * Optional brand profiles for Organization JSON-LD (`sameAs`).
- * Set `NEXT_PUBLIC_ORG_SAME_AS` to comma/space-separated HTTPS URLs (e.g. LinkedIn, X).
- */
-export function getOrganizationSameAsUrls(): string[] {
-  const raw = process.env.NEXT_PUBLIC_ORG_SAME_AS?.trim();
-  if (!raw) return [];
-  return raw
-    .split(/[\s,]+/)
-    .map((u) => u.trim())
-    .filter((u) => /^https?:\/\//i.test(u));
-}
-
 /** Google Search Console HTML tag verification (optional). */
 export function getGoogleSiteVerificationMetadata(): Partial<Metadata> {
   const token = process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION?.trim();

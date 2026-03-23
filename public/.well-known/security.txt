@@ -1,4 +1,0 @@
-Contact: mailto:privacy@securebiz.org
-Preferred-Languages: en, ca, es
-Canonical: https://securebiz.org/.well-known/security.txt
-Policy: https://securebiz.org/legal/privacy

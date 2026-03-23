@@ -2,29 +2,23 @@ import { NextResponse } from "next/server";
 import { getSiteUrl } from "@/lib/site";
 
 /**
- * RFC 9116 security.txt — signals a maintained security contact (trust / good practice).
- * Override contact via SECURITY_CONTACT_EMAIL (mailto) or SECURITY_CONTACT_URL (https).
+ * RFC 9116 security.txt — HTTPS-only contact pointers (no email required).
  */
 export async function GET() {
   const site = getSiteUrl().replace(/\/$/, "");
-  const email = process.env.SECURITY_CONTACT_EMAIL?.trim();
-  const url = process.env.SECURITY_CONTACT_URL?.trim();
 
-  const lines = ["# SecureBiz AI", "Canonical: /.well-known/security.txt", ""];
+  const lines = [
+    "# SecureBiz AI",
+    `Canonical: ${site}/.well-known/security.txt`,
+    "",
+    `Contact: ${site}/about`,
+    `Contact: ${site}/legal/disclaimer`,
+    "Preferred-Languages: en, ca, es",
+    `Policy: ${site}/legal/privacy`,
+    "",
+  ];
 
-  if (email && email.includes("@")) {
-    lines.push(`Contact: mailto:${email}`);
-  } else if (url && /^https?:\/\//i.test(url)) {
-    lines.push(`Contact: ${url}`);
-  } else {
-    lines.push(`Contact: ${site}/about`);
-    lines.push(`# Prefer email: set SECURITY_CONTACT_EMAIL in production`);
-  }
-
-  lines.push("Preferred-Languages: en");
-  lines.push(`Policy: ${site}/legal/disclaimer`);
-
-  const body = `${lines.join("\n")}\n`;
+  const body = lines.join("\n");
 
   return new NextResponse(body, {
     headers: {

@@ -83,7 +83,7 @@ export const CHANGELOG_ENTRIES: ChangelogEntry[] = [
     date: "2026-03",
     category: "technical",
     title: "Default Open Graph and Twitter images (1200×630)",
-    body: "Branded gradient OG/Twitter images are generated via the Next.js opengraph-image and twitter-image file conventions—better CTR when links are shared on Slack, LinkedIn, and X without relying on a tiny logo asset alone.",
+    body: "Branded gradient OG/Twitter images are generated via the Next.js opengraph-image and twitter-image file conventions—better CTR when links are shared in chat and social previews without relying on a tiny logo asset alone.",
   },
   {
     id: "llms-robots",
