@@ -15,6 +15,19 @@ export const metadata: Metadata = {
     "privacy and security guides",
   ],
   alternates: { canonical: "/resources" },
+  openGraph: {
+    type: "website",
+    url: "/resources",
+    title: "Resources | GDPR, ISO 27001 and NIS2 references",
+    description:
+      "Curated compliance resources with official sources and implementation-oriented references.",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Resources | GDPR, ISO 27001 and NIS2 references",
+    description:
+      "Curated compliance resources with official sources and implementation-oriented references.",
+  },
   robots: getRobotsAllowAll(),
 };
 

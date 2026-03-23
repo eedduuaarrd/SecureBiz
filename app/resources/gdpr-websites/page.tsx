@@ -29,6 +29,19 @@ export const metadata: Metadata = {
     "GDPR official sources",
   ],
   alternates: { canonical: "/resources/gdpr-websites" },
+  openGraph: {
+    type: "article",
+    url: "/resources/gdpr-websites",
+    title: "Top 10 GDPR websites (official + trusted)",
+    description:
+      "High-trust GDPR sources: EDPB, Commission, AEPD, ICO, CNIL, EUR-Lex and more.",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Top 10 GDPR websites (official + trusted)",
+    description:
+      "High-trust GDPR sources: EDPB, Commission, AEPD, ICO, CNIL, EUR-Lex and more.",
+  },
   robots: getRobotsAllowAll(),
 };
 

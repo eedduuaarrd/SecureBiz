@@ -2,17 +2,61 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { PageToc } from "@/components/site-education-blocks";
 import { SITE_NAME, getRobotsAllowAll } from "@/lib/seo";
+import { absoluteUrl } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "About",
   description: `${SITE_NAME}: sector GDPR, ISO 27001 & NIS2 guides—informational education, not government or legal advice. How we help and what we are not.`,
+  keywords: [
+    "about securebiz",
+    "securebiz mission",
+    "GDPR sector guides",
+    "ISO 27001 sector guides",
+    "NIS2 practical guidance",
+  ],
   alternates: { canonical: "/about" },
+  openGraph: {
+    type: "website",
+    url: "/about",
+    title: `About ${SITE_NAME}`,
+    description:
+      `${SITE_NAME}: practical compliance guidance by sector, with clear boundaries and trust information.`,
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: `About ${SITE_NAME}`,
+    description:
+      `${SITE_NAME}: practical compliance guidance by sector, with clear boundaries and trust information.`,
+  },
   robots: getRobotsAllowAll(),
 };
 
 export default function AboutPage() {
+  const pageUrl = absoluteUrl("/about");
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Home", item: absoluteUrl("/") },
+      { "@type": "ListItem", position: 2, name: "About", item: pageUrl },
+    ],
+  };
+
   return (
     <div className="mx-auto w-full max-w-4xl px-6 py-12">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+      />
+      <nav className="mb-4 text-sm text-slate-600" aria-label="Breadcrumb">
+        <ol className="flex flex-wrap gap-1">
+          <li>
+            <Link href="/" className="hover:text-slate-900">Home</Link>
+            <span className="mx-1 text-slate-400">/</span>
+          </li>
+          <li className="font-medium text-slate-900">About</li>
+        </ol>
+      </nav>
       <h1 className="text-3xl font-bold text-slate-900">About {SITE_NAME}</h1>
       <p className="mt-3 text-sm leading-relaxed text-slate-600">
         {SITE_NAME} is an independent educational website that helps teams translate{" "}

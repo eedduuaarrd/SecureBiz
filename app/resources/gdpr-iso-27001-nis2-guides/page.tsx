@@ -28,6 +28,19 @@ export const metadata: Metadata = {
     "GRC resources",
   ],
   alternates: { canonical: "/resources/gdpr-iso-27001-nis2-guides" },
+  openGraph: {
+    type: "article",
+    url: "/resources/gdpr-iso-27001-nis2-guides",
+    title: "Top 10 GDPR + ISO 27001 + NIS2 guides",
+    description:
+      "Cross-framework references for privacy, ISMS discipline, resilience, and risk governance.",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Top 10 GDPR + ISO 27001 + NIS2 guides",
+    description:
+      "Cross-framework references for privacy, ISMS discipline, resilience, and risk governance.",
+  },
   robots: getRobotsAllowAll(),
 };
 

@@ -60,6 +60,14 @@ export default function RegulationsHubPage() {
       url: absoluteUrl(`/normativa/${regulation.slug}`),
     })),
   };
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Home", item: absoluteUrl("/") },
+      { "@type": "ListItem", position: 2, name: "Regulations", item: absoluteUrl("/regulations") },
+    ],
+  };
 
   return (
     <div className="mx-auto w-full max-w-4xl px-4 py-8 sm:px-6 sm:py-10">
@@ -73,6 +81,19 @@ export default function RegulationsHubPage() {
           __html: JSON.stringify(regulationItemListSchema),
         }}
       />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+      />
+      <nav className="mb-4 text-sm text-slate-600" aria-label="Breadcrumb">
+        <ol className="flex flex-wrap gap-1">
+          <li>
+            <Link href="/" className="hover:text-slate-900">Home</Link>
+            <span className="mx-1 text-slate-400">/</span>
+          </li>
+          <li className="font-medium text-slate-900">Regulations</li>
+        </ol>
+      </nav>
       <h1 className="text-3xl font-bold text-slate-900">Regulations</h1>
       <p className="mt-2 text-slate-600">
         Choose a regulation and explore the sectors with tailored guides.

@@ -2,18 +2,105 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { SeoAccordion } from "@/components/seo-accordion";
 import { PageToc } from "@/components/site-education-blocks";
+import { absoluteUrl } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Legal disclaimer",
   description:
     "Scope, limitations, and responsibilities for using SecureBiz AI: informational content, no legal advice, affiliates, and intellectual property.",
+  keywords: [
+    "legal disclaimer",
+    "securebiz disclaimer",
+    "not legal advice",
+    "affiliate disclosure",
+    "website liability limitation",
+  ],
   alternates: { canonical: "/legal/disclaimer" },
+  openGraph: {
+    type: "article",
+    url: "/legal/disclaimer",
+    title: "Legal disclaimer | SecureBiz AI",
+    description:
+      "Scope, limitations, trust-domain statement, and responsibilities for using securebiz.org.",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Legal disclaimer | SecureBiz AI",
+    description:
+      "Scope, limitations, trust-domain statement, and responsibilities for using securebiz.org.",
+  },
   robots: { index: true, follow: true },
 };
 
 export default function DisclaimerPage() {
+  const pageUrl = absoluteUrl("/legal/disclaimer");
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Home", item: absoluteUrl("/") },
+      { "@type": "ListItem", position: 2, name: "Legal", item: pageUrl },
+      { "@type": "ListItem", position: 3, name: "Disclaimer", item: pageUrl },
+    ],
+  };
+  const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: [
+      {
+        "@type": "Question",
+        name: "Can I rely on a guide in an audit?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "Use it as structured preparation and evidence planning—not as a substitute for your auditor’s requirements. Bring your own records and expert sign-off where needed.",
+        },
+      },
+      {
+        "@type": "Question",
+        name: "Do you warrant ISO certification?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "No. Certification is issued by accredited bodies after audit. Our content may help you prepare controls, but it does not guarantee certification outcomes.",
+        },
+      },
+      {
+        "@type": "Question",
+        name: "Who do I contact if I find an error?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "Use the contact options published on the site. We appreciate corrections that improve accuracy for everyone.",
+        },
+      },
+      {
+        "@type": "Question",
+        name: "Is this site a malware or download site?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "No. SecureBiz AI is an informational website (guides, hubs, legal pages). We do not provide executable downloads or a /dl software channel. If you see claims linking this project to random file paths or installers, verify the exact URL and hostname—many look-alike domains exist on the internet.",
+        },
+      },
+    ],
+  };
+
   return (
     <div className="mx-auto w-full max-w-4xl px-6 py-12">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+      />
+      <nav className="mb-4 text-sm text-slate-600" aria-label="Breadcrumb">
+        <ol className="flex flex-wrap gap-1">
+          <li>
+            <Link href="/" className="hover:text-slate-900">Home</Link>
+            <span className="mx-1 text-slate-400">/</span>
+          </li>
+          <li className="font-medium text-slate-900">Legal disclaimer</li>
+        </ol>
+      </nav>
       <h1 className="text-3xl font-bold text-slate-900">Legal Disclaimer</h1>
       <p className="mt-3 text-sm leading-relaxed text-slate-600">
         Please read this page carefully. It defines what SecureBiz AI is (and is not), how you should use the content,

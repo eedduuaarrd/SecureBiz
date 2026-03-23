@@ -2,18 +2,101 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { SeoAccordion } from "@/components/seo-accordion";
 import { PageToc, UsefulDataTable } from "@/components/site-education-blocks";
+import { absoluteUrl } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Cookie policy",
   description:
     "How SecureBiz AI uses cookies, local storage, analytics, advertising technologies, and how you can control preferences.",
+  keywords: [
+    "cookie policy",
+    "securebiz cookies",
+    "GDPR cookies",
+    "cookie consent",
+    "tracking technologies",
+  ],
   alternates: { canonical: "/legal/cookies" },
+  openGraph: {
+    type: "article",
+    url: "/legal/cookies",
+    title: "Cookie policy | SecureBiz AI",
+    description:
+      "How cookies, analytics, and advertising technologies are used and controlled on securebiz.org.",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Cookie policy | SecureBiz AI",
+    description:
+      "How cookies, analytics, and advertising technologies are used and controlled on securebiz.org.",
+  },
   robots: { index: true, follow: true },
 };
 
 export default function CookiesPage() {
+  const pageUrl = absoluteUrl("/legal/cookies");
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Home", item: absoluteUrl("/") },
+      { "@type": "ListItem", position: 2, name: "Legal", item: absoluteUrl("/legal/disclaimer") },
+      { "@type": "ListItem", position: 3, name: "Cookie policy", item: pageUrl },
+    ],
+  };
+  const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: [
+      {
+        "@type": "Question",
+        name: "Do I have to accept all cookies?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "No. Non-essential cookies (e.g. some analytics or ads) should be optional where law requires consent. Essential cookies may still be needed for core functionality.",
+        },
+      },
+      {
+        "@type": "Question",
+        name: "Why does the site still work if I reject analytics?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "Because analytics is not required to display guides. You may lose aggregated improvements tied to usage data, but core content remains available.",
+        },
+      },
+      {
+        "@type": "Question",
+        name: "Are affiliate links cookies?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "Affiliate programs may set cookies or use redirects to attribute clicks. Those are often classified as marketing/advertising technologies.",
+        },
+      },
+    ],
+  };
+
   return (
     <div className="mx-auto w-full max-w-4xl px-6 py-12">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+      />
+      <nav className="mb-4 text-sm text-slate-600" aria-label="Breadcrumb">
+        <ol className="flex flex-wrap gap-1">
+          <li>
+            <Link href="/" className="hover:text-slate-900">Home</Link>
+            <span className="mx-1 text-slate-400">/</span>
+          </li>
+          <li>
+            <Link href="/legal/disclaimer" className="hover:text-slate-900">Legal</Link>
+            <span className="mx-1 text-slate-400">/</span>
+          </li>
+          <li className="font-medium text-slate-900">Cookie policy</li>
+        </ol>
+      </nav>
       <h1 className="text-3xl font-bold text-slate-900">Cookie Policy</h1>
       <p className="mt-3 text-sm leading-relaxed text-slate-600">
         This policy explains how <strong>securebiz.org</strong> uses cookies and similar technologies (pixels, scripts,

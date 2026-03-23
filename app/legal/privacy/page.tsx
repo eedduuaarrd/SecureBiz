@@ -2,18 +2,109 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { SeoAccordion } from "@/components/seo-accordion";
 import { PageToc, UsefulDataTable } from "@/components/site-education-blocks";
+import { absoluteUrl } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Privacy policy (GDPR)",
   description:
     "Detailed privacy policy for SecureBiz AI: controller identity, purposes, retention, subprocessors, rights, and international transfers.",
+  keywords: [
+    "privacy policy GDPR",
+    "securebiz privacy",
+    "data protection policy",
+    "GDPR rights",
+    "personal data processing",
+  ],
   alternates: { canonical: "/legal/privacy" },
+  openGraph: {
+    type: "article",
+    url: "/legal/privacy",
+    title: "Privacy policy (GDPR) | SecureBiz AI",
+    description:
+      "Detailed privacy policy: lawful bases, rights, retention, subprocessors, and transfers.",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Privacy policy (GDPR) | SecureBiz AI",
+    description:
+      "Detailed privacy policy: lawful bases, rights, retention, subprocessors, and transfers.",
+  },
   robots: { index: true, follow: true },
 };
 
 export default function PrivacyPage() {
+  const pageUrl = absoluteUrl("/legal/privacy");
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Home", item: absoluteUrl("/") },
+      { "@type": "ListItem", position: 2, name: "Legal", item: absoluteUrl("/legal/disclaimer") },
+      { "@type": "ListItem", position: 3, name: "Privacy policy", item: pageUrl },
+    ],
+  };
+  const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: [
+      {
+        "@type": "Question",
+        name: "Do you sell my data?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "No. We do not sell personal data. We use data to operate the site, respond to requests, and improve the service, as described in this policy.",
+        },
+      },
+      {
+        "@type": "Question",
+        name: "Why do you need my email in forms?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "So we can reply to audit or lead requests and send operational messages related to your enquiry. We do not use your email for unrelated purposes without a lawful basis.",
+        },
+      },
+      {
+        "@type": "Question",
+        name: "Can I request deletion?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "Yes, where applicable you may request erasure (subject to legal exceptions, e.g. records we must keep for compliance or legal defence). Contact privacy@securebiz.org.",
+        },
+      },
+      {
+        "@type": "Question",
+        name: "How long do analytics tools keep data?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "It depends on the provider and configuration. Aggregated analytics often uses rolling retention windows. See our Cookie Policy and provider documentation for specifics.",
+        },
+      },
+    ],
+  };
+
   return (
     <div className="mx-auto w-full max-w-4xl px-6 py-12">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+      />
+      <nav className="mb-4 text-sm text-slate-600" aria-label="Breadcrumb">
+        <ol className="flex flex-wrap gap-1">
+          <li>
+            <Link href="/" className="hover:text-slate-900">Home</Link>
+            <span className="mx-1 text-slate-400">/</span>
+          </li>
+          <li>
+            <Link href="/legal/disclaimer" className="hover:text-slate-900">Legal</Link>
+            <span className="mx-1 text-slate-400">/</span>
+          </li>
+          <li className="font-medium text-slate-900">Privacy policy</li>
+        </ol>
+      </nav>
       <h1 className="text-3xl font-bold text-slate-900">
         Privacy Policy (GDPR)
       </h1>
