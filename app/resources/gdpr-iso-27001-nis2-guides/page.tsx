@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { getRobotsAllowAll } from "@/lib/seo";
+import { absoluteUrl } from "@/lib/site";
 
 const GUIDES = [
   ["ENISA", "https://www.enisa.europa.eu", "NIS2 orientation, cybersecurity implementation patterns, and resilience guidance."],
@@ -30,13 +32,57 @@ export const metadata: Metadata = {
 };
 
 export default function GdprIsoNis2GuidesPage() {
+  const pageUrl = absoluteUrl("/resources/gdpr-iso-27001-nis2-guides");
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Home", item: absoluteUrl("/") },
+      { "@type": "ListItem", position: 2, name: "Resources", item: absoluteUrl("/resources") },
+      { "@type": "ListItem", position: 3, name: "Top 10 GDPR + ISO 27001 + NIS2 guides", item: pageUrl },
+    ],
+  };
+  const itemListSchema = {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    name: "Top 10 GDPR + ISO 27001 + NIS2 guide sources",
+    numberOfItems: GUIDES.length,
+    itemListElement: GUIDES.map(([name, url], index) => ({
+      "@type": "ListItem",
+      position: index + 1,
+      name,
+      url,
+    })),
+  };
+
   return (
     <div className="mx-auto w-full max-w-4xl px-6 py-12">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(itemListSchema) }}
+      />
       <h1 className="text-3xl font-bold text-slate-900">Top 10 GDPR + ISO 27001 + NIS2 guide sources</h1>
       <p className="mt-3 text-sm leading-relaxed text-slate-600">
         If you are building a real compliance-security program, treat these as a layered stack: legal interpretation,
         management-system discipline, and incident/supply-chain resilience.
       </p>
+      <nav className="mt-4 text-sm text-slate-600" aria-label="Breadcrumb">
+        <ol className="flex flex-wrap gap-1">
+          <li>
+            <Link href="/" className="hover:text-slate-900">Home</Link>
+            <span className="mx-1 text-slate-400">/</span>
+          </li>
+          <li>
+            <Link href="/resources" className="hover:text-slate-900">Resources</Link>
+            <span className="mx-1 text-slate-400">/</span>
+          </li>
+          <li className="font-medium text-slate-900">Top 10 cross-framework guides</li>
+        </ol>
+      </nav>
 
       <ol className="mt-8 space-y-4">
         {GUIDES.map(([name, url, why], idx) => (
@@ -59,6 +105,14 @@ export default function GdprIsoNis2GuidesPage() {
           <li>Implement repeatable controls and evidence flow (ISO 27001 discipline).</li>
           <li>Strengthen governance, incident reporting, and supplier resilience (NIS2 expectations).</li>
         </ol>
+        <div className="mt-4">
+          <Link
+            href="/resources/gdpr-websites"
+            className="text-sm font-semibold text-blue-700 underline-offset-2 hover:underline"
+          >
+            Official-source list: Top 10 GDPR websites
+          </Link>
+        </div>
       </section>
     </div>
   );

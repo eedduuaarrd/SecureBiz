@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { notFound } from "next/navigation";
 import { AffiliateHub } from "@/components/affiliate-hub";
 import { GuideCrossLinks } from "@/components/guide-cross-links";
@@ -349,6 +350,25 @@ export default async function GuidePage({ params }: GuidePageProps) {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
       />
+      <nav className="mb-4 text-sm text-slate-600" aria-label="Breadcrumb">
+        <ol className="flex flex-wrap gap-1">
+          <li>
+            <Link href="/" className="hover:text-slate-900">Home</Link>
+            <span className="mx-1 text-slate-400">/</span>
+          </li>
+          <li>
+            <Link href="/sectors" className="hover:text-slate-900">Sectors</Link>
+            <span className="mx-1 text-slate-400">/</span>
+          </li>
+          <li>
+            <Link href={`/sector/${effectiveGuide.sector_slug}`} className="hover:text-slate-900">
+              {effectiveSectorName}
+            </Link>
+            <span className="mx-1 text-slate-400">/</span>
+          </li>
+          <li className="font-medium text-slate-900">{effectiveRegulationName}</li>
+        </ol>
+      </nav>
 
       <section className="mb-6 rounded-xl border border-blue-100 bg-blue-50 p-5">
         <p className="text-xs font-semibold uppercase tracking-wide text-blue-700">

@@ -11,6 +11,7 @@ import {
 } from "@/lib/catalog";
 import { getRegulationNarrativeExtra } from "@/lib/expanded-content";
 import { getDefaultOgImageUrl, getDefaultOgImages, getRobotsAllowAll } from "@/lib/seo";
+import { absoluteUrl } from "@/lib/site";
 
 type RegulationPageProps = {
   params: Promise<{
@@ -88,9 +89,52 @@ export default async function RegulationPage({ params }: RegulationPageProps) {
   }
 
   const extra = getRegulationNarrativeExtra(regulation.slug);
+  const pageUrl = absoluteUrl(`/normativa/${regulation.slug}`);
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Home", item: absoluteUrl("/") },
+      { "@type": "ListItem", position: 2, name: "Regulations", item: absoluteUrl("/regulations") },
+      { "@type": "ListItem", position: 3, name: regulation.name, item: pageUrl },
+    ],
+  };
+  const itemListSchema = {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    name: `${regulation.name} sector guides`,
+    numberOfItems: sectors.length,
+    itemListElement: sectors.map((sector, index) => ({
+      "@type": "ListItem",
+      position: index + 1,
+      name: `${regulation.name} for ${sector.name}`,
+      url: absoluteUrl(`/guia/${sector.slug}/${regulation.slug}`),
+    })),
+  };
 
   return (
     <div className="mx-auto w-full max-w-6xl px-4 py-8 sm:px-6 sm:py-10">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(itemListSchema) }}
+      />
+      <nav className="mb-5 text-sm text-slate-600" aria-label="Breadcrumb">
+        <ol className="flex flex-wrap gap-1">
+          <li>
+            <Link href="/" className="hover:text-slate-900">Home</Link>
+            <span className="mx-1 text-slate-400">/</span>
+          </li>
+          <li>
+            <Link href="/regulations" className="hover:text-slate-900">Regulations</Link>
+            <span className="mx-1 text-slate-400">/</span>
+          </li>
+          <li className="font-medium text-slate-900">{regulation.name}</li>
+        </ol>
+      </nav>
       <h1 className="text-3xl font-bold text-slate-900">
         {regulation.name} for professional sectors
       </h1>

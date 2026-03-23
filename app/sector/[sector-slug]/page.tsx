@@ -17,6 +17,7 @@ import {
   getSectorSubpageLabel,
 } from "@/lib/sector-subpage-content";
 import { getDefaultOgImageUrl, getDefaultOgImages, getRobotsAllowAll } from "@/lib/seo";
+import { absoluteUrl } from "@/lib/site";
 
 type SectorPageProps = {
   params: Promise<{
@@ -97,9 +98,52 @@ export default async function SectorPage({ params }: SectorPageProps) {
     (a, b) =>
       a.name.localeCompare(b.name, "en", { sensitivity: "base" }),
   );
+  const pageUrl = absoluteUrl(`/sector/${sector.slug}`);
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Home", item: absoluteUrl("/") },
+      { "@type": "ListItem", position: 2, name: "Sectors", item: absoluteUrl("/sectors") },
+      { "@type": "ListItem", position: 3, name: sector.name, item: pageUrl },
+    ],
+  };
+  const itemListSchema = {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    name: `Regulations for ${sector.name}`,
+    numberOfItems: regulations.length,
+    itemListElement: regulations.map((regulation, index) => ({
+      "@type": "ListItem",
+      position: index + 1,
+      name: regulation.name,
+      url: absoluteUrl(`/guia/${sector.slug}/${regulation.slug}`),
+    })),
+  };
 
   return (
     <div className="mx-auto w-full max-w-6xl px-4 py-8 sm:px-6 sm:py-12">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(itemListSchema) }}
+      />
+      <nav className="mb-5 text-sm text-slate-600" aria-label="Breadcrumb">
+        <ol className="flex flex-wrap gap-1">
+          <li>
+            <Link href="/" className="hover:text-slate-900">Home</Link>
+            <span className="mx-1 text-slate-400">/</span>
+          </li>
+          <li>
+            <Link href="/sectors" className="hover:text-slate-900">Sectors</Link>
+            <span className="mx-1 text-slate-400">/</span>
+          </li>
+          <li className="font-medium text-slate-900">{sector.name}</li>
+        </ol>
+      </nav>
       <section className="overflow-hidden rounded-2xl bg-gradient-to-br from-slate-900 via-blue-900 to-slate-800 p-6 text-white shadow-lg sm:p-10">
         <p className="text-xs font-semibold uppercase tracking-[0.2em] text-blue-200">
           Sector hub

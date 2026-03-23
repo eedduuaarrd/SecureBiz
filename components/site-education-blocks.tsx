@@ -87,6 +87,16 @@ export function HubFooterLinks() {
           </Link>
         </li>
         <li>
+          <Link href="/resources" className="font-medium text-blue-700 hover:underline">
+            Resources hub
+          </Link>
+        </li>
+        <li>
+          <Link href="/resources/gdpr-websites" className="font-medium text-blue-700 hover:underline">
+            Top GDPR websites
+          </Link>
+        </li>
+        <li>
           <Link href="/sectors#catalog-search" className="font-medium text-blue-700 hover:underline">
             All sectors (searchable)
           </Link>
