@@ -15,7 +15,7 @@ export default function NotFound() {
         The link may be broken, the page may have moved, or the address was mistyped. Try the hubs below — every
         sector and regulation is searchable.
       </p>
-      <div className="mt-8 flex w-full max-w-md flex-col gap-3 sm:flex-row sm:justify-center">
+      <div className="mt-8 flex w-full max-w-2xl flex-col gap-3 sm:flex-row sm:flex-wrap sm:justify-center">
         <Link
           href="/"
           className="rounded-xl bg-slate-900 px-5 py-3 text-sm font-semibold text-white hover:bg-slate-800"
@@ -33,6 +33,24 @@ export default function NotFound() {
           className="rounded-xl border border-slate-300 px-5 py-3 text-sm font-semibold text-slate-800 hover:bg-slate-50"
         >
           Search regulations
+        </Link>
+        <Link
+          href="/compare"
+          className="rounded-xl border border-slate-300 px-5 py-3 text-sm font-semibold text-slate-800 hover:bg-slate-50"
+        >
+          Comparisons
+        </Link>
+        <Link
+          href="/checklists"
+          className="rounded-xl border border-slate-300 px-5 py-3 text-sm font-semibold text-slate-800 hover:bg-slate-50"
+        >
+          Checklists
+        </Link>
+        <Link
+          href="/updates"
+          className="rounded-xl border border-slate-300 px-5 py-3 text-sm font-semibold text-slate-800 hover:bg-slate-50"
+        >
+          Updates
         </Link>
       </div>
       <p className="mt-10 text-xs text-slate-500">

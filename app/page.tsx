@@ -13,6 +13,7 @@ import {
   getDefaultOgImages,
   getRobotsAllowAll,
 } from "@/lib/seo";
+import { HOME_UPDATE_BULLETS } from "@/lib/updates-content";
 import { absoluteUrl, getSiteUrl } from "@/lib/site";
 
 export const metadata: Metadata = {
@@ -236,6 +237,22 @@ export default function Home() {
           text: "Many guides focus on EU frameworks like GDPR, but we also cover global standards such as ISO 27001 and sector-relevant US rules where applicable. Always confirm jurisdiction-specific obligations.",
         },
       },
+      {
+        "@type": "Question",
+        name: "How do I follow new guides and site improvements?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "Open the Updates page for a full changelog and roadmap, and subscribe to the RSS feed at /rss.xml for newly persisted long-form guides when the database is connected.",
+        },
+      },
+      {
+        "@type": "Question",
+        name: "Can I share a filtered sector or regulation search?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "Yes. Sector and regulation catalog pages support a q query parameter (for example /sectors?q=saas) so you can bookmark and share a search.",
+        },
+      },
     ],
   };
 
@@ -304,6 +321,36 @@ export default function Home() {
           >
             Legal disclaimer
           </Link>
+        </div>
+      </section>
+
+      <section className="mt-10 rounded-2xl border border-emerald-200 bg-emerald-50/60 p-6 sm:p-8">
+        <div className="flex flex-col gap-4 md:flex-row md:items-start md:justify-between">
+          <div>
+            <h2 className="text-lg font-semibold text-slate-900">Stay current: updates &amp; RSS</h2>
+            <p className="mt-2 max-w-2xl text-sm text-slate-700">
+              Follow what we ship—new comparisons, checklists, and crawl improvements—without hunting the footer on every visit.
+            </p>
+            <ul className="mt-4 list-disc space-y-1.5 pl-5 text-sm text-slate-700">
+              {HOME_UPDATE_BULLETS.map((line) => (
+                <li key={line}>{line}</li>
+              ))}
+            </ul>
+          </div>
+          <div className="flex shrink-0 flex-col gap-2 sm:flex-row md:flex-col">
+            <Link
+              href="/updates"
+              className="inline-flex items-center justify-center rounded-xl bg-emerald-800 px-5 py-3 text-center text-sm font-semibold text-white hover:bg-emerald-900"
+            >
+              Full changelog
+            </Link>
+            <Link
+              href="/rss.xml"
+              className="inline-flex items-center justify-center rounded-xl border border-emerald-800/30 bg-white px-5 py-3 text-center text-sm font-semibold text-emerald-950 hover:bg-emerald-100/80"
+            >
+              RSS feed
+            </Link>
+          </div>
         </div>
       </section>
 

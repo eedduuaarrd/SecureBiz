@@ -115,6 +115,17 @@ export default function ResourcesPage() {
         Curated reading paths for teams working on GDPR, ISO 27001, and NIS2. These pages are designed for practical
         implementation, with links to official institutions and field-tested reference material.
       </p>
+      <p className="mt-3 text-sm text-slate-600">
+        Want to see what we ship on the site itself (new hubs, SEO changes, RSS)? Open the{" "}
+        <Link className="font-medium text-blue-700 underline" href="/updates">
+          updates &amp; roadmap
+        </Link>{" "}
+        page or subscribe via{" "}
+        <Link className="font-medium text-blue-700 underline" href="/rss.xml">
+          RSS
+        </Link>
+        .
+      </p>
 
       <nav className="mt-4 text-sm text-slate-600" aria-label="Breadcrumb">
         <ol className="flex flex-wrap gap-1">
