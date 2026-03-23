@@ -6,7 +6,7 @@ import { absoluteUrl } from "@/lib/site";
 export const metadata: Metadata = {
   title: "Compliance Comparisons | GDPR, ISO 27001 and NIS2",
   description:
-    "Practical comparison pages: GDPR vs ISO 27001 and NIS2 vs ISO 27001, with implementation order, evidence, and decision criteria.",
+    "Practical comparison pages: GDPR, ISO 27001, NIS2, DORA and SOC 2 with implementation order, evidence, and decision criteria.",
   keywords: [
     "GDPR vs ISO 27001",
     "NIS2 vs ISO 27001",
@@ -63,6 +63,24 @@ export default function CompareHubPage() {
         name: "NIS2 vs ISO 27001",
         url: absoluteUrl("/compare/nis2-vs-iso-27001"),
       },
+      {
+        "@type": "ListItem",
+        position: 3,
+        name: "GDPR vs NIS2",
+        url: absoluteUrl("/compare/gdpr-vs-nis2"),
+      },
+      {
+        "@type": "ListItem",
+        position: 4,
+        name: "SOC 2 vs ISO 27001",
+        url: absoluteUrl("/compare/soc2-vs-iso-27001"),
+      },
+      {
+        "@type": "ListItem",
+        position: 5,
+        name: "DORA vs NIS2",
+        url: absoluteUrl("/compare/dora-vs-nis2"),
+      },
     ],
   };
 
@@ -101,6 +119,39 @@ export default function CompareHubPage() {
             <h2 className="text-lg font-semibold text-slate-900">NIS2 vs ISO 27001</h2>
             <p className="mt-2 text-sm text-slate-600">
               Regulatory cyber-resilience expectations versus ISMS discipline.
+            </p>
+          </Link>
+        </li>
+        <li>
+          <Link
+            href="/compare/gdpr-vs-nis2"
+            className="block rounded-xl border border-slate-200 bg-white p-5 shadow-sm hover:border-blue-300"
+          >
+            <h2 className="text-lg font-semibold text-slate-900">GDPR vs NIS2</h2>
+            <p className="mt-2 text-sm text-slate-600">
+              Data-protection obligations versus cyber-resilience governance.
+            </p>
+          </Link>
+        </li>
+        <li>
+          <Link
+            href="/compare/soc2-vs-iso-27001"
+            className="block rounded-xl border border-slate-200 bg-white p-5 shadow-sm hover:border-blue-300"
+          >
+            <h2 className="text-lg font-semibold text-slate-900">SOC 2 vs ISO 27001</h2>
+            <p className="mt-2 text-sm text-slate-600">
+              Trust-services reporting versus certifiable management systems.
+            </p>
+          </Link>
+        </li>
+        <li>
+          <Link
+            href="/compare/dora-vs-nis2"
+            className="block rounded-xl border border-slate-200 bg-white p-5 shadow-sm hover:border-blue-300"
+          >
+            <h2 className="text-lg font-semibold text-slate-900">DORA vs NIS2</h2>
+            <p className="mt-2 text-sm text-slate-600">
+              Financial operational resilience versus broader essential-entity cyber obligations.
             </p>
           </Link>
         </li>
