@@ -156,6 +156,14 @@ export default function GdprVsIsoPage() {
           <li>Weeks 8-12: run internal checks, close gaps, and prepare customer-facing assurance narratives.</li>
         </ol>
       </section>
+      <section className="mt-6 rounded-xl border border-slate-200 bg-white p-5">
+        <h2 className="text-lg font-semibold text-slate-900">KPIs to monitor</h2>
+        <ul className="mt-3 list-disc space-y-2 pl-5 text-sm text-slate-700">
+          <li>Data-process records coverage across business units.</li>
+          <li>Percentage of critical assets with active security controls.</li>
+          <li>Incident response drill completion and closure time.</li>
+        </ul>
+      </section>
       <div className="mt-8">
         <Link href="/regulations" className="rounded-md bg-slate-900 px-4 py-2 text-sm font-semibold text-white hover:bg-slate-800">
           Open regulation hub

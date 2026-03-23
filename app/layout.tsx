@@ -59,12 +59,14 @@ export const metadata: Metadata = {
     images: [getDefaultOgImageUrl()],
   },
   ...getGoogleSiteVerificationMetadata(),
-  // Tab icons: use `public/logo.png` (site logo). Regenerate `public/favicon.ico` from the same asset if the browser still prefers `.ico`.
+  // Force tab icon to the same brand asset.
   icons: {
     icon: [
-      { url: "/favicon.ico", sizes: "any" },
+      { url: "/logo.png", type: "image/png", sizes: "32x32" },
+      { url: "/logo.png", type: "image/png", sizes: "192x192" },
       { url: "/logo.png", type: "image/png", sizes: "512x512" },
     ],
+    shortcut: ["/logo.png"],
     apple: "/logo.png",
   },
 };

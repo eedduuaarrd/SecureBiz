@@ -98,6 +98,14 @@ export default function GdprChecklistSmbPage() {
           <li>Week 4: breach drill and evidence quality check.</li>
         </ol>
       </section>
+      <section className="mt-6 rounded-xl border border-slate-200 bg-white p-5">
+        <h2 className="text-lg font-semibold text-slate-900">KPI dashboard</h2>
+        <ul className="mt-3 list-disc space-y-2 pl-5 text-sm text-slate-700">
+          <li>Data activities mapped versus total identified.</li>
+          <li>Rights requests handled within target SLA.</li>
+          <li>Vendors reviewed with valid processing agreements.</li>
+        </ul>
+      </section>
       <div className="mt-8 flex flex-wrap gap-3">
         <Link href="/regulations" className="rounded-md bg-slate-900 px-4 py-2 text-sm font-semibold text-white hover:bg-slate-800">Regulation hub</Link>
         <Link href="/checklists" className="rounded-md border border-slate-300 px-4 py-2 text-sm font-semibold text-slate-700 hover:bg-slate-50">All checklists</Link>

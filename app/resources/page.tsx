@@ -203,6 +203,23 @@ export default function ResourcesPage() {
           </Link>
         </div>
       </section>
+      <section className="mt-8 rounded-xl border border-amber-100 bg-amber-50 p-5">
+        <h2 className="text-lg font-semibold text-slate-900">Common mistakes when researching compliance</h2>
+        <ul className="mt-3 list-disc space-y-2 pl-5 text-sm text-slate-700">
+          <li>Using only blog summaries without validating official legal texts.</li>
+          <li>Mixing frameworks without defining business scope and ownership first.</li>
+          <li>Collecting links but not turning them into control decisions and evidence tasks.</li>
+        </ul>
+      </section>
+      <section className="mt-8 rounded-xl border border-emerald-100 bg-emerald-50 p-5">
+        <h2 className="text-lg font-semibold text-slate-900">30-day learning-to-execution plan</h2>
+        <ol className="mt-3 list-decimal space-y-2 pl-5 text-sm text-slate-700">
+          <li>Week 1: verify legal sources and identify mandatory obligations.</li>
+          <li>Week 2: prioritize one framework and define owner responsibilities.</li>
+          <li>Week 3: execute checklist actions and capture evidence.</li>
+          <li>Week 4: review gaps, update roadmap, and plan next framework.</li>
+        </ol>
+      </section>
       <IntentLinksBlock
         title="Related by intent"
         items={[

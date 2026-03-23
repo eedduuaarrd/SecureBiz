@@ -111,6 +111,14 @@ export default function Nis2ChecklistSmbPage() {
           <li>Days 26-45: incident drill, evidence review, and gap closure.</li>
         </ol>
       </section>
+      <section className="mt-6 rounded-xl border border-slate-200 bg-white p-5">
+        <h2 className="text-lg font-semibold text-slate-900">KPI dashboard</h2>
+        <ul className="mt-3 list-disc space-y-2 pl-5 text-sm text-slate-700">
+          <li>Incident simulation completion and remediation closure rate.</li>
+          <li>Critical suppliers assessed and tracked with risk status.</li>
+          <li>Governance actions delivered on planned cadence.</li>
+        </ul>
+      </section>
       <div className="mt-8 flex flex-wrap gap-3">
         <Link href="/regulations" className="rounded-md bg-slate-900 px-4 py-2 text-sm font-semibold text-white hover:bg-slate-800">Regulation hub</Link>
         <Link href="/checklists" className="rounded-md border border-slate-300 px-4 py-2 text-sm font-semibold text-slate-700 hover:bg-slate-50">All checklists</Link>

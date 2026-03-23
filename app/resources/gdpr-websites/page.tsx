@@ -189,6 +189,22 @@ export default function GdprWebsitesPage() {
           </Link>
         </div>
       </section>
+      <section className="mt-8 rounded-xl border border-amber-100 bg-amber-50 p-5">
+        <h2 className="text-lg font-semibold text-slate-900">What to avoid</h2>
+        <ul className="mt-3 list-disc space-y-2 pl-5 text-sm text-slate-700">
+          <li>Relying on old copies of the regulation without checking current consolidated text.</li>
+          <li>Confusing country-level guidance with EU-wide legal interpretation.</li>
+          <li>Treating operational tips as legal conclusions without professional validation.</li>
+        </ul>
+      </section>
+      <section className="mt-8 rounded-xl border border-emerald-100 bg-emerald-50 p-5">
+        <h2 className="text-lg font-semibold text-slate-900">Quick implementation route</h2>
+        <ol className="mt-3 list-decimal space-y-2 pl-5 text-sm text-slate-700">
+          <li>Confirm legal baseline from EUR-Lex and EDPB.</li>
+          <li>Validate local enforcement context with your national DPA.</li>
+          <li>Translate obligations into checklist actions for your sector.</li>
+        </ol>
+      </section>
     </div>
   );
 }

@@ -187,6 +187,23 @@ export default function GdprIsoNis2GuidesPage() {
           </Link>
         </div>
       </section>
+      <section className="mt-8 rounded-xl border border-amber-100 bg-amber-50 p-5">
+        <h2 className="text-lg font-semibold text-slate-900">Common strategy mistakes</h2>
+        <ul className="mt-3 list-disc space-y-2 pl-5 text-sm text-slate-700">
+          <li>Starting certification projects before legal and data scope is clear.</li>
+          <li>Separating privacy and security teams without shared evidence ownership.</li>
+          <li>Running control projects without management reporting and review cadence.</li>
+        </ul>
+      </section>
+      <section className="mt-8 rounded-xl border border-slate-200 bg-white p-5">
+        <h2 className="text-lg font-semibold text-slate-900">KPIs to track in first 90 days</h2>
+        <ul className="mt-3 list-disc space-y-2 pl-5 text-sm text-slate-700">
+          <li>Percentage of critical systems with named control owners.</li>
+          <li>Time to complete incident triage and escalation tests.</li>
+          <li>Vendor reviews completed versus planned.</li>
+          <li>Coverage of mandatory records (privacy + security evidence).</li>
+        </ul>
+      </section>
     </div>
   );
 }

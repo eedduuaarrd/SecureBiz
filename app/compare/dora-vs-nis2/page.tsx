@@ -140,6 +140,14 @@ export default function DoraVsNis2Page() {
           <li>Keeping incident and supplier evidence fragmented across teams.</li>
         </ul>
       </section>
+      <section className="mt-6 rounded-xl border border-slate-200 bg-white p-5">
+        <h2 className="text-lg font-semibold text-slate-900">KPIs to monitor</h2>
+        <ul className="mt-3 list-disc space-y-2 pl-5 text-sm text-slate-700">
+          <li>Critical ICT dependency reviews completed on schedule.</li>
+          <li>Incident exercise completion and post-mortem action closure rate.</li>
+          <li>Resilience testing coverage for priority business services.</li>
+        </ul>
+      </section>
       <div className="mt-8">
         <Link href="/regulations" className="rounded-md bg-slate-900 px-4 py-2 text-sm font-semibold text-white hover:bg-slate-800">
           Open regulation hub
