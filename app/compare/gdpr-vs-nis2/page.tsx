@@ -47,12 +47,38 @@ export default function GdprVsNis2Page() {
       { "@type": "ListItem", position: 3, name: "GDPR vs NIS2", item: absoluteUrl("/compare/gdpr-vs-nis2") },
     ],
   };
+  const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: [
+      {
+        "@type": "Question",
+        name: "Can GDPR compliance alone satisfy NIS2?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "No. GDPR alone is not enough for NIS2. NIS2 adds governance, resilience, supply-chain, and incident-reporting expectations.",
+        },
+      },
+      {
+        "@type": "Question",
+        name: "Which one should I prioritize first?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "Prioritize the framework tied to immediate legal or contractual pressure. Many teams handle GDPR fundamentals, then mature cyber governance to meet NIS2 expectations.",
+        },
+      },
+    ],
+  };
 
   return (
     <div className="mx-auto w-full max-w-4xl px-6 py-12">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
       />
       <h1 className="text-3xl font-bold text-slate-900">GDPR vs NIS2</h1>
       <p className="mt-3 text-sm leading-relaxed text-slate-600">
@@ -72,6 +98,9 @@ export default function GdprVsNis2Page() {
         </Link>
         <Link href="/compare" className="rounded-md border border-slate-300 px-4 py-2 text-sm font-semibold text-slate-700 hover:bg-slate-50">
           All comparisons
+        </Link>
+        <Link href="/compare/dora-vs-nis2" className="rounded-md border border-slate-300 px-4 py-2 text-sm font-semibold text-slate-700 hover:bg-slate-50">
+          Read DORA vs NIS2
         </Link>
       </div>
     </div>

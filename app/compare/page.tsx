@@ -156,6 +156,20 @@ export default function CompareHubPage() {
           </Link>
         </li>
       </ul>
+      <section className="mt-10 rounded-xl border border-slate-200 bg-white p-5">
+        <h2 className="text-lg font-semibold text-slate-900">Where to go next</h2>
+        <div className="mt-3 flex flex-wrap gap-3">
+          <Link href="/regulations" className="rounded-md border border-slate-300 px-4 py-2 text-sm font-semibold text-slate-700 hover:bg-slate-50">
+            Regulation hub
+          </Link>
+          <Link href="/sectors" className="rounded-md border border-slate-300 px-4 py-2 text-sm font-semibold text-slate-700 hover:bg-slate-50">
+            Sector hub
+          </Link>
+          <Link href="/resources" className="rounded-md border border-slate-300 px-4 py-2 text-sm font-semibold text-slate-700 hover:bg-slate-50">
+            Resources
+          </Link>
+        </div>
+      </section>
     </div>
   );
 }

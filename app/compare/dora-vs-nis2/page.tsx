@@ -47,12 +47,38 @@ export default function DoraVsNis2Page() {
       { "@type": "ListItem", position: 3, name: "DORA vs NIS2", item: absoluteUrl("/compare/dora-vs-nis2") },
     ],
   };
+  const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: [
+      {
+        "@type": "Question",
+        name: "Is DORA broader than NIS2?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "No. DORA is specific to financial ecosystems and ICT risk in that context, while NIS2 applies across broader critical sectors.",
+        },
+      },
+      {
+        "@type": "Question",
+        name: "Do suppliers need to care about both DORA and NIS2?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "Often yes. Even if not directly in scope, suppliers can inherit contractual security and resilience requirements from in-scope clients.",
+        },
+      },
+    ],
+  };
 
   return (
     <div className="mx-auto w-full max-w-4xl px-6 py-12">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
       />
       <h1 className="text-3xl font-bold text-slate-900">DORA vs NIS2</h1>
       <p className="mt-3 text-sm leading-relaxed text-slate-600">
@@ -73,6 +99,9 @@ export default function DoraVsNis2Page() {
         </Link>
         <Link href="/compare" className="rounded-md border border-slate-300 px-4 py-2 text-sm font-semibold text-slate-700 hover:bg-slate-50">
           All comparisons
+        </Link>
+        <Link href="/compare/nis2-vs-iso-27001" className="rounded-md border border-slate-300 px-4 py-2 text-sm font-semibold text-slate-700 hover:bg-slate-50">
+          Read NIS2 vs ISO 27001
         </Link>
       </div>
     </div>

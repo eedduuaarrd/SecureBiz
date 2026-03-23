@@ -47,12 +47,38 @@ export default function Soc2VsIsoPage() {
       { "@type": "ListItem", position: 3, name: "SOC 2 vs ISO 27001", item: absoluteUrl("/compare/soc2-vs-iso-27001") },
     ],
   };
+  const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: [
+      {
+        "@type": "Question",
+        name: "Should SaaS companies choose SOC 2 or ISO 27001 first?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "It depends on target market. US enterprise buyers often request SOC 2 first; international procurement often values ISO 27001 certification.",
+        },
+      },
+      {
+        "@type": "Question",
+        name: "Can SOC 2 and ISO 27001 be combined?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "Yes. Many teams map one control set to both frameworks to reduce duplicate audit effort and improve evidence reuse.",
+        },
+      },
+    ],
+  };
 
   return (
     <div className="mx-auto w-full max-w-4xl px-6 py-12">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
       />
       <h1 className="text-3xl font-bold text-slate-900">SOC 2 vs ISO 27001</h1>
       <p className="mt-3 text-sm leading-relaxed text-slate-600">
@@ -73,6 +99,9 @@ export default function Soc2VsIsoPage() {
         </Link>
         <Link href="/compare" className="rounded-md border border-slate-300 px-4 py-2 text-sm font-semibold text-slate-700 hover:bg-slate-50">
           All comparisons
+        </Link>
+        <Link href="/compare/gdpr-vs-iso-27001" className="rounded-md border border-slate-300 px-4 py-2 text-sm font-semibold text-slate-700 hover:bg-slate-50">
+          Read GDPR vs ISO 27001
         </Link>
       </div>
     </div>
