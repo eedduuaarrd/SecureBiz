@@ -132,6 +132,7 @@ export default function DisclaimerPage() {
             { id: "accuracy", label: "Accuracy & updates" },
             { id: "responsibility", label: "Your responsibilities" },
             { id: "affiliates", label: "Affiliate & third-party links" },
+            { id: "adsense", label: "Advertising (Google AdSense)" },
             { id: "ai", label: "AI-generated content" },
             { id: "liability", label: "Limitation of liability" },
             { id: "ip", label: "Intellectual property" },
@@ -208,6 +209,24 @@ export default function DisclaimerPage() {
             increase the price you pay in a way that we control, but they may influence which tools we highlight.
             Third-party sites have their own terms and privacy practices; we are not responsible for their content or
             availability.
+          </p>
+        </section>
+
+        <section id="adsense" className="scroll-mt-24">
+          <h2 className="text-xl font-semibold text-slate-900">Advertising (Google AdSense)</h2>
+          <p className="mt-3 text-sm leading-relaxed">
+            The site may show ads through Google AdSense. Advertisers and ad creatives are selected by
+            Google; they do not constitute an endorsement by SecureBiz AI. Ad delivery may rely on cookies or similar
+            technologies as explained in our{" "}
+            <Link className="text-blue-700 underline" href="/legal/cookies">
+              Cookie Policy
+            </Link>{" "}
+            and{" "}
+            <Link className="text-blue-700 underline" href="/legal/privacy#adsense">
+              Privacy Policy
+            </Link>
+            . Do not click ads if you are looking for official regulatory text—use government and standards sources
+            for binding requirements.
           </p>
         </section>
 

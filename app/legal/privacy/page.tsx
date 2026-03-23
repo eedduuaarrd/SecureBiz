@@ -3,6 +3,11 @@ import Link from "next/link";
 import { IntentLinksBlock } from "@/components/intent-links-block";
 import { SeoAccordion } from "@/components/seo-accordion";
 import { PageToc, UsefulDataTable } from "@/components/site-education-blocks";
+import {
+  ADSENSE_PUBLISHER_CA,
+  GOOGLE_AD_SETTINGS,
+  GOOGLE_PARTNER_PRIVACY,
+} from "@/lib/site-ads";
 import { absoluteUrl } from "@/lib/site";
 
 export const metadata: Metadata = {
@@ -86,6 +91,14 @@ export default function PrivacyPage() {
           text: "It depends on the provider and configuration. Aggregated analytics often uses rolling retention windows. See our Cookie Policy and provider documentation for specifics.",
         },
       },
+      {
+        "@type": "Question",
+        name: "Does Google AdSense process my data when I see ads?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "Google may use cookies and similar technologies to serve and measure ads, including personalised ads where permitted. Google describes how it uses data from sites that use its services in its partner policy. You can manage ad personalisation in Google Ads Settings.",
+        },
+      },
     ],
   };
 
@@ -130,6 +143,7 @@ export default function PrivacyPage() {
             { id: "categories", label: "Categories of data" },
             { id: "retention", label: "Retention periods" },
             { id: "recipients", label: "Recipients & subprocessors" },
+            { id: "adsense", label: "Google AdSense & ads" },
             { id: "transfers", label: "International transfers" },
             { id: "rights", label: "Your rights" },
             { id: "security", label: "Security measures" },
@@ -255,6 +269,54 @@ export default function PrivacyPage() {
             Some providers may be located outside the European Economic Area. Where that happens, we implement
             appropriate safeguards (e.g. Standard Contractual Clauses or other approved mechanisms), as described
             below.
+          </p>
+        </section>
+
+        <section id="adsense" className="scroll-mt-24">
+          <h2 className="text-xl font-semibold text-slate-900">Google AdSense &amp; advertising</h2>
+          <p className="mt-3 text-sm leading-relaxed">
+            We may monetise parts of <strong>securebiz.org</strong> using{" "}
+            <strong>Google AdSense</strong> (publisher identifier{" "}
+            <code className="text-slate-800">{ADSENSE_PUBLISHER_CA}</code>
+            ), which places ads served by Google and its partners. When you view or interact with ads, Google may
+            process data (such as your IP address, device or browser signals, and cookie or mobile identifiers) to
+            deliver, personalise and measure advertising, and to help prevent fraud—as described in Google&apos;s
+            policies, not re-written here in full.
+          </p>
+          <p className="mt-3 text-sm leading-relaxed">
+            For how Google uses information from sites that use its services, see{" "}
+            <a
+              className="text-blue-700 underline"
+              href={GOOGLE_PARTNER_PRIVACY}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Google&apos;s partner policy overview
+            </a>{" "}
+            and{" "}
+            <a
+              className="text-blue-700 underline"
+              href="https://policies.google.com/privacy"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Google Privacy Policy
+            </a>
+            . You can control personalised ads from Google in{" "}
+            <a
+              className="text-blue-700 underline"
+              href={GOOGLE_AD_SETTINGS}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Google Ads Settings
+            </a>
+            . Where EU/UK law requires consent for non-essential advertising cookies, we aim to collect it via our
+            cookie approach described in the{" "}
+            <Link className="text-blue-700 underline" href="/legal/cookies">
+              Cookie Policy
+            </Link>
+            .
           </p>
         </section>
 

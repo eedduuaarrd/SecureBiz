@@ -76,6 +76,7 @@ export default function AboutPage() {
         <PageToc
           items={[
             { id: "mission", label: "What we publish" },
+            { id: "quality", label: "Originality & programme rules" },
             { id: "methodology", label: "Methodology" },
             { id: "not", label: "What we are not" },
             { id: "trust", label: "Trust, domain & downloads" },
@@ -99,6 +100,33 @@ export default function AboutPage() {
             </li>
             <li>Optional <strong>lead forms</strong> and contextual links to tools where that helps you move from reading to action.</li>
           </ul>
+        </section>
+
+        <section id="quality" className="scroll-mt-24">
+          <h2 className="text-xl font-semibold text-slate-900">Originality, value &amp; monetisation</h2>
+          <p className="mt-3 text-sm leading-relaxed">
+            We aim to meet the expectations of readers and advertising programmes: pages are built to offer{" "}
+            <strong>substantive, original commentary and structure</strong> for professionals—not empty shells, scraped
+            articles, or copyright-infringing copies of third-party works. Guides combine sector context with framework
+            requirements; we do not present automated text as a substitute for your own legal or audit judgement.
+          </p>
+          <p className="mt-3 text-sm leading-relaxed">
+            The site may use <strong>Google AdSense</strong> to support hosting and ongoing improvements. Advertising is
+            disclosed in the footer on every page and detailed in our{" "}
+            <Link className="text-blue-700 underline" href="/legal/privacy#adsense">
+              Privacy Policy
+            </Link>{" "}
+            and{" "}
+            <Link className="text-blue-700 underline" href="/legal/cookies#google-ads">
+              Cookie Policy
+            </Link>
+            . Revenue from ads does not change our obligation to keep content accurate and transparent about limits
+            (see the{" "}
+            <Link className="text-blue-700 underline" href="/legal/disclaimer#adsense">
+              disclaimer on ads
+            </Link>
+            ).
+          </p>
         </section>
 
         <section id="methodology" className="scroll-mt-24">

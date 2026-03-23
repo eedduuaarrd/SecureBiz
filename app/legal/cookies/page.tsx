@@ -3,6 +3,7 @@ import Link from "next/link";
 import { IntentLinksBlock } from "@/components/intent-links-block";
 import { SeoAccordion } from "@/components/seo-accordion";
 import { PageToc, UsefulDataTable } from "@/components/site-education-blocks";
+import { ADSENSE_PUBLISHER_CA, GOOGLE_AD_SETTINGS } from "@/lib/site-ads";
 import { absoluteUrl } from "@/lib/site";
 
 export const metadata: Metadata = {
@@ -122,6 +123,7 @@ export default function CookiesPage() {
             { id: "manage", label: "How to manage preferences" },
             { id: "browsers", label: "Browser controls" },
             { id: "third", label: "Third-party technologies" },
+            { id: "google-ads", label: "Google AdSense" },
             { id: "retention", label: "Duration & storage" },
             { id: "changes", label: "Updates" },
             { id: "contact", label: "Contact" },
@@ -170,11 +172,23 @@ export default function CookiesPage() {
                   combined with cross-site tracking.
                 </td>
               </tr>
-              <tr>
+              <tr className="border-b border-slate-100">
                 <td className="px-3 py-2 font-medium">Advertising & affiliates</td>
                 <td className="px-3 py-2">
                   Where enabled, third-party scripts may measure ad delivery, limit fraud, or attribute affiliate
                   clicks. These typically require consent when not strictly necessary.
+                </td>
+              </tr>
+              <tr>
+                <td className="px-3 py-2 font-medium">Google AdSense</td>
+                <td className="px-3 py-2">
+                  Google may set or read cookies and use identifiers to serve and measure ads (including personalised
+                  ads where allowed), limit invalid traffic, and cap frequency. Publisher ID:{" "}
+                  <code className="text-slate-800">{ADSENSE_PUBLISHER_CA}</code>. See also the{" "}
+                  <Link className="text-blue-700 underline" href="/legal/privacy#adsense">
+                    Privacy Policy (AdSense section)
+                  </Link>
+                  .
                 </td>
               </tr>
             </tbody>
@@ -212,6 +226,28 @@ export default function CookiesPage() {
             process data under their own policies and act as independent or joint controllers/processors depending on
             the service. We select vendors with reasonable security practices, but you should review their policies if
             you want full detail on global transfers and retention.
+          </p>
+        </section>
+
+        <section id="google-ads" className="scroll-mt-24">
+          <h2 className="text-xl font-semibold text-slate-900">Google AdSense (advertising cookies)</h2>
+          <p className="mt-3 text-sm leading-relaxed">
+            When AdSense loads, Google may use cookies or similar storage to show relevant ads, measure impressions
+            and clicks, and reduce abuse. You can read Google&apos;s descriptions of advertising technologies and
+            manage ad personalisation in{" "}
+            <a
+              className="text-blue-700 underline"
+              href={GOOGLE_AD_SETTINGS}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Google Ads Settings
+            </a>
+            . Our site-wide notice in the footer summarises how ads relate to this policy and the{" "}
+            <Link className="text-blue-700 underline" href="/legal/privacy#adsense">
+              Privacy Policy
+            </Link>
+            .
           </p>
         </section>
 

@@ -2,10 +2,10 @@
 
 import { useEffect } from "react";
 import { markAdsenseScriptReady } from "@/lib/adsense-ready";
+import { ADSENSE_PUBLISHER_CA } from "@/lib/site-ads";
 
 /** Matches Google’s snippet: async + crossorigin="anonymous" (see AdSense setup). */
-const ADSENSE_SRC =
-  "https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6750754859429492";
+const ADSENSE_SRC = `https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${ADSENSE_PUBLISHER_CA}`;
 
 /**
  * Injects the AdSense loader with a plain `<script>` (no `next/script`) so Next.js

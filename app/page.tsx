@@ -331,57 +331,6 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="mt-10 rounded-2xl border border-slate-200 bg-slate-50/80 p-6 sm:p-8">
-        <div className="flex flex-col gap-4 md:flex-row md:items-start md:justify-between">
-          <div>
-            <h2 className="text-lg font-semibold text-slate-900">Discover every public URL</h2>
-            <p className="mt-2 max-w-2xl text-sm text-slate-700">
-              Crawlers and power users can enumerate the whole site from the XML sitemap. Humans usually start from sectors,
-              regulations, or comparisons—bookmark hub searches with <code className="rounded bg-white px-1 py-0.5 text-xs text-slate-800">?q=</code> when you revisit the same niche.
-            </p>
-            <ul className="mt-4 list-disc space-y-1.5 pl-5 text-sm text-slate-700">
-              <li>
-                <Link className="font-medium text-blue-700 underline" href="/sitemap.xml">
-                  /sitemap.xml
-                </Link>{" "}
-                lists all indexable guide and hub URLs in one place.
-              </li>
-              <li>
-                <Link className="font-medium text-blue-700 underline" href="/robots.txt">
-                  /robots.txt
-                </Link>{" "}
-                describes crawler policy for public pages.
-              </li>
-              <li>
-                Prefer browsing? Use{" "}
-                <Link className="font-medium text-blue-700 underline" href="/sectors#catalog-search">
-                  sector search
-                </Link>{" "}
-                or{" "}
-                <Link className="font-medium text-blue-700 underline" href="/regulations#catalog-search">
-                  regulation search
-                </Link>{" "}
-                instead of guessing URL patterns.
-              </li>
-            </ul>
-          </div>
-          <div className="flex shrink-0 flex-col gap-2 sm:flex-row md:flex-col">
-            <Link
-              href="/sitemap.xml"
-              className="inline-flex items-center justify-center rounded-xl bg-slate-900 px-5 py-3 text-center text-sm font-semibold text-white hover:bg-slate-800"
-            >
-              Open sitemap
-            </Link>
-            <Link
-              href="/compare"
-              className="inline-flex items-center justify-center rounded-xl border border-slate-300 bg-white px-5 py-3 text-center text-sm font-semibold text-slate-900 hover:bg-slate-100"
-            >
-              Framework comparisons
-            </Link>
-          </div>
-        </div>
-      </section>
-
       <section className="mt-10 space-y-6">
         <UsefulContextCallout title="How to get maximum value from this site">
           <p>
