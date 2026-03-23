@@ -160,6 +160,12 @@ export default function RegulationsHubPage() {
           >
             Top 10 cross-framework guides
           </Link>
+          <Link
+            href="/compare"
+            className="rounded-md border border-slate-300 bg-white px-4 py-2 text-sm font-semibold text-slate-700 hover:bg-slate-50"
+          >
+            Framework comparisons
+          </Link>
         </div>
       </section>
 

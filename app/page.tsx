@@ -601,6 +601,33 @@ export default function Home() {
       </section>
 
       <section className="mt-10 rounded-2xl border border-slate-200 bg-white p-6">
+        <h2 className="text-xl font-semibold text-slate-900">Most searched comparisons</h2>
+        <p className="mt-2 text-sm text-slate-600">
+          High-intent pages built for comparison queries before implementation.
+        </p>
+        <div className="mt-4 flex flex-wrap gap-3">
+          <Link
+            href="/compare/gdpr-vs-iso-27001"
+            className="rounded-md border border-slate-300 px-4 py-2 text-sm font-semibold text-slate-700 hover:bg-slate-50"
+          >
+            GDPR vs ISO 27001
+          </Link>
+          <Link
+            href="/compare/nis2-vs-iso-27001"
+            className="rounded-md border border-slate-300 px-4 py-2 text-sm font-semibold text-slate-700 hover:bg-slate-50"
+          >
+            NIS2 vs ISO 27001
+          </Link>
+          <Link
+            href="/compare"
+            className="rounded-md border border-slate-300 px-4 py-2 text-sm font-semibold text-slate-700 hover:bg-slate-50"
+          >
+            All comparisons
+          </Link>
+        </div>
+      </section>
+
+      <section className="mt-10 rounded-2xl border border-slate-200 bg-white p-6">
         <h2 className="text-2xl font-semibold text-slate-900">
           Turn a search into implementation (in 3 steps)
         </h2>

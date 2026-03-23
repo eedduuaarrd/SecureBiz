@@ -12,6 +12,9 @@ import { SECTOR_SUBPAGE_SLUGS } from "@/lib/sector-subpage-content";
 export const HUB_PATHS = [
   "",
   "/about",
+  "/compare",
+  "/compare/gdpr-vs-iso-27001",
+  "/compare/nis2-vs-iso-27001",
   "/resources",
   "/resources/gdpr-websites",
   "/resources/gdpr-iso-27001-nis2-guides",

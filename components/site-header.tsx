@@ -8,6 +8,7 @@ import { BrandLogo } from "@/components/brand-logo";
 const PRIMARY_LINKS = [
   { href: "/about", label: "About" },
   { href: "/resources", label: "Resources" },
+  { href: "/compare", label: "Compare" },
   { href: "/sectors#catalog-search", label: "Sectors" },
   { href: "/regulations#catalog-search", label: "Regulations" },
 ] as const;
