@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { CatalogSearchInput } from "@/components/catalog-search-input";
+import { IntentLinksBlock } from "@/components/intent-links-block";
 import { SeoAccordion } from "@/components/seo-accordion";
 import { UsefulContextCallout, UsefulDataTable } from "@/components/site-education-blocks";
 import {
@@ -370,6 +371,15 @@ export default async function RegulationPage({ params }: RegulationPageProps) {
           />
         </div>
       </section>
+      <IntentLinksBlock
+        title="Related by intent"
+        items={[
+          { href: "/compare", label: "Compare frameworks" },
+          { href: "/resources", label: "Official resources" },
+          { href: "/checklists", label: "Execution checklists" },
+          { href: "/regulations", label: "Regulation hub" },
+        ]}
+      />
     </div>
   );
 }

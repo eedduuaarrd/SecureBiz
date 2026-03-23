@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { IntentLinksBlock } from "@/components/intent-links-block";
 import { getRobotsAllowAll } from "@/lib/seo";
 import { absoluteUrl } from "@/lib/site";
 
@@ -202,6 +203,15 @@ export default function ResourcesPage() {
           </Link>
         </div>
       </section>
+      <IntentLinksBlock
+        title="Related by intent"
+        items={[
+          { href: "/compare/gdpr-vs-iso-27001", label: "GDPR vs ISO 27001" },
+          { href: "/compare/nis2-vs-iso-27001", label: "NIS2 vs ISO 27001" },
+          { href: "/checklists", label: "Checklists hub" },
+          { href: "/regulations", label: "Regulation hub" },
+        ]}
+      />
     </div>
   );
 }
