@@ -45,12 +45,15 @@ export async function generateMetadata({
 
   const path = `/sector/${sector.slug}`;
   const intro = getSectorPersonaIntro(sector.name);
-  const description =
-    intro.paragraphs[0]?.slice(0, 158) ??
-    `Compliance guides for ${sector.name}: GDPR, ISO 27001, cookies, and more.`;
+  const description = (() => {
+    const base =
+      intro.paragraphs[0] ??
+      `Sector-specific implementation guides for ${sector.name} covering GDPR, ISO 27001, NIS2, and cookie compliance.`;
+    return base.length > 158 ? `${base.slice(0, 155)}…` : base;
+  })();
 
   return {
-    title: `${sector.name} | Compliance & cybersecurity guides`,
+    title: `${sector.name} Sector Guide | GDPR, ISO 27001, NIS2`,
     description,
     keywords: [
       sector.name,
@@ -65,7 +68,7 @@ export async function generateMetadata({
     },
     openGraph: {
       type: "website",
-      title: `${sector.name} | Compliance & cybersecurity guides`,
+      title: `${sector.name} Sector Guide | GDPR, ISO 27001, NIS2`,
       description,
       url: path,
       siteName: "SecureBiz AI",
@@ -74,7 +77,7 @@ export async function generateMetadata({
     },
     twitter: {
       card: "summary_large_image",
-      title: `${sector.name} | Compliance & cybersecurity guides`,
+      title: `${sector.name} Sector Guide | GDPR, ISO 27001, NIS2`,
       description,
       images: [getDefaultOgImageUrl()],
     },

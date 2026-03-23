@@ -9,9 +9,9 @@ import { getRobotsAllowAll } from "@/lib/seo";
 import { absoluteUrl } from "@/lib/site";
 
 export const metadata: Metadata = {
-  title: "Regulations | GDPR, ISO 27001, NIS2, DORA & more",
+  title: "Regulation Comparison Hub | GDPR vs ISO 27001 vs NIS2",
   description:
-    "Compare GDPR, ISO 27001, cookie law, NIS2, DORA, SOC 2—then open sector-specific guides with evidence, pitfalls, and rollout phases.",
+    "Compare GDPR, ISO 27001, NIS2, DORA, SOC 2 and cookie law, then open sector-specific implementation guides.",
   keywords: [
     "GDPR guide",
     "ISO 27001 guide",
@@ -25,9 +25,9 @@ export const metadata: Metadata = {
   },
   openGraph: {
     url: "/regulations",
-    title: "Regulations | GDPR, ISO 27001, NIS2, DORA & more",
+    title: "Regulation Comparison Hub | GDPR vs ISO 27001 vs NIS2",
     description:
-      "Compare frameworks and jump into sector guides: GDPR, ISO 27001, cookies, NIS2, DORA, SOC 2.",
+      "Compare major compliance frameworks, then jump into sector-specific implementation guides.",
   },
   robots: getRobotsAllowAll(),
 };

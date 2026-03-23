@@ -36,12 +36,12 @@ export async function generateMetadata({
 
   const path = `/normativa/${regulation.slug}`;
   const metaDescription = (() => {
-    const core = `${regulation.description} Evidence, pitfalls, and phased rollout—guides for every sector.`;
+    const core = `${regulation.description} Compare sector-by-sector implementation with evidence, pitfalls, and phased rollout guidance.`;
     return core.length > 158 ? `${core.slice(0, 155)}…` : core;
   })();
 
   return {
-    title: `${regulation.name} | Related sectors and guides`,
+    title: `${regulation.name} by Sector | Implementation Guide Hub`,
     description: metaDescription,
     keywords: [
       regulation.name,
@@ -56,7 +56,7 @@ export async function generateMetadata({
     },
     openGraph: {
       type: "website",
-      title: `${regulation.name} | Related sectors and guides`,
+      title: `${regulation.name} by Sector | Implementation Guide Hub`,
       description: metaDescription,
       url: path,
       siteName: "SecureBiz AI",
@@ -65,7 +65,7 @@ export async function generateMetadata({
     },
     twitter: {
       card: "summary_large_image",
-      title: `${regulation.name} | Related sectors and guides`,
+      title: `${regulation.name} by Sector | Implementation Guide Hub`,
       description: metaDescription,
       images: [getDefaultOgImageUrl()],
     },

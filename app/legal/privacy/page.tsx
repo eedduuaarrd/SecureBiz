@@ -5,7 +5,7 @@ import { PageToc, UsefulDataTable } from "@/components/site-education-blocks";
 import { absoluteUrl } from "@/lib/site";
 
 export const metadata: Metadata = {
-  title: "Privacy policy (GDPR)",
+  title: "Privacy Policy (GDPR) | Data Processing and Rights",
   description:
     "Detailed privacy policy for SecureBiz AI: controller identity, purposes, retention, subprocessors, rights, and international transfers.",
   keywords: [
@@ -19,13 +19,13 @@ export const metadata: Metadata = {
   openGraph: {
     type: "article",
     url: "/legal/privacy",
-    title: "Privacy policy (GDPR) | SecureBiz AI",
+    title: "Privacy Policy (GDPR) | Data Processing and Rights",
     description:
       "Detailed privacy policy: lawful bases, rights, retention, subprocessors, and transfers.",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Privacy policy (GDPR) | SecureBiz AI",
+    title: "Privacy Policy (GDPR) | Data Processing and Rights",
     description:
       "Detailed privacy policy: lawful bases, rights, retention, subprocessors, and transfers.",
   },

@@ -18,12 +18,15 @@ import { absoluteUrl, getSiteUrl } from "@/lib/site";
 export const metadata: Metadata = {
   title: {
     absolute:
-      "SecureBiz AI | GDPR, ISO 27001, NIS2 & Cybersecurity Guides by Sector",
+      "SecureBiz AI Official Site | GDPR, ISO 27001, NIS2 Guides by Sector",
   },
-  description: DEFAULT_DESCRIPTION,
+  description:
+    "Official SecureBiz AI website: compare GDPR, ISO 27001, NIS2 and cookie-law requirements by sector and open practical implementation guides.",
   keywords: [
     "SecureBiz",
     "Secure Biz",
+    "securebiz official website",
+    "secure biz official",
     "GDPR guides",
     "ISO 27001 guides",
     "NIS2 guides",
@@ -36,14 +39,16 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     url: "/",
-    title: "SecureBiz AI | GDPR, ISO 27001, NIS2 & Cybersecurity Guides by Sector",
-    description: DEFAULT_DESCRIPTION,
+    title: "SecureBiz AI Official Site | GDPR, ISO 27001, NIS2 Guides by Sector",
+    description:
+      "Official SecureBiz AI website: compare GDPR, ISO 27001, NIS2 and cookie-law requirements by sector.",
     images: getDefaultOgImages(),
   },
   twitter: {
     card: "summary_large_image",
-    title: "SecureBiz AI | GDPR, ISO 27001, NIS2 & Cybersecurity Guides by Sector",
-    description: DEFAULT_DESCRIPTION,
+    title: "SecureBiz AI Official Site | GDPR, ISO 27001, NIS2 Guides by Sector",
+    description:
+      "Official SecureBiz AI website: compare GDPR, ISO 27001, NIS2 and cookie-law requirements by sector.",
     images: [getDefaultOgImageUrl()],
   },
   robots: getRobotsAllowAll(),

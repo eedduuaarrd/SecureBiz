@@ -5,8 +5,8 @@ import { SITE_NAME, getRobotsAllowAll } from "@/lib/seo";
 import { absoluteUrl } from "@/lib/site";
 
 export const metadata: Metadata = {
-  title: "About",
-  description: `${SITE_NAME}: sector GDPR, ISO 27001 & NIS2 guides—informational education, not government or legal advice. How we help and what we are not.`,
+  title: "About SecureBiz AI | Mission, Trust and Scope",
+  description: `${SITE_NAME}: who we are, what we publish, trust-domain clarification, and why content is educational (not legal advice).`,
   keywords: [
     "about securebiz",
     "securebiz mission",
@@ -18,15 +18,15 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     url: "/about",
-    title: `About ${SITE_NAME}`,
+    title: `About SecureBiz AI | Mission, Trust and Scope`,
     description:
-      `${SITE_NAME}: practical compliance guidance by sector, with clear boundaries and trust information.`,
+      `${SITE_NAME}: what we publish, what we are not, and trust/domain clarification.`,
   },
   twitter: {
     card: "summary_large_image",
-    title: `About ${SITE_NAME}`,
+    title: `About SecureBiz AI | Mission, Trust and Scope`,
     description:
-      `${SITE_NAME}: practical compliance guidance by sector, with clear boundaries and trust information.`,
+      `${SITE_NAME}: what we publish, what we are not, and trust/domain clarification.`,
   },
   robots: getRobotsAllowAll(),
 };

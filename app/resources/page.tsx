@@ -4,9 +4,9 @@ import { getRobotsAllowAll } from "@/lib/seo";
 import { absoluteUrl } from "@/lib/site";
 
 export const metadata: Metadata = {
-  title: "Resources",
+  title: "Compliance Resources | Official Sources and Practical References",
   description:
-    "Curated resources for GDPR, ISO 27001, NIS2 and compliance operations: official institutions, practical guides, and implementation references.",
+    "Curated GDPR, ISO 27001 and NIS2 resources: official institutions, trusted references, and implementation-oriented reading lists.",
   keywords: [
     "GDPR resources",
     "ISO 27001 resources",
@@ -18,15 +18,15 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     url: "/resources",
-    title: "Resources | GDPR, ISO 27001 and NIS2 references",
+    title: "Compliance Resources | Official Sources and Practical References",
     description:
-      "Curated compliance resources with official sources and implementation-oriented references.",
+      "Curated GDPR, ISO 27001 and NIS2 resources: official institutions and practical references.",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Resources | GDPR, ISO 27001 and NIS2 references",
+    title: "Compliance Resources | Official Sources and Practical References",
     description:
-      "Curated compliance resources with official sources and implementation-oriented references.",
+      "Curated GDPR, ISO 27001 and NIS2 resources: official institutions and practical references.",
   },
   robots: getRobotsAllowAll(),
 };

@@ -100,15 +100,15 @@ export async function generateMetadata({
       return { title: "Guide not found" };
     }
     return {
-      title: `${fallbackRegulation.name} for ${fallbackSector.name} | Practical guide`,
-      description: `A guide for ${fallbackRegulation.name} applied to the ${fallbackSector.name} sector.`,
+      title: `${fallbackRegulation.name} for ${fallbackSector.name} | Checklist and Action Plan`,
+      description: `Sector-specific ${fallbackRegulation.name} checklist for ${fallbackSector.name}, with practical actions and evidence guidance.`,
       alternates: {
         canonical: fallbackPath,
       },
       openGraph: {
         type: "article",
-        title: `${fallbackRegulation.name} for ${fallbackSector.name} | Practical guide`,
-        description: `A guide for ${fallbackRegulation.name} applied to the ${fallbackSector.name} sector.`,
+        title: `${fallbackRegulation.name} for ${fallbackSector.name} | Checklist and Action Plan`,
+        description: `Sector-specific ${fallbackRegulation.name} checklist for ${fallbackSector.name}, with practical actions and evidence guidance.`,
         url: fallbackPath,
         siteName: "SecureBiz AI",
         locale: "en_US",
@@ -116,8 +116,8 @@ export async function generateMetadata({
       },
       twitter: {
         card: "summary_large_image",
-        title: `${fallbackRegulation.name} for ${fallbackSector.name} | Practical guide`,
-        description: `A guide for ${fallbackRegulation.name} applied to the ${fallbackSector.name} sector.`,
+        title: `${fallbackRegulation.name} for ${fallbackSector.name} | Checklist and Action Plan`,
+        description: `Sector-specific ${fallbackRegulation.name} checklist for ${fallbackSector.name}, with practical actions and evidence guidance.`,
         images: [getDefaultOgImageUrl()],
       },
       robots: getRobotsAllowAll(),
@@ -126,9 +126,10 @@ export async function generateMetadata({
 
   const path = `/guia/${guide.sector_slug}/${guide.regulation_slug}`;
   const published = toIsoDate(guide.created_at);
+  const seoTitle = `${guide.title} | Checklist and Action Plan`;
 
   return {
-    title: guide.title,
+    title: seoTitle,
     description: guide.meta_description,
     keywords: guide.keywords?.length ? guide.keywords : undefined,
     alternates: {
@@ -136,7 +137,7 @@ export async function generateMetadata({
     },
     openGraph: {
       type: "article",
-      title: guide.title,
+      title: seoTitle,
       description: guide.meta_description,
       url: path,
       siteName: "SecureBiz AI",
@@ -146,7 +147,7 @@ export async function generateMetadata({
     },
     twitter: {
       card: "summary_large_image",
-      title: guide.title,
+      title: seoTitle,
       description: guide.meta_description,
       images: [getDefaultOgImageUrl()],
     },

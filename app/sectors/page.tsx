@@ -13,9 +13,9 @@ import { absoluteUrl } from "@/lib/site";
 export const dynamic = "force-dynamic";
 
 export const metadata: Metadata = {
-  title: "Professional sectors | GDPR & cybersecurity guides",
+  title: "Sector Directory | Find GDPR, ISO 27001 and NIS2 guides",
   description:
-    "Search 500+ sector profiles: GDPR, ISO 27001, NIS2, cookies—guides per industry with checklists, risks, and audit paths.",
+    "Find your industry and open sector-specific GDPR, ISO 27001, NIS2 and cookie-law guides with practical checklists.",
   keywords: [
     "sector compliance guides",
     "GDPR by industry",
@@ -28,9 +28,9 @@ export const metadata: Metadata = {
   },
   openGraph: {
     url: "/sectors",
-    title: "Professional sectors | GDPR & cybersecurity guides",
+    title: "Sector Directory | Find GDPR, ISO 27001 and NIS2 guides",
     description:
-      "Search 500+ sector profiles: GDPR, ISO 27001, NIS2, cookies—guides per industry with checklists, risks, and audit paths.",
+      "Find your industry and open sector-specific GDPR, ISO 27001, NIS2 and cookie-law guides with practical checklists.",
   },
   robots: getRobotsAllowAll(),
 };

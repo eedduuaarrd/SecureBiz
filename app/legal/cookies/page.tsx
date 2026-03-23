@@ -5,7 +5,7 @@ import { PageToc, UsefulDataTable } from "@/components/site-education-blocks";
 import { absoluteUrl } from "@/lib/site";
 
 export const metadata: Metadata = {
-  title: "Cookie policy",
+  title: "Cookie Policy | Consent, Analytics and Advertising Technologies",
   description:
     "How SecureBiz AI uses cookies, local storage, analytics, advertising technologies, and how you can control preferences.",
   keywords: [
@@ -19,13 +19,13 @@ export const metadata: Metadata = {
   openGraph: {
     type: "article",
     url: "/legal/cookies",
-    title: "Cookie policy | SecureBiz AI",
+    title: "Cookie Policy | Consent, Analytics and Advertising Technologies",
     description:
       "How cookies, analytics, and advertising technologies are used and controlled on securebiz.org.",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Cookie policy | SecureBiz AI",
+    title: "Cookie Policy | Consent, Analytics and Advertising Technologies",
     description:
       "How cookies, analytics, and advertising technologies are used and controlled on securebiz.org.",
   },

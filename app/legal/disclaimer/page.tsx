@@ -5,9 +5,9 @@ import { PageToc } from "@/components/site-education-blocks";
 import { absoluteUrl } from "@/lib/site";
 
 export const metadata: Metadata = {
-  title: "Legal disclaimer",
+  title: "Legal Disclaimer | Scope, Liability and Trust Statement",
   description:
-    "Scope, limitations, and responsibilities for using SecureBiz AI: informational content, no legal advice, affiliates, and intellectual property.",
+    "SecureBiz AI legal disclaimer: service scope, trust-domain clarification, affiliate disclosure, and limitation of liability.",
   keywords: [
     "legal disclaimer",
     "securebiz disclaimer",
@@ -19,15 +19,15 @@ export const metadata: Metadata = {
   openGraph: {
     type: "article",
     url: "/legal/disclaimer",
-    title: "Legal disclaimer | SecureBiz AI",
+    title: "Legal Disclaimer | Scope, Liability and Trust Statement",
     description:
-      "Scope, limitations, trust-domain statement, and responsibilities for using securebiz.org.",
+      "Service scope, trust-domain clarification, and liability limits for using securebiz.org.",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Legal disclaimer | SecureBiz AI",
+    title: "Legal Disclaimer | Scope, Liability and Trust Statement",
     description:
-      "Scope, limitations, trust-domain statement, and responsibilities for using securebiz.org.",
+      "Service scope, trust-domain clarification, and liability limits for using securebiz.org.",
   },
   robots: { index: true, follow: true },
 };

@@ -4,10 +4,10 @@ import { absoluteUrl } from "@/lib/site";
 export const SITE_NAME = "SecureBiz AI";
 
 export const DEFAULT_TITLE =
-  "SecureBiz AI | GDPR, ISO 27001 & Cybersecurity Guides by Sector";
+  "SecureBiz AI (Official) | Sector GDPR, ISO 27001, NIS2 Guides";
 
 export const DEFAULT_DESCRIPTION =
-  "SecureBiz AI — GDPR, ISO 27001, NIS2 & cookie-law guides by sector. People also search: Secure Biz, SecureBiz, securebiz, secure biz. Official site securebiz.org. Free checklists for SMBs and compliance teams.";
+  "SecureBiz AI official site (securebiz.org): sector-specific GDPR, ISO 27001, NIS2 and cookie-law guides with practical checklists for SMBs and compliance teams.";
 
 /** Recognized brand spellings for JSON-LD and copy (helps branded search). */
 export const BRAND_ALTERNATE_NAMES = [
