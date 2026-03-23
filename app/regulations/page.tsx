@@ -37,7 +37,12 @@ export const metadata: Metadata = {
   robots: getRobotsAllowAll(),
 };
 
-export default function RegulationsHubPage() {
+export default async function RegulationsHubPage({
+  searchParams,
+}: {
+  searchParams: Promise<{ q?: string }>;
+}) {
+  const { q } = await searchParams;
   const sectors = buildSeedSectors();
   const exampleSector = sectors[0];
   const rgpd = seedRegulations.find((r) => r.slug === "rgpd");
@@ -207,6 +212,7 @@ export default function RegulationsHubPage() {
             searchLabel="Search regulations"
             searchPlaceholder="Type a law or standard (e.g. GDPR, ISO, HIPAA)…"
             totalCount={seedRegulations.length}
+            initialQuery={q ?? ""}
           />
           <ul
             id="regulations-catalog-list"

@@ -27,6 +27,7 @@ export const HUB_PATHS = [
   "/sectors",
   "/regulations",
   "/normatives",
+  "/updates",
 ];
 
 export const LEGAL_PATHS = [

@@ -103,7 +103,7 @@ export default function Home() {
     description: DEFAULT_DESCRIPTION,
     potentialAction: {
       "@type": "SearchAction",
-      target: `${siteUrl}/sectors#catalog-search`,
+      target: `${siteUrl}/sectors?q={search_term_string}`,
       "query-input": "required name=search_term_string",
     },
     publisher: {

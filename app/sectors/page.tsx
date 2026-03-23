@@ -40,7 +40,12 @@ export const metadata: Metadata = {
   robots: getRobotsAllowAll(),
 };
 
-export default function SectorsHubPage() {
+export default async function SectorsHubPage({
+  searchParams,
+}: {
+  searchParams: Promise<{ q?: string }>;
+}) {
+  const { q } = await searchParams;
   const sectors = buildSeedSectors();
   const rgpdSectors = sectors.slice(0, 6);
 
@@ -257,6 +262,7 @@ export default function SectorsHubPage() {
             searchLabel="Search sectors"
             searchPlaceholder="Type a sector name (e.g. dental, gym, SaaS)…"
             totalCount={sectors.length}
+            initialQuery={q ?? ""}
           />
           <ul
             id="sectors-catalog-list"

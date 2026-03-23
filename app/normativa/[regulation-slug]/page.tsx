@@ -12,12 +12,14 @@ import {
 } from "@/lib/catalog";
 import { getRegulationNarrativeExtra } from "@/lib/expanded-content";
 import { getDefaultOgImageUrl, getDefaultOgImages, getRobotsAllowAll } from "@/lib/seo";
+import { getCompareLinksForRegulationSlug } from "@/lib/regulation-compare-links";
 import { absoluteUrl } from "@/lib/site";
 
 type RegulationPageProps = {
   params: Promise<{
     "regulation-slug": string;
   }>;
+  searchParams: Promise<{ q?: string }>;
 };
 
 /** Large sector grids per regulation: render on demand so `next build` stays fast on Vercel. */
@@ -78,8 +80,12 @@ export async function generateMetadata({
   };
 }
 
-export default async function RegulationPage({ params }: RegulationPageProps) {
+export default async function RegulationPage({
+  params,
+  searchParams,
+}: RegulationPageProps) {
   const resolvedParams = await params;
+  const { q } = await searchParams;
   const regulation = seedRegulations.find(
     (item) => item.slug === resolvedParams["regulation-slug"],
   );
@@ -302,6 +308,7 @@ export default async function RegulationPage({ params }: RegulationPageProps) {
           searchLabel={`Search sectors for ${regulation.name}`}
           searchPlaceholder="Filter by sector name…"
           totalCount={sectors.length}
+          initialQuery={q ?? ""}
         />
         <ul
           id={`normativa-sectors-${regulation.slug}`}
@@ -374,7 +381,7 @@ export default async function RegulationPage({ params }: RegulationPageProps) {
       <IntentLinksBlock
         title="Related by intent"
         items={[
-          { href: "/compare", label: "Compare frameworks" },
+          ...getCompareLinksForRegulationSlug(regulation.slug),
           { href: "/resources", label: "Official resources" },
           { href: "/checklists", label: "Execution checklists" },
           { href: "/regulations", label: "Regulation hub" },

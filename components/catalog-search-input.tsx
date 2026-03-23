@@ -7,6 +7,8 @@ type CatalogSearchInputProps = {
   searchLabel: string;
   searchPlaceholder: string;
   totalCount: number;
+  /** Pre-fill from `?q=` (shareable search URLs + SearchAction). */
+  initialQuery?: string;
 };
 
 /**
@@ -18,10 +20,15 @@ export function CatalogSearchInput({
   searchLabel,
   searchPlaceholder,
   totalCount,
+  initialQuery = "",
 }: CatalogSearchInputProps) {
-  const [q, setQ] = useState("");
+  const [q, setQ] = useState(initialQuery);
   const labelId = useId();
   const countId = `${listId}-count`;
+
+  useEffect(() => {
+    setQ(initialQuery);
+  }, [initialQuery]);
 
   useEffect(() => {
     const root = document.getElementById(listId);

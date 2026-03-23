@@ -7,6 +7,7 @@ import {
   iterSectorHubUrls,
   iterSectorSubpageUrls,
 } from "@/lib/discoverable-urls";
+import { getGuidePathToLastModified } from "@/lib/guide-sitemap";
 import { getSiteUrl } from "@/lib/site";
 
 /** Tunable hints for crawlers (Google + AI indexers that read sitemap.xml). */
@@ -20,9 +21,10 @@ const PRIORITY = {
   legal: 0.35,
 } as const;
 
-export default function sitemap(): MetadataRoute.Sitemap {
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const baseUrl = getSiteUrl();
   const lastMod = new Date();
+  const guideLastMods = await getGuidePathToLastModified();
 
   const hubEntries: MetadataRoute.Sitemap = HUB_PATHS.map((path) => ({
     url: `${baseUrl}${path}`,
@@ -66,16 +68,30 @@ export default function sitemap(): MetadataRoute.Sitemap {
   }));
 
   const guideEntries: MetadataRoute.Sitemap = iterGuideUrls(baseUrl).map(
-    (row) => ({
-      url: row.url,
-      lastModified: lastMod,
-      changeFrequency: "monthly" as const,
-      priority: PRIORITY.guide,
-    }),
+    (row) => {
+      const pathKey = `/guia/${row.sectorSlug}/${row.regulationSlug}`;
+      const fromDb = guideLastMods.get(pathKey);
+      return {
+        url: row.url,
+        lastModified: fromDb ?? lastMod,
+        changeFrequency: "monthly" as const,
+        priority: PRIORITY.guide,
+      };
+    },
   );
+
+  const feedEntries: MetadataRoute.Sitemap = [
+    {
+      url: `${baseUrl}/rss.xml`,
+      lastModified: lastMod,
+      changeFrequency: "daily" as const,
+      priority: 0.55,
+    },
+  ];
 
   return [
     ...hubEntries,
+    ...feedEntries,
     ...sectorEntries,
     ...sectorSubEntries,
     ...regulationEntries,

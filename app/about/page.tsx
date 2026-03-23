@@ -76,6 +76,7 @@ export default function AboutPage() {
         <PageToc
           items={[
             { id: "mission", label: "What we publish" },
+            { id: "methodology", label: "Methodology & updates" },
             { id: "not", label: "What we are not" },
             { id: "trust", label: "Trust, domain & downloads" },
             { id: "official", label: "Use official sources for binding rules" },
@@ -98,6 +99,26 @@ export default function AboutPage() {
             </li>
             <li>Optional <strong>lead forms</strong> and contextual links to tools where that helps you move from reading to action.</li>
           </ul>
+        </section>
+
+        <section id="methodology" className="scroll-mt-24">
+          <h2 className="text-xl font-semibold text-slate-900">Methodology &amp; updates</h2>
+          <p className="mt-3 text-sm leading-relaxed">
+            Content is structured for <strong>implementation</strong>: sector vocabulary, risk themes, evidence checkpoints,
+            and phased plans. Guides are generated and stored so pages stay useful when you return—see{" "}
+            <Link className="font-medium text-blue-700 underline" href="/updates">
+              What&apos;s new
+            </Link>{" "}
+            and subscribe via{" "}
+            <Link className="font-medium text-blue-700 underline" href="/rss.xml">
+              RSS
+            </Link>{" "}
+            for newly published long-form guides when the database is available.
+          </p>
+          <p className="mt-3 text-sm leading-relaxed">
+            We do not claim to replicate national transpositions line-by-line: always verify against{" "}
+            <strong>EUR-Lex</strong>, your <strong>DPA</strong>, and sector regulators for binding obligations.
+          </p>
         </section>
 
         <section id="not" className="scroll-mt-24">
@@ -164,6 +185,8 @@ export default function AboutPage() {
       <IntentLinksBlock
         title="Related by intent"
         items={[
+          { href: "/updates", label: "What's new" },
+          { href: "/rss.xml", label: "RSS feed" },
           { href: "/resources", label: "Resources hub" },
           { href: "/compare", label: "Framework comparisons" },
           { href: "/checklists", label: "Execution checklists" },

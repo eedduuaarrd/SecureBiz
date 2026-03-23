@@ -11,8 +11,6 @@ import {
   DEFAULT_KEYWORDS,
   DEFAULT_TITLE,
   SITE_NAME,
-  getDefaultOgImageUrl,
-  getDefaultOgImages,
   getGoogleSiteVerificationMetadata,
   getRobotsAllowAll,
 } from "@/lib/seo";
@@ -50,13 +48,11 @@ export const metadata: Metadata = {
     url: getSiteUrl(),
     title: DEFAULT_TITLE,
     description: DEFAULT_DESCRIPTION,
-    images: getDefaultOgImages(),
   },
   twitter: {
     card: "summary_large_image",
     title: DEFAULT_TITLE,
     description: DEFAULT_DESCRIPTION,
-    images: [getDefaultOgImageUrl()],
   },
   ...getGoogleSiteVerificationMetadata(),
   // Tab icons: `app/favicon.ico` and `app/icon.png` (same brand asset as `public/logo.png`).
@@ -123,6 +119,12 @@ export default function RootLayout({
               </Link>
               <Link href="/about" className="hover:text-slate-800">
                 About
+              </Link>
+              <Link href="/updates" className="hover:text-slate-800">
+                Updates
+              </Link>
+              <Link href="/rss.xml" className="hover:text-slate-800">
+                RSS
               </Link>
               <Link href="/resources" className="hover:text-slate-800">
                 Resources
