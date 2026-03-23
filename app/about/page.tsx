@@ -83,6 +83,17 @@ export default function AboutPage() {
             Use {SITE_NAME} to <strong>structure</strong> work inside your organisation and to compare how the same
             obligation shows up across sectors—not as a substitute for primary legal sources.
           </p>
+          <p className="mt-3 text-sm leading-relaxed">
+            For a faster start, use our curated lists:{" "}
+            <Link className="text-blue-700 underline" href="/resources/gdpr-websites">
+              Top 10 GDPR websites
+            </Link>{" "}
+            and{" "}
+            <Link className="text-blue-700 underline" href="/resources/gdpr-iso-27001-nis2-guides">
+              Top 10 GDPR + ISO 27001 + NIS2 guides
+            </Link>
+            .
+          </p>
         </section>
 
         <section id="contact" className="scroll-mt-24">

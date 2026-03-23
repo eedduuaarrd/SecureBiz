@@ -533,6 +533,20 @@ export default function Home() {
           <li><a className="text-blue-700 underline-offset-2 hover:underline" href="https://www.iso.org/" target="_blank" rel="noreferrer">ISO Organization</a></li>
           <li><a className="text-blue-700 underline-offset-2 hover:underline" href="https://ico.org.uk/" target="_blank" rel="noreferrer">ICO (UK guidance)</a></li>
         </ul>
+        <div className="mt-4 flex flex-wrap gap-3">
+          <Link
+            href="/resources/gdpr-websites"
+            className="rounded-md border border-slate-300 px-4 py-2 text-sm font-semibold text-slate-700 hover:bg-slate-50"
+          >
+            Top 10 GDPR websites
+          </Link>
+          <Link
+            href="/resources/gdpr-iso-27001-nis2-guides"
+            className="rounded-md border border-slate-300 px-4 py-2 text-sm font-semibold text-slate-700 hover:bg-slate-50"
+          >
+            Top 10 GDPR + ISO 27001 + NIS2 guides
+          </Link>
+        </div>
       </section>
 
       <section className="mt-10 grid gap-4 md:grid-cols-2">
