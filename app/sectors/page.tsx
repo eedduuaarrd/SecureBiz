@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { CatalogSearchInput } from "@/components/catalog-search-input";
+import { IntentLinksBlock } from "@/components/intent-links-block";
 import { SeoAccordion } from "@/components/seo-accordion";
 import { HubFooterLinks, UsefulContextCallout, UsefulDataTable } from "@/components/site-education-blocks";
 import { VisualStepTimeline } from "@/components/visual-step-timeline";
@@ -423,6 +424,15 @@ export default function SectorsHubPage() {
           />
         </div>
       </section>
+      <IntentLinksBlock
+        title="Related by intent"
+        items={[
+          { href: "/checklists", label: "Execution checklists" },
+          { href: "/compare", label: "Compare frameworks" },
+          { href: "/resources", label: "Official resources" },
+          { href: "/regulations", label: "Regulation hub" },
+        ]}
+      />
 
       <HubFooterLinks />
     </div>

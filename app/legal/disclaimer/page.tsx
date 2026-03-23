@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { IntentLinksBlock } from "@/components/intent-links-block";
 import { SeoAccordion } from "@/components/seo-accordion";
 import { PageToc } from "@/components/site-education-blocks";
 import { absoluteUrl } from "@/lib/site";
@@ -302,6 +303,15 @@ export default function DisclaimerPage() {
           </li>
         </ul>
       </section>
+      <IntentLinksBlock
+        title="Related by intent"
+        items={[
+          { href: "/about", label: "About SecureBiz AI" },
+          { href: "/resources", label: "Resources hub" },
+          { href: "/compare", label: "Framework comparisons" },
+          { href: "/checklists", label: "Execution checklists" },
+        ]}
+      />
     </div>
   );
 }

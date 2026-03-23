@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { IntentLinksBlock } from "@/components/intent-links-block";
 import { PageToc } from "@/components/site-education-blocks";
 import { SITE_NAME, getRobotsAllowAll } from "@/lib/seo";
 import { absoluteUrl } from "@/lib/site";
@@ -160,6 +161,15 @@ export default function AboutPage() {
           ← Back to home
         </Link>
       </p>
+      <IntentLinksBlock
+        title="Related by intent"
+        items={[
+          { href: "/resources", label: "Resources hub" },
+          { href: "/compare", label: "Framework comparisons" },
+          { href: "/checklists", label: "Execution checklists" },
+          { href: "/legal/disclaimer", label: "Legal disclaimer" },
+        ]}
+      />
     </div>
   );
 }

@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { IntentLinksBlock } from "@/components/intent-links-block";
 import { SeoAccordion } from "@/components/seo-accordion";
 import { PageToc, UsefulDataTable } from "@/components/site-education-blocks";
 import { absoluteUrl } from "@/lib/site";
@@ -290,6 +291,15 @@ export default function CookiesPage() {
           </li>
         </ul>
       </section>
+      <IntentLinksBlock
+        title="Related by intent"
+        items={[
+          { href: "/legal/privacy", label: "Privacy policy" },
+          { href: "/compare/gdpr-vs-iso-27001", label: "GDPR vs ISO 27001" },
+          { href: "/checklists/gdpr-checklist-smb", label: "GDPR checklist (SMB)" },
+          { href: "/resources", label: "Resources hub" },
+        ]}
+      />
     </div>
   );
 }

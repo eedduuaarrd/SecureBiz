@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { IntentLinksBlock } from "@/components/intent-links-block";
 import { SeoAccordion } from "@/components/seo-accordion";
 import { PageToc, UsefulDataTable } from "@/components/site-education-blocks";
 import { absoluteUrl } from "@/lib/site";
@@ -409,6 +410,15 @@ export default function PrivacyPage() {
           </li>
         </ul>
       </section>
+      <IntentLinksBlock
+        title="Related by intent"
+        items={[
+          { href: "/legal/disclaimer", label: "Legal disclaimer" },
+          { href: "/legal/cookies", label: "Cookie policy" },
+          { href: "/resources/gdpr-websites", label: "Top GDPR websites" },
+          { href: "/checklists/gdpr-checklist-smb", label: "GDPR checklist (SMB)" },
+        ]}
+      />
     </div>
   );
 }
