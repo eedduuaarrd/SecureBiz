@@ -77,6 +77,13 @@ export default function GdprVsIsoPage() {
       },
     ],
   };
+  const comparisonRows = [
+    ["Primary nature", "Legal regulation (mandatory where applicable)", "Certifiable management standard (voluntary but market-driven)"],
+    ["Main focus", "Personal data rights, lawful processing, transparency", "Systematic information-security risk management"],
+    ["Typical owner", "Privacy lead, legal, operations", "Security lead, IT, management"],
+    ["Evidence examples", "RoPA, DPIA, DPA contracts, breach records", "Risk register, SoA, internal audits, management reviews"],
+    ["When buyers ask", "Privacy due diligence and data-processing reviews", "Enterprise procurement and security assurance"],
+  ] as const;
 
   return (
     <div className="mx-auto w-full max-w-4xl px-6 py-12">
@@ -94,6 +101,29 @@ export default function GdprVsIsoPage() {
         security risk. They overlap in controls, but they are not substitutes.
       </p>
       <section className="mt-8 rounded-xl border border-slate-200 bg-white p-5">
+        <h2 className="text-lg font-semibold text-slate-900">Side-by-side comparison</h2>
+        <div className="mt-3 overflow-x-auto">
+          <table className="w-full min-w-[560px] border-collapse text-left text-sm text-slate-700">
+            <thead>
+              <tr className="border-b border-slate-200 bg-slate-50">
+                <th className="px-3 py-2 font-semibold text-slate-900">Dimension</th>
+                <th className="px-3 py-2 font-semibold text-slate-900">GDPR</th>
+                <th className="px-3 py-2 font-semibold text-slate-900">ISO 27001</th>
+              </tr>
+            </thead>
+            <tbody>
+              {comparisonRows.map((row) => (
+                <tr key={row[0]} className="border-b border-slate-100 last:border-b-0">
+                  <td className="px-3 py-2 font-medium">{row[0]}</td>
+                  <td className="px-3 py-2">{row[1]}</td>
+                  <td className="px-3 py-2">{row[2]}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </section>
+      <section className="mt-8 rounded-xl border border-slate-200 bg-white p-5">
         <h2 className="text-lg font-semibold text-slate-900">Practical difference</h2>
         <ul className="mt-3 list-disc space-y-2 pl-5 text-sm text-slate-700">
           <li>GDPR: lawful basis, rights, transparency, processors, and breach obligations.</li>
@@ -109,12 +139,31 @@ export default function GdprVsIsoPage() {
           <li>Expand to ISO 27001-style ISMS if contracts demand stronger assurance.</li>
         </ol>
       </section>
+      <section className="mt-6 rounded-xl border border-amber-100 bg-amber-50 p-5">
+        <h2 className="text-lg font-semibold text-slate-900">Common mistakes</h2>
+        <ul className="mt-3 list-disc space-y-2 pl-5 text-sm text-slate-700">
+          <li>Treating GDPR as paperwork only without operational controls.</li>
+          <li>Launching ISO controls without clear ownership and review cadence.</li>
+          <li>Duplicating work between privacy and security teams instead of mapping shared evidence.</li>
+        </ul>
+      </section>
+      <section className="mt-6 rounded-xl border border-emerald-100 bg-emerald-50 p-5">
+        <h2 className="text-lg font-semibold text-slate-900">90-day execution outline</h2>
+        <ol className="mt-3 list-decimal space-y-2 pl-5 text-sm text-slate-700">
+          <li>Weeks 1-3: map data, assets, and critical business workflows.</li>
+          <li>Weeks 4-7: implement priority controls and define evidence owners.</li>
+          <li>Weeks 8-12: run internal checks, close gaps, and prepare customer-facing assurance narratives.</li>
+        </ol>
+      </section>
       <div className="mt-8 flex flex-wrap gap-3">
         <Link href="/regulations" className="rounded-md bg-slate-900 px-4 py-2 text-sm font-semibold text-white hover:bg-slate-800">
           Open regulation hub
         </Link>
         <Link href="/compare/nis2-vs-iso-27001" className="rounded-md border border-slate-300 px-4 py-2 text-sm font-semibold text-slate-700 hover:bg-slate-50">
           Read NIS2 vs ISO 27001
+        </Link>
+        <Link href="/checklists" className="rounded-md border border-slate-300 px-4 py-2 text-sm font-semibold text-slate-700 hover:bg-slate-50">
+          Open checklists
         </Link>
       </div>
     </div>

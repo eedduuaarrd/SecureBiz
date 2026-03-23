@@ -69,6 +69,13 @@ export default function DoraVsNis2Page() {
       },
     ],
   };
+  const comparisonRows = [
+    ["Primary scope", "Financial entities and critical ICT providers", "Essential and important entities across critical sectors"],
+    ["Core objective", "Operational resilience in financial ecosystems", "Cybersecurity and resilience across critical services"],
+    ["Third-party pressure", "Strong ICT third-party risk oversight", "Broad supply-chain and service-provider security expectations"],
+    ["Reporting angle", "Financial-regulated incident and continuity expectations", "Nationally transposed cyber-incident obligations"],
+    ["Best implementation approach", "Finance-specific resilience governance + testing", "Cross-sector governance with strong operational controls"],
+  ] as const;
 
   return (
     <div className="mx-auto w-full max-w-4xl px-6 py-12">
@@ -86,11 +93,50 @@ export default function DoraVsNis2Page() {
         across broader sectors. Many organizations face overlap through supply chains and contracts.
       </p>
       <section className="mt-8 rounded-xl border border-slate-200 bg-white p-5">
+        <h2 className="text-lg font-semibold text-slate-900">Side-by-side comparison</h2>
+        <div className="mt-3 overflow-x-auto">
+          <table className="w-full min-w-[560px] border-collapse text-left text-sm text-slate-700">
+            <thead>
+              <tr className="border-b border-slate-200 bg-slate-50">
+                <th className="px-3 py-2 font-semibold text-slate-900">Dimension</th>
+                <th className="px-3 py-2 font-semibold text-slate-900">DORA</th>
+                <th className="px-3 py-2 font-semibold text-slate-900">NIS2</th>
+              </tr>
+            </thead>
+            <tbody>
+              {comparisonRows.map((row) => (
+                <tr key={row[0]} className="border-b border-slate-100 last:border-b-0">
+                  <td className="px-3 py-2 font-medium">{row[0]}</td>
+                  <td className="px-3 py-2">{row[1]}</td>
+                  <td className="px-3 py-2">{row[2]}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </section>
+      <section className="mt-8 rounded-xl border border-slate-200 bg-white p-5">
         <h2 className="text-lg font-semibold text-slate-900">Scope differences</h2>
         <ul className="mt-3 list-disc space-y-2 pl-5 text-sm text-slate-700">
           <li>DORA: financial entities and critical ICT providers in financial ecosystems.</li>
           <li>NIS2: essential and important entities in multiple critical sectors.</li>
           <li>Both: require governance maturity, incident handling, and supplier risk control.</li>
+        </ul>
+      </section>
+      <section className="mt-6 rounded-xl border border-blue-100 bg-blue-50 p-5">
+        <h2 className="text-lg font-semibold text-slate-900">Implementation sequence</h2>
+        <ol className="mt-3 list-decimal space-y-2 pl-5 text-sm text-slate-700">
+          <li>Identify whether obligations come from direct scope or client contracts.</li>
+          <li>Define governance model and incident workflow with accountable owners.</li>
+          <li>Document third-party risk decisions and test resilience response routines.</li>
+        </ol>
+      </section>
+      <section className="mt-6 rounded-xl border border-amber-100 bg-amber-50 p-5">
+        <h2 className="text-lg font-semibold text-slate-900">Common mistakes</h2>
+        <ul className="mt-3 list-disc space-y-2 pl-5 text-sm text-slate-700">
+          <li>Assuming DORA and NIS2 are interchangeable without scope validation.</li>
+          <li>Ignoring contractual flow-down obligations from regulated customers.</li>
+          <li>Keeping incident and supplier evidence fragmented across teams.</li>
         </ul>
       </section>
       <div className="mt-8 flex flex-wrap gap-3">
@@ -102,6 +148,9 @@ export default function DoraVsNis2Page() {
         </Link>
         <Link href="/compare/nis2-vs-iso-27001" className="rounded-md border border-slate-300 px-4 py-2 text-sm font-semibold text-slate-700 hover:bg-slate-50">
           Read NIS2 vs ISO 27001
+        </Link>
+        <Link href="/checklists/nis2-checklist-smb" className="rounded-md border border-slate-300 px-4 py-2 text-sm font-semibold text-slate-700 hover:bg-slate-50">
+          NIS2 checklist (SMB)
         </Link>
       </div>
     </div>

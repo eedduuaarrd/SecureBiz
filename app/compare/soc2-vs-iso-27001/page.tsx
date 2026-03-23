@@ -69,6 +69,13 @@ export default function Soc2VsIsoPage() {
       },
     ],
   };
+  const comparisonRows = [
+    ["Primary output", "Attestation report (Type I/II context dependent)", "Certification against ISO 27001 standard"],
+    ["Primary market pull", "US enterprise trust and assurance workflows", "Global procurement and management-system maturity"],
+    ["Control model", "Trust services criteria mapping", "Annex/ISMS control governance and risk treatment"],
+    ["Audit cadence", "Periodic attestation engagements", "Certification and surveillance cycles"],
+    ["Best use", "Buyer trust narrative and assurance reporting", "Long-term security governance discipline"],
+  ] as const;
 
   return (
     <div className="mx-auto w-full max-w-4xl px-6 py-12">
@@ -86,11 +93,50 @@ export default function Soc2VsIsoPage() {
         Many B2B software firms choose based on market requirements, then expand to both.
       </p>
       <section className="mt-8 rounded-xl border border-slate-200 bg-white p-5">
+        <h2 className="text-lg font-semibold text-slate-900">Side-by-side comparison</h2>
+        <div className="mt-3 overflow-x-auto">
+          <table className="w-full min-w-[560px] border-collapse text-left text-sm text-slate-700">
+            <thead>
+              <tr className="border-b border-slate-200 bg-slate-50">
+                <th className="px-3 py-2 font-semibold text-slate-900">Dimension</th>
+                <th className="px-3 py-2 font-semibold text-slate-900">SOC 2</th>
+                <th className="px-3 py-2 font-semibold text-slate-900">ISO 27001</th>
+              </tr>
+            </thead>
+            <tbody>
+              {comparisonRows.map((row) => (
+                <tr key={row[0]} className="border-b border-slate-100 last:border-b-0">
+                  <td className="px-3 py-2 font-medium">{row[0]}</td>
+                  <td className="px-3 py-2">{row[1]}</td>
+                  <td className="px-3 py-2">{row[2]}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </section>
+      <section className="mt-8 rounded-xl border border-slate-200 bg-white p-5">
         <h2 className="text-lg font-semibold text-slate-900">Decision lens</h2>
         <ul className="mt-3 list-disc space-y-2 pl-5 text-sm text-slate-700">
           <li>SOC 2: often prioritized for US-enterprise procurement and trust reporting.</li>
           <li>ISO 27001: often prioritized for global certification and management-system discipline.</li>
           <li>Both: require documented controls, evidence quality, and audit-ready operations.</li>
+        </ul>
+      </section>
+      <section className="mt-6 rounded-xl border border-blue-100 bg-blue-50 p-5">
+        <h2 className="text-lg font-semibold text-slate-900">Practical roadmap</h2>
+        <ol className="mt-3 list-decimal space-y-2 pl-5 text-sm text-slate-700">
+          <li>Map buyer expectations by region and contract type.</li>
+          <li>Build one control baseline that can satisfy both frameworks.</li>
+          <li>Sequence external assurance events to maximize reuse of evidence.</li>
+        </ol>
+      </section>
+      <section className="mt-6 rounded-xl border border-amber-100 bg-amber-50 p-5">
+        <h2 className="text-lg font-semibold text-slate-900">Common mistakes</h2>
+        <ul className="mt-3 list-disc space-y-2 pl-5 text-sm text-slate-700">
+          <li>Designing different control sets for SOC 2 and ISO 27001 from scratch.</li>
+          <li>Underestimating evidence quality and change-management traceability.</li>
+          <li>Choosing framework order without checking real buyer demand.</li>
         </ul>
       </section>
       <div className="mt-8 flex flex-wrap gap-3">
@@ -102,6 +148,9 @@ export default function Soc2VsIsoPage() {
         </Link>
         <Link href="/compare/gdpr-vs-iso-27001" className="rounded-md border border-slate-300 px-4 py-2 text-sm font-semibold text-slate-700 hover:bg-slate-50">
           Read GDPR vs ISO 27001
+        </Link>
+        <Link href="/checklists/iso-27001-checklist-smb" className="rounded-md border border-slate-300 px-4 py-2 text-sm font-semibold text-slate-700 hover:bg-slate-50">
+          ISO 27001 checklist (SMB)
         </Link>
       </div>
     </div>
