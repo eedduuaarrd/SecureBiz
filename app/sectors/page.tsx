@@ -86,7 +86,7 @@ export default function SectorsHubPage() {
         name: "How do audits and tools fit together?",
         acceptedAnswer: {
           "@type": "Answer",
-          text: "The audit form captures your context. Affiliate links suggest tools when you’re ready to implement—so monetization aligns with problem solving, not intrusive ads.",
+          text: "Audit requests capture scope and constraints. Tool choice should follow your risk profile, legal obligations, and evidence needs—not generic vendor lists.",
         },
       },
       {
@@ -186,15 +186,15 @@ export default function SectorsHubPage() {
 
       <section className="mt-6 rounded-xl border border-blue-100 bg-blue-50 p-5">
         <h2 className="text-lg font-semibold text-slate-900">
-          Turn visits into leads
+          Turn sector pages into execution plans
         </h2>
         <ul className="mt-3 space-y-2 text-sm text-slate-700">
-          <li>1) Pick your sector.</li>
-          <li>2) See the regulation that applies to you.</li>
-          <li>3) Take the next implementation step with the form.</li>
+          <li>1) Pick your sector and open the hub.</li>
+          <li>2) Prioritise one framework by immediate business pressure.</li>
+          <li>3) Execute checklist items with named owners and evidence.</li>
         </ul>
         <div className="mt-4 text-sm text-slate-600">
-          Every guide includes an audit CTA and recommended tools to monetize clicks.
+          Every guide is designed to convert legal text into operational controls your team can maintain.
         </div>
       </section>
 
@@ -203,8 +203,7 @@ export default function SectorsHubPage() {
           Start today (GDPR)
         </h2>
         <p className="mt-1 text-sm text-slate-600">
-          The first sectors highlight “money” guides because traffic already comes
-          with compliance intent.
+          The first cards are practical entry points where GDPR requirements usually appear first in day-to-day operations.
         </p>
         <ul className="mt-4 grid gap-3 md:grid-cols-3">
           {rgpdSectors.map((sector) => (
@@ -269,8 +268,8 @@ export default function SectorsHubPage() {
 
         <div className="mt-5 rounded-lg border border-blue-100 bg-blue-50 p-4">
           <p className="text-sm text-slate-700">
-            Recommendation: when you finish reading, use the form to request an audit.
-            This helps us tailor your next step (lead + affiliate).
+            Recommendation: when you finish reading, document 3 controls you can verify this week and 3 that need
+            vendor or legal input. That split accelerates real progress.
           </p>
         </div>
       </section>
@@ -377,7 +376,7 @@ export default function SectorsHubPage() {
               {
                 title: "How do audits and tools fit together?",
                 content:
-                  "The audit form captures your context. Affiliate links suggest tools when you’re ready to implement—so monetization aligns with problem solving, not intrusive ads.",
+                  "Use audits to define scope and evidence expectations first. Tooling should then be selected to close concrete gaps (access control, logging, vendor governance, consent management).",
               },
               {
                 title: "Can I share these guides with my team?",

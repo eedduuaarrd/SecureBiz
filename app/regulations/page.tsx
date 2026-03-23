@@ -80,8 +80,8 @@ export default function RegulationsHubPage() {
       <p className="mt-4 text-sm leading-relaxed text-slate-700">
         This hub exists to route broad queries (“GDPR vs ISO”, “cookie law for small business”) into{" "}
         <strong>specific long-form guides</strong> that match how buyers evaluate risk. More pages with unique angles
-        mean more entry points from organic search—without paying for ads—while each page keeps a monetization path
-        (audit + tools).
+        mean more entry points from organic search, while each page stays focused on implementation evidence instead of
+        generic summaries.
       </p>
       <p className="mt-3 text-sm leading-relaxed text-slate-700">
         EU operators often stack <strong>privacy</strong> (GDPR), <strong>cyber resilience</strong> (NIS2), and{" "}
@@ -126,27 +126,27 @@ export default function RegulationsHubPage() {
 
       <section className="mt-8 rounded-xl border border-slate-200 bg-white p-5">
         <h2 className="text-lg font-semibold text-slate-900">
-          Start with a “money” guide
+          Start with a high-impact guide
         </h2>
         <p className="mt-1 text-sm text-slate-600">
-          Go for GDPR if you want quick monetizable intent: it’s the most
-          common entry point for businesses looking to implement compliance.
+          Start with GDPR when you handle identifiable people data. It is often the fastest way to establish
+          ownership, records, lawful bases, and incident discipline.
         </p>
         <div className="mt-4 flex flex-wrap gap-3">
           {rgpd ? (
-            <a
+            <Link
               href={`/sector/${exampleSector.slug}`}
               className="rounded-md bg-slate-900 px-4 py-2 text-sm font-semibold text-white hover:bg-slate-800"
             >
               Start with GDPR (example)
-            </a>
+            </Link>
           ) : null}
-          <a
+          <Link
             href="/sectors#catalog-search"
             className="rounded-md border border-slate-300 px-4 py-2 text-sm font-semibold text-slate-700 hover:bg-slate-50"
           >
             Choose a sector
-          </a>
+          </Link>
         </div>
       </section>
 
@@ -317,7 +317,7 @@ export default function RegulationsHubPage() {
               {
                 title: "How do you monetize the traffic?",
                 content:
-                  "Pages include lead-capture CTAs (audit form) and a hub of recommended tools that drive affiliate clicks aligned with what people are searching for.",
+                  "The practical goal is implementation quality: pages map obligations to controls and evidence. If you use external tools, they should follow your risk model and contract requirements—not the other way around.",
               },
               {
                 title: "Do I need ISO if I already comply with GDPR?",

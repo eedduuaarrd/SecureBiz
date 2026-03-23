@@ -220,11 +220,13 @@ export default async function RegulationPage({ params }: RegulationPageProps) {
       </section>
 
       <section className="mt-6 rounded-xl border border-blue-100 bg-blue-50 p-5">
-        <h2 className="text-lg font-semibold text-slate-900">Why this page drives revenue</h2>
+        <h2 className="text-lg font-semibold text-slate-900">
+          How {regulation.name} changes by sector
+        </h2>
         <p className="mt-2 text-sm text-slate-700">
-          People search “{regulation.name} + sector” with an implementation intent.
-          That’s why each guide includes a digital risks map, a compliance checklist,
-          and an audit CTA (lead capture) plus recommended tools (affiliate).
+          The legal text is shared, but implementation differs by workflow. Healthcare emphasizes special-category data,
+          ecommerce emphasizes consent and tracking, and SaaS emphasizes access, subprocessors, and incident communication.
+          The guides below capture these operational differences.
         </p>
       </section>
 

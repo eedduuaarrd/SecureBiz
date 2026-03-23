@@ -473,14 +473,14 @@ export default function Home() {
                   "Long-tail URLs match real queries and reduce competition per page. A single article cannot cover every sector × regulation combination. Clustered guides let you capture qualified traffic while keeping each page specific enough to convert.",
               },
               {
-                title: "How lead capture works without feeling spammy",
+                title: "How to move from reading to evidence",
                 content:
-                  "The audit form sits after value: the reader already understands risks and next steps. The CTA is framed as implementation help, not a newsletter—so it fits high-intent commercial traffic.",
+                  "After each guide, capture concrete outputs: system inventory, owner list, vendor register, and incident workflow. This turns content into auditable progress instead of passive reading.",
               },
               {
-                title: "Affiliate monetization that stays aligned with trust",
+                title: "How to choose tools without vendor bias",
                 content:
-                  "Tool recommendations appear in context (security, consent, backups). Visitors click when they have a decision to make, which improves conversion quality over random banner ads.",
+                  "Start from controls and evidence requirements, then shortlist tools that satisfy data residency, access logging, DPA terms, and export/exit capability.",
               },
               {
                 title: "What happens if the database is offline",
@@ -518,6 +518,23 @@ export default function Home() {
         </div>
       </section>
 
+      <section className="mt-10 rounded-2xl border border-slate-200 bg-white p-6">
+        <h2 className="text-xl font-semibold text-slate-900">
+          Authoritative references (official sources)
+        </h2>
+        <p className="mt-2 text-sm text-slate-600">
+          Use these for binding text and supervisory guidance; use SecureBiz AI for sector translation and implementation sequencing.
+        </p>
+        <ul className="mt-4 grid gap-2 text-sm sm:grid-cols-2">
+          <li><a className="text-blue-700 underline-offset-2 hover:underline" href="https://edpb.europa.eu/" target="_blank" rel="noreferrer">European Data Protection Board (EDPB)</a></li>
+          <li><a className="text-blue-700 underline-offset-2 hover:underline" href="https://commission.europa.eu/" target="_blank" rel="noreferrer">European Commission</a></li>
+          <li><a className="text-blue-700 underline-offset-2 hover:underline" href="https://www.aepd.es/" target="_blank" rel="noreferrer">AEPD (Spain DPA)</a></li>
+          <li><a className="text-blue-700 underline-offset-2 hover:underline" href="https://www.enisa.europa.eu/" target="_blank" rel="noreferrer">ENISA (NIS2, resilience)</a></li>
+          <li><a className="text-blue-700 underline-offset-2 hover:underline" href="https://www.iso.org/" target="_blank" rel="noreferrer">ISO Organization</a></li>
+          <li><a className="text-blue-700 underline-offset-2 hover:underline" href="https://ico.org.uk/" target="_blank" rel="noreferrer">ICO (UK guidance)</a></li>
+        </ul>
+      </section>
+
       <section className="mt-10 grid gap-4 md:grid-cols-2">
         <Link
           href="/sectors#catalog-search"
@@ -541,7 +558,7 @@ export default function Home() {
 
       <section className="mt-10 rounded-2xl border border-slate-200 bg-white p-6">
         <h2 className="text-2xl font-semibold text-slate-900">
-          Turn a search into an audit (in 3 steps)
+          Turn a search into implementation (in 3 steps)
         </h2>
         <ol className="mt-4 space-y-3 text-sm text-slate-700">
           <li>
@@ -556,9 +573,9 @@ export default function Home() {
           </li>
           <li>
             <span className="font-semibold text-slate-900">
-              Request an audit
+              Produce evidence
             </span>
-            : the form captures your context and tells you the next step (lead capture + affiliate).
+            : document what was changed, by whom, and where proof is stored (logs, tickets, approvals).
           </li>
         </ol>
       </section>
