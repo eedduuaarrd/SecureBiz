@@ -59,16 +59,7 @@ export const metadata: Metadata = {
     images: [getDefaultOgImageUrl()],
   },
   ...getGoogleSiteVerificationMetadata(),
-  // Force tab icon to the same brand asset.
-  icons: {
-    icon: [
-      { url: "/logo.png", type: "image/png", sizes: "32x32" },
-      { url: "/logo.png", type: "image/png", sizes: "192x192" },
-      { url: "/logo.png", type: "image/png", sizes: "512x512" },
-    ],
-    shortcut: ["/logo.png"],
-    apple: "/logo.png",
-  },
+  // Tab icons: `app/favicon.ico` and `app/icon.png` (same brand asset as `public/logo.png`).
 };
 
 export const viewport: Viewport = {
