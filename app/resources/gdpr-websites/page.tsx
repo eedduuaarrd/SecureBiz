@@ -74,6 +74,34 @@ export default function GdprWebsitesPage() {
       url,
     })),
   };
+  const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: [
+      {
+        "@type": "Question",
+        name: "Which GDPR sources are legally authoritative?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "Use EUR-Lex for binding legal text and supervisory authorities such as EDPB and national DPAs for interpretation and guidance.",
+        },
+      },
+      {
+        "@type": "Question",
+        name: "Can I rely only on private websites for GDPR decisions?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "No. Private resources are useful for learning, but legal decisions should be validated against official texts and qualified professionals.",
+        },
+      },
+    ],
+  };
+  const decisionRows = [
+    ["Legal text and recitals", "EUR-Lex", "Exact legal wording and updates"],
+    ["EU-level interpretation", "EDPB", "Cross-country consistency and guidance"],
+    ["Country enforcement context", "National DPA (e.g., AEPD, CNIL, ICO)", "Local supervisory expectations"],
+    ["Operational learning", "IAPP / GDPR.eu", "Training and practical implementation patterns"],
+  ] as const;
 
   return (
     <div className="mx-auto w-full max-w-4xl px-6 py-12">
@@ -84,6 +112,10 @@ export default function GdprWebsitesPage() {
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(itemListSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
       />
       <h1 className="text-3xl font-bold text-slate-900">Top 10 websites for GDPR</h1>
       <p className="mt-3 text-sm leading-relaxed text-slate-600">
@@ -117,6 +149,29 @@ export default function GdprWebsitesPage() {
           </li>
         ))}
       </ol>
+      <section className="mt-8 rounded-xl border border-slate-200 bg-white p-5">
+        <h2 className="text-lg font-semibold text-slate-900">How to choose the right source</h2>
+        <div className="mt-3 overflow-x-auto">
+          <table className="w-full min-w-[560px] border-collapse text-left text-sm text-slate-700">
+            <thead>
+              <tr className="border-b border-slate-200 bg-slate-50">
+                <th className="px-3 py-2 font-semibold text-slate-900">Need</th>
+                <th className="px-3 py-2 font-semibold text-slate-900">Best source</th>
+                <th className="px-3 py-2 font-semibold text-slate-900">Why</th>
+              </tr>
+            </thead>
+            <tbody>
+              {decisionRows.map((row) => (
+                <tr key={row[0]} className="border-b border-slate-100 last:border-b-0">
+                  <td className="px-3 py-2 font-medium">{row[0]}</td>
+                  <td className="px-3 py-2">{row[1]}</td>
+                  <td className="px-3 py-2">{row[2]}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </section>
 
       <section className="mt-10 rounded-xl border border-blue-100 bg-blue-50 p-5">
         <h2 className="text-lg font-semibold text-slate-900">How to use this list</h2>

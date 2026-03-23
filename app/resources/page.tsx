@@ -66,6 +66,34 @@ export default function ResourcesPage() {
       { "@type": "ListItem", position: 2, name: "Resources", item: pageUrl },
     ],
   };
+  const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: [
+      {
+        "@type": "Question",
+        name: "What is the best way to use these resources?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "Start with official sources for legal authority, then use practical guides and checklists to convert obligations into operational controls and evidence.",
+        },
+      },
+      {
+        "@type": "Question",
+        name: "Should I start with comparisons or checklists?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "Use comparison pages if you are deciding framework priority. Use checklists when priorities are already clear and you need immediate execution steps.",
+        },
+      },
+    ],
+  };
+  const workflowRows = [
+    ["Understand obligations", "Official institutions and legal texts", "GDPR websites list"],
+    ["Pick implementation order", "Framework comparison by context", "Comparison hub"],
+    ["Execute controls", "Action checklists and evidence templates", "Checklists hub"],
+    ["Scale by industry", "Sector-specific guides and constraints", "Sector and regulation hubs"],
+  ] as const;
 
   return (
     <div className="mx-auto w-full max-w-4xl px-6 py-12">
@@ -76,6 +104,10 @@ export default function ResourcesPage() {
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
       />
       <h1 className="text-3xl font-bold text-slate-900">Compliance resources</h1>
       <p className="mt-3 text-sm leading-relaxed text-slate-600">
@@ -112,6 +144,32 @@ export default function ResourcesPage() {
             Cross-framework references for governance, risk, and implementation across privacy and cybersecurity.
           </p>
         </Link>
+      </section>
+      <section className="mt-8 rounded-xl border border-slate-200 bg-white p-5">
+        <h2 className="text-lg font-semibold text-slate-900">Recommended workflow</h2>
+        <p className="mt-2 text-sm text-slate-600">
+          Use this sequence to move from reading to implementation without wasting effort.
+        </p>
+        <div className="mt-3 overflow-x-auto">
+          <table className="w-full min-w-[560px] border-collapse text-left text-sm text-slate-700">
+            <thead>
+              <tr className="border-b border-slate-200 bg-slate-50">
+                <th className="px-3 py-2 font-semibold text-slate-900">Step</th>
+                <th className="px-3 py-2 font-semibold text-slate-900">Goal</th>
+                <th className="px-3 py-2 font-semibold text-slate-900">Where to start</th>
+              </tr>
+            </thead>
+            <tbody>
+              {workflowRows.map((row) => (
+                <tr key={row[0]} className="border-b border-slate-100 last:border-b-0">
+                  <td className="px-3 py-2 font-medium">{row[0]}</td>
+                  <td className="px-3 py-2">{row[1]}</td>
+                  <td className="px-3 py-2">{row[2]}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
       </section>
       <section className="mt-8 rounded-xl border border-slate-200 bg-white p-5">
         <h2 className="text-lg font-semibold text-slate-900">Popular comparisons</h2>

@@ -73,6 +73,33 @@ export default function GdprIsoNis2GuidesPage() {
       url,
     })),
   };
+  const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: [
+      {
+        "@type": "Question",
+        name: "How should teams combine GDPR, ISO 27001, and NIS2?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "Start with scope and data reality, then implement a stable control baseline, and finally align governance and reporting expectations for resilience.",
+        },
+      },
+      {
+        "@type": "Question",
+        name: "Can one framework replace the others?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "Usually no. Each framework answers different questions; strong programs map overlaps and reuse evidence rather than replacing obligations.",
+        },
+      },
+    ],
+  };
+  const stackRows = [
+    ["Privacy and lawful processing", "GDPR sources (EDPB, DPAs, EUR-Lex)", "Data rights, legal basis, transparency and processor governance"],
+    ["Control discipline", "ISO 27001 references", "Repeatable risk treatment and auditable control lifecycle"],
+    ["Resilience governance", "NIS2 / ENISA context", "Incident readiness, supply-chain resilience and reporting posture"],
+  ] as const;
 
   return (
     <div className="mx-auto w-full max-w-4xl px-6 py-12">
@@ -83,6 +110,10 @@ export default function GdprIsoNis2GuidesPage() {
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(itemListSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
       />
       <h1 className="text-3xl font-bold text-slate-900">Top 10 GDPR + ISO 27001 + NIS2 guide sources</h1>
       <p className="mt-3 text-sm leading-relaxed text-slate-600">
@@ -116,6 +147,29 @@ export default function GdprIsoNis2GuidesPage() {
           </li>
         ))}
       </ol>
+      <section className="mt-8 rounded-xl border border-slate-200 bg-white p-5">
+        <h2 className="text-lg font-semibold text-slate-900">How the stack fits together</h2>
+        <div className="mt-3 overflow-x-auto">
+          <table className="w-full min-w-[560px] border-collapse text-left text-sm text-slate-700">
+            <thead>
+              <tr className="border-b border-slate-200 bg-slate-50">
+                <th className="px-3 py-2 font-semibold text-slate-900">Layer</th>
+                <th className="px-3 py-2 font-semibold text-slate-900">Primary references</th>
+                <th className="px-3 py-2 font-semibold text-slate-900">Operational output</th>
+              </tr>
+            </thead>
+            <tbody>
+              {stackRows.map((row) => (
+                <tr key={row[0]} className="border-b border-slate-100 last:border-b-0">
+                  <td className="px-3 py-2 font-medium">{row[0]}</td>
+                  <td className="px-3 py-2">{row[1]}</td>
+                  <td className="px-3 py-2">{row[2]}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </section>
 
       <section className="mt-10 rounded-xl border border-emerald-100 bg-emerald-50 p-5">
         <h2 className="text-lg font-semibold text-slate-900">Execution order (recommended)</h2>
