@@ -130,6 +130,20 @@ export default function ResourcesPage() {
           </Link>
         </div>
       </section>
+      <section className="mt-8 rounded-xl border border-slate-200 bg-white p-5">
+        <h2 className="text-lg font-semibold text-slate-900">Popular checklists</h2>
+        <div className="mt-3 flex flex-wrap gap-3">
+          <Link href="/checklists/gdpr-checklist-smb" className="rounded-md border border-slate-300 px-4 py-2 text-sm font-semibold text-slate-700 hover:bg-slate-50">
+            GDPR checklist
+          </Link>
+          <Link href="/checklists/iso-27001-checklist-smb" className="rounded-md border border-slate-300 px-4 py-2 text-sm font-semibold text-slate-700 hover:bg-slate-50">
+            ISO 27001 checklist
+          </Link>
+          <Link href="/checklists/nis2-checklist-smb" className="rounded-md border border-slate-300 px-4 py-2 text-sm font-semibold text-slate-700 hover:bg-slate-50">
+            NIS2 checklist
+          </Link>
+        </div>
+      </section>
     </div>
   );
 }

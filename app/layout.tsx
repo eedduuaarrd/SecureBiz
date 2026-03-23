@@ -137,6 +137,9 @@ export default function RootLayout({
               <Link href="/compare" className="hover:text-slate-800">
                 Compare
               </Link>
+              <Link href="/checklists" className="hover:text-slate-800">
+                Checklists
+              </Link>
               <Link href="/legal/privacy" className="hover:text-slate-800">
                 Privacy
               </Link>
