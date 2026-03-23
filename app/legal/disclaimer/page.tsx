@@ -75,7 +75,7 @@ export default function DisclaimerPage() {
         name: "Who do I contact if I find an error?",
         acceptedAnswer: {
           "@type": "Answer",
-          text: "Use the contact options published on the site. We appreciate corrections that improve accuracy for everyone.",
+          text: "Email privacy@securebiz.org with a concise description of the issue. We appreciate corrections that improve accuracy for everyone.",
         },
       },
       {
@@ -286,7 +286,7 @@ export default function DisclaimerPage() {
               {
                 title: "Who do I contact if I find an error?",
                 content:
-                  "Use the contact options published on the site. We appreciate corrections that improve accuracy for everyone.",
+                  "Email privacy@securebiz.org with a concise description of the issue. We appreciate corrections that improve accuracy for everyone.",
               },
               {
                 title: "Is this site a malware or download site?",

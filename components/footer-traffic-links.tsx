@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { POPULAR_TOPIC_LINKS } from "@/lib/popular-internal-links";
+import { preferNativeAnchorForHref } from "@/lib/prefer-native-anchor";
 
 export function FooterTrafficLinks() {
   return (
@@ -19,12 +20,21 @@ export function FooterTrafficLinks() {
       <ul className="mt-3 flex flex-wrap gap-x-3 gap-y-2 text-xs">
         {POPULAR_TOPIC_LINKS.map((item) => (
           <li key={item.href}>
-            <Link
-              href={item.href}
-              className="text-slate-600 underline-offset-2 hover:text-slate-900 hover:underline"
-            >
-              {item.label}
-            </Link>
+            {preferNativeAnchorForHref(item.href) ? (
+              <a
+                href={item.href}
+                className="text-slate-600 underline-offset-2 hover:text-slate-900 hover:underline"
+              >
+                {item.label}
+              </a>
+            ) : (
+              <Link
+                href={item.href}
+                className="text-slate-600 underline-offset-2 hover:text-slate-900 hover:underline"
+              >
+                {item.label}
+              </Link>
+            )}
           </li>
         ))}
       </ul>

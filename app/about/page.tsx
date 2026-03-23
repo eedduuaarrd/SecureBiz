@@ -134,9 +134,9 @@ export default function AboutPage() {
           <p className="mt-3 text-sm leading-relaxed">
             Content is structured for <strong>implementation</strong>: sector vocabulary, risk themes, evidence checkpoints,
             and phased plans. Long-form guides pair one sector with one regulation so examples stay concrete; hubs and the{" "}
-            <Link className="font-medium text-blue-700 underline" href="/sitemap.xml">
+            <a className="font-medium text-blue-700 underline" href="/sitemap.xml">
               XML sitemap
-            </Link>{" "}
+            </a>{" "}
             help you discover every URL without memorising patterns.
           </p>
           <p className="mt-3 text-sm leading-relaxed">
@@ -195,8 +195,11 @@ export default function AboutPage() {
         <section id="contact" className="scroll-mt-24">
           <h2 className="text-xl font-semibold text-slate-900">Errors & feedback</h2>
           <p className="mt-3 text-sm leading-relaxed">
-            Compliance content changes. If you spot a factual issue or a broken link, we appreciate concise reports so we
-            can improve the site for everyone—see contact options when published on the site.
+            Compliance content changes. If you spot a factual issue or a broken link, send a short note to{" "}
+            <a className="font-medium text-blue-700 underline" href="mailto:privacy@securebiz.org">
+              privacy@securebiz.org
+            </a>{" "}
+            so we can fix it for everyone.
           </p>
         </section>
       </div>

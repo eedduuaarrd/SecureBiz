@@ -74,11 +74,15 @@ export function SiteHeader() {
           >
             <summary
               aria-expanded={mobileOpen}
+              aria-controls="primary-mobile-menu"
               className="min-h-11 min-w-11 cursor-pointer list-none rounded-lg border border-slate-200 bg-white px-3 py-2.5 text-sm font-semibold text-slate-800 shadow-sm touch-manipulation active:bg-slate-50 [&::-webkit-details-marker]:hidden"
             >
               Menu
             </summary>
-            <div className="absolute right-0 z-50 mt-2 w-[min(100vw-2rem,22rem)] rounded-xl border border-slate-200 bg-white p-2 shadow-xl">
+            <div
+              id="primary-mobile-menu"
+              className="absolute right-0 z-50 mt-2 w-[min(100vw-2rem,22rem)] rounded-xl border border-slate-200 bg-white p-2 shadow-xl"
+            >
             <nav className="max-h-[75vh] overflow-y-auto pb-[max(0.5rem,env(safe-area-inset-bottom))]" aria-label="Primary mobile">
               <p className="px-3 pb-1 pt-1 text-xs font-semibold uppercase tracking-wide text-slate-500">Explore</p>
               <ul className="flex flex-col gap-1">
