@@ -1,9 +1,5 @@
 import Link from "next/link";
-import {
-  ADSENSE_PUBLISHER_CA,
-  GOOGLE_AD_SETTINGS,
-  GOOGLE_PARTNER_PRIVACY,
-} from "@/lib/site-ads";
+import { GOOGLE_AD_SETTINGS, GOOGLE_PARTNER_PRIVACY } from "@/lib/site-ads";
 
 /**
  * Global disclosure for Google AdSense (transparency + EU expectations).
@@ -19,11 +15,7 @@ export function PublisherAdNotice() {
       <p>
         <span className="font-semibold text-slate-700">Advertising.</span> Some
         pages may show ads through{" "}
-        <strong className="text-slate-800">Google AdSense</strong> (publisher{" "}
-        <code className="rounded bg-white px-1 py-0.5 text-[11px] text-slate-800">
-          {ADSENSE_PUBLISHER_CA}
-        </code>
-        ). Google may use cookies or similar technologies to serve and measure
+        <strong className="text-slate-800">Google AdSense</strong>. Google may use cookies or similar technologies to serve and measure
         ads, including personalised ads where allowed. Ads are provided by Google;
         advertisers are not endorsed by SecureBiz AI. See{" "}
         <Link href="/legal/privacy" className="font-medium text-blue-700 underline">

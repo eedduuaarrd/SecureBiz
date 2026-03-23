@@ -3,7 +3,7 @@ import Link from "next/link";
 import { IntentLinksBlock } from "@/components/intent-links-block";
 import { SeoAccordion } from "@/components/seo-accordion";
 import { PageToc, UsefulDataTable } from "@/components/site-education-blocks";
-import { ADSENSE_PUBLISHER_CA, GOOGLE_AD_SETTINGS } from "@/lib/site-ads";
+import { GOOGLE_AD_SETTINGS } from "@/lib/site-ads";
 import { absoluteUrl } from "@/lib/site";
 
 export const metadata: Metadata = {
@@ -183,8 +183,7 @@ export default function CookiesPage() {
                 <td className="px-3 py-2 font-medium">Google AdSense</td>
                 <td className="px-3 py-2">
                   Google may set or read cookies and use identifiers to serve and measure ads (including personalised
-                  ads where allowed), limit invalid traffic, and cap frequency. Publisher ID:{" "}
-                  <code className="text-slate-800">{ADSENSE_PUBLISHER_CA}</code>. See also the{" "}
+                  ads where allowed), limit invalid traffic, and cap frequency. See also the{" "}
                   <Link className="text-blue-700 underline" href="/legal/privacy#adsense">
                     Privacy Policy (AdSense section)
                   </Link>

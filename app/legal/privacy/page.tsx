@@ -3,11 +3,7 @@ import Link from "next/link";
 import { IntentLinksBlock } from "@/components/intent-links-block";
 import { SeoAccordion } from "@/components/seo-accordion";
 import { PageToc, UsefulDataTable } from "@/components/site-education-blocks";
-import {
-  ADSENSE_PUBLISHER_CA,
-  GOOGLE_AD_SETTINGS,
-  GOOGLE_PARTNER_PRIVACY,
-} from "@/lib/site-ads";
+import { GOOGLE_AD_SETTINGS, GOOGLE_PARTNER_PRIVACY } from "@/lib/site-ads";
 import { absoluteUrl } from "@/lib/site";
 
 export const metadata: Metadata = {
@@ -276,9 +272,7 @@ export default function PrivacyPage() {
           <h2 className="text-xl font-semibold text-slate-900">Google AdSense &amp; advertising</h2>
           <p className="mt-3 text-sm leading-relaxed">
             We may monetise parts of <strong>securebiz.org</strong> using{" "}
-            <strong>Google AdSense</strong> (publisher identifier{" "}
-            <code className="text-slate-800">{ADSENSE_PUBLISHER_CA}</code>
-            ), which places ads served by Google and its partners. When you view or interact with ads, Google may
+            <strong>Google AdSense</strong>, which places ads served by Google and its partners. When you view or interact with ads, Google may
             process data (such as your IP address, device or browser signals, and cookie or mobile identifiers) to
             deliver, personalise and measure advertising, and to help prevent fraud—as described in Google&apos;s
             policies, not re-written here in full.
