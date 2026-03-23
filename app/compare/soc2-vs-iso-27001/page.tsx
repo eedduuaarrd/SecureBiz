@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { IntentLinksBlock } from "@/components/intent-links-block";
 import { getRobotsAllowAll } from "@/lib/seo";
 import { absoluteUrl } from "@/lib/site";
 
@@ -139,20 +140,20 @@ export default function Soc2VsIsoPage() {
           <li>Choosing framework order without checking real buyer demand.</li>
         </ul>
       </section>
-      <div className="mt-8 flex flex-wrap gap-3">
+      <div className="mt-8">
         <Link href="/regulations" className="rounded-md bg-slate-900 px-4 py-2 text-sm font-semibold text-white hover:bg-slate-800">
           Open regulation hub
         </Link>
-        <Link href="/compare" className="rounded-md border border-slate-300 px-4 py-2 text-sm font-semibold text-slate-700 hover:bg-slate-50">
-          All comparisons
-        </Link>
-        <Link href="/compare/gdpr-vs-iso-27001" className="rounded-md border border-slate-300 px-4 py-2 text-sm font-semibold text-slate-700 hover:bg-slate-50">
-          Read GDPR vs ISO 27001
-        </Link>
-        <Link href="/checklists/iso-27001-checklist-smb" className="rounded-md border border-slate-300 px-4 py-2 text-sm font-semibold text-slate-700 hover:bg-slate-50">
-          ISO 27001 checklist (SMB)
-        </Link>
       </div>
+      <IntentLinksBlock
+        title="Related by intent"
+        items={[
+          { href: "/compare/gdpr-vs-iso-27001", label: "GDPR vs ISO 27001" },
+          { href: "/compare/nis2-vs-iso-27001", label: "NIS2 vs ISO 27001" },
+          { href: "/checklists/iso-27001-checklist-smb", label: "ISO 27001 checklist (SMB)" },
+          { href: "/checklists/gdpr-checklist-smb", label: "GDPR checklist (SMB)" },
+        ]}
+      />
     </div>
   );
 }

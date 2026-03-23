@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { IntentLinksBlock } from "@/components/intent-links-block";
 import { getRobotsAllowAll } from "@/lib/seo";
 import { absoluteUrl } from "@/lib/site";
 
@@ -102,6 +103,15 @@ export default function GdprChecklistSmbPage() {
         <Link href="/checklists" className="rounded-md border border-slate-300 px-4 py-2 text-sm font-semibold text-slate-700 hover:bg-slate-50">All checklists</Link>
         <Link href="/compare/gdpr-vs-iso-27001" className="rounded-md border border-slate-300 px-4 py-2 text-sm font-semibold text-slate-700 hover:bg-slate-50">GDPR vs ISO 27001</Link>
       </div>
+      <IntentLinksBlock
+        title="Related by intent"
+        items={[
+          { href: "/compare/gdpr-vs-nis2", label: "GDPR vs NIS2" },
+          { href: "/checklists/iso-27001-checklist-smb", label: "ISO 27001 checklist (SMB)" },
+          { href: "/resources/gdpr-websites", label: "Top GDPR websites" },
+          { href: "/resources", label: "Resources hub" },
+        ]}
+      />
     </div>
   );
 }

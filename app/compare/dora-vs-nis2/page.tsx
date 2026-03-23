@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { IntentLinksBlock } from "@/components/intent-links-block";
 import { getRobotsAllowAll } from "@/lib/seo";
 import { absoluteUrl } from "@/lib/site";
 
@@ -139,20 +140,20 @@ export default function DoraVsNis2Page() {
           <li>Keeping incident and supplier evidence fragmented across teams.</li>
         </ul>
       </section>
-      <div className="mt-8 flex flex-wrap gap-3">
+      <div className="mt-8">
         <Link href="/regulations" className="rounded-md bg-slate-900 px-4 py-2 text-sm font-semibold text-white hover:bg-slate-800">
           Open regulation hub
         </Link>
-        <Link href="/compare" className="rounded-md border border-slate-300 px-4 py-2 text-sm font-semibold text-slate-700 hover:bg-slate-50">
-          All comparisons
-        </Link>
-        <Link href="/compare/nis2-vs-iso-27001" className="rounded-md border border-slate-300 px-4 py-2 text-sm font-semibold text-slate-700 hover:bg-slate-50">
-          Read NIS2 vs ISO 27001
-        </Link>
-        <Link href="/checklists/nis2-checklist-smb" className="rounded-md border border-slate-300 px-4 py-2 text-sm font-semibold text-slate-700 hover:bg-slate-50">
-          NIS2 checklist (SMB)
-        </Link>
       </div>
+      <IntentLinksBlock
+        title="Related by intent"
+        items={[
+          { href: "/compare/nis2-vs-iso-27001", label: "NIS2 vs ISO 27001" },
+          { href: "/compare/gdpr-vs-nis2", label: "GDPR vs NIS2" },
+          { href: "/checklists/nis2-checklist-smb", label: "NIS2 checklist (SMB)" },
+          { href: "/checklists/iso-27001-checklist-smb", label: "ISO 27001 checklist (SMB)" },
+        ]}
+      />
     </div>
   );
 }
