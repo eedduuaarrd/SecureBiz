@@ -6,29 +6,28 @@ import {
   getRegulationSeedsForSectorSlug,
   seedRegulations,
 } from "@/lib/catalog";
+import { getAllChecklistContent } from "@/lib/checklist-content";
+import { getAllCompareContent } from "@/lib/compare-content";
 import { SECTOR_SUBPAGE_SLUGS } from "@/lib/sector-subpage-content";
 
 /** Marketing / hub pages (no trailing slash; "" = home). */
+const COMPARE_PATHS = getAllCompareContent().map((item) => `/compare/${item.slug}`);
+const CHECKLIST_PATHS = getAllChecklistContent().map((item) => `/checklists/${item.slug}`);
+
 export const HUB_PATHS = [
   "",
   "/about",
   "/compare",
-  "/compare/gdpr-vs-iso-27001",
-  "/compare/nis2-vs-iso-27001",
-  "/compare/gdpr-vs-nis2",
-  "/compare/soc2-vs-iso-27001",
-  "/compare/dora-vs-nis2",
+  ...COMPARE_PATHS,
   "/checklists",
-  "/checklists/gdpr-checklist-smb",
-  "/checklists/iso-27001-checklist-smb",
-  "/checklists/nis2-checklist-smb",
+  ...CHECKLIST_PATHS,
   "/resources",
   "/resources/gdpr-websites",
   "/resources/gdpr-iso-27001-nis2-guides",
   "/sectors",
   "/regulations",
   "/normatives",
-] as const;
+];
 
 export const LEGAL_PATHS = [
   "/legal/disclaimer",

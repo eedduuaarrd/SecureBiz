@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { getAllCompareContent } from "@/lib/compare-content";
 import { getRobotsAllowAll } from "@/lib/seo";
 import { absoluteUrl } from "@/lib/site";
 
@@ -38,6 +39,7 @@ export const metadata: Metadata = {
 };
 
 export default function CompareHubPage() {
+  const comparisons = getAllCompareContent();
   const breadcrumbSchema = {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
@@ -50,38 +52,12 @@ export default function CompareHubPage() {
     "@context": "https://schema.org",
     "@type": "ItemList",
     name: "Compliance comparisons",
-    itemListElement: [
-      {
-        "@type": "ListItem",
-        position: 1,
-        name: "GDPR vs ISO 27001",
-        url: absoluteUrl("/compare/gdpr-vs-iso-27001"),
-      },
-      {
-        "@type": "ListItem",
-        position: 2,
-        name: "NIS2 vs ISO 27001",
-        url: absoluteUrl("/compare/nis2-vs-iso-27001"),
-      },
-      {
-        "@type": "ListItem",
-        position: 3,
-        name: "GDPR vs NIS2",
-        url: absoluteUrl("/compare/gdpr-vs-nis2"),
-      },
-      {
-        "@type": "ListItem",
-        position: 4,
-        name: "SOC 2 vs ISO 27001",
-        url: absoluteUrl("/compare/soc2-vs-iso-27001"),
-      },
-      {
-        "@type": "ListItem",
-        position: 5,
-        name: "DORA vs NIS2",
-        url: absoluteUrl("/compare/dora-vs-nis2"),
-      },
-    ],
+    itemListElement: comparisons.map((comparison, index) => ({
+      "@type": "ListItem",
+      position: index + 1,
+      name: comparison.title,
+      url: absoluteUrl(`/compare/${comparison.slug}`),
+    })),
   };
 
   return (
@@ -96,65 +72,21 @@ export default function CompareHubPage() {
       />
       <h1 className="text-3xl font-bold text-slate-900">Compliance comparisons</h1>
       <p className="mt-3 text-sm leading-relaxed text-slate-600">
-        These pages are built for high-intent searches such as GDPR vs ISO 27001 and NIS2 vs ISO 27001.
-        Each comparison focuses on scope, evidence, and practical implementation order.
+        Compare 25 practical compliance pairings with implementation sequence, common mistakes, KPI
+        targets, and FAQ guidance for better execution.
       </p>
       <ul className="mt-8 grid gap-4 md:grid-cols-2">
-        <li>
-          <Link
-            href="/compare/gdpr-vs-iso-27001"
-            className="block rounded-xl border border-slate-200 bg-white p-5 shadow-sm hover:border-blue-300"
-          >
-            <h2 className="text-lg font-semibold text-slate-900">GDPR vs ISO 27001</h2>
-            <p className="mt-2 text-sm text-slate-600">
-              Privacy law obligations versus certifiable ISMS controls.
-            </p>
-          </Link>
-        </li>
-        <li>
-          <Link
-            href="/compare/nis2-vs-iso-27001"
-            className="block rounded-xl border border-slate-200 bg-white p-5 shadow-sm hover:border-blue-300"
-          >
-            <h2 className="text-lg font-semibold text-slate-900">NIS2 vs ISO 27001</h2>
-            <p className="mt-2 text-sm text-slate-600">
-              Regulatory cyber-resilience expectations versus ISMS discipline.
-            </p>
-          </Link>
-        </li>
-        <li>
-          <Link
-            href="/compare/gdpr-vs-nis2"
-            className="block rounded-xl border border-slate-200 bg-white p-5 shadow-sm hover:border-blue-300"
-          >
-            <h2 className="text-lg font-semibold text-slate-900">GDPR vs NIS2</h2>
-            <p className="mt-2 text-sm text-slate-600">
-              Data-protection obligations versus cyber-resilience governance.
-            </p>
-          </Link>
-        </li>
-        <li>
-          <Link
-            href="/compare/soc2-vs-iso-27001"
-            className="block rounded-xl border border-slate-200 bg-white p-5 shadow-sm hover:border-blue-300"
-          >
-            <h2 className="text-lg font-semibold text-slate-900">SOC 2 vs ISO 27001</h2>
-            <p className="mt-2 text-sm text-slate-600">
-              Trust-services reporting versus certifiable management systems.
-            </p>
-          </Link>
-        </li>
-        <li>
-          <Link
-            href="/compare/dora-vs-nis2"
-            className="block rounded-xl border border-slate-200 bg-white p-5 shadow-sm hover:border-blue-300"
-          >
-            <h2 className="text-lg font-semibold text-slate-900">DORA vs NIS2</h2>
-            <p className="mt-2 text-sm text-slate-600">
-              Financial operational resilience versus broader essential-entity cyber obligations.
-            </p>
-          </Link>
-        </li>
+        {comparisons.map((comparison) => (
+          <li key={comparison.slug}>
+            <Link
+              href={`/compare/${comparison.slug}`}
+              className="block rounded-xl border border-slate-200 bg-white p-5 shadow-sm hover:border-blue-300"
+            >
+              <h2 className="text-lg font-semibold text-slate-900">{comparison.title}</h2>
+              <p className="mt-2 text-sm text-slate-600">{comparison.description}</p>
+            </Link>
+          </li>
+        ))}
       </ul>
       <section className="mt-10 rounded-xl border border-slate-200 bg-white p-5">
         <h2 className="text-lg font-semibold text-slate-900">Where to go next</h2>

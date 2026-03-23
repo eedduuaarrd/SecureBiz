@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { getAllChecklistContent } from "@/lib/checklist-content";
 import { getRobotsAllowAll } from "@/lib/seo";
 import { absoluteUrl } from "@/lib/site";
 
@@ -38,6 +39,7 @@ export const metadata: Metadata = {
 };
 
 export default function ChecklistsHubPage() {
+  const checklists = getAllChecklistContent();
   const breadcrumbSchema = {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
@@ -47,35 +49,45 @@ export default function ChecklistsHubPage() {
     ],
   };
 
+  const itemListSchema = {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    name: "Compliance checklists",
+    itemListElement: checklists.map((checklist, index) => ({
+      "@type": "ListItem",
+      position: index + 1,
+      name: checklist.title,
+      url: absoluteUrl(`/checklists/${checklist.slug}`),
+    })),
+  };
+
   return (
     <div className="mx-auto w-full max-w-4xl px-6 py-12">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
       />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(itemListSchema) }}
+      />
       <h1 className="text-3xl font-bold text-slate-900">Compliance checklists</h1>
       <p className="mt-3 text-sm leading-relaxed text-slate-600">
-        Practical execution lists for teams that need to move fast from planning to implementation.
+        23 execution-focused checklists with controls, evidence tracking, rollout plans, common mistakes,
+        and KPI targets.
       </p>
       <ul className="mt-8 grid gap-4 md:grid-cols-2">
-        <li>
-          <Link href="/checklists/gdpr-checklist-smb" className="block rounded-xl border border-slate-200 bg-white p-5 shadow-sm hover:border-blue-300">
-            <h2 className="text-lg font-semibold text-slate-900">GDPR checklist for SMBs</h2>
-            <p className="mt-2 text-sm text-slate-600">Data inventory, lawful basis, rights handling, and evidence routine.</p>
-          </Link>
-        </li>
-        <li>
-          <Link href="/checklists/iso-27001-checklist-smb" className="block rounded-xl border border-slate-200 bg-white p-5 shadow-sm hover:border-blue-300">
-            <h2 className="text-lg font-semibold text-slate-900">ISO 27001 checklist for SMBs</h2>
-            <p className="mt-2 text-sm text-slate-600">Scope, risk treatment, controls, internal audit and management review basics.</p>
-          </Link>
-        </li>
-        <li>
-          <Link href="/checklists/nis2-checklist-smb" className="block rounded-xl border border-slate-200 bg-white p-5 shadow-sm hover:border-blue-300">
-            <h2 className="text-lg font-semibold text-slate-900">NIS2 checklist for SMBs</h2>
-            <p className="mt-2 text-sm text-slate-600">Governance, incident readiness, supplier controls, and reporting discipline.</p>
-          </Link>
-        </li>
+        {checklists.map((checklist) => (
+          <li key={checklist.slug}>
+            <Link
+              href={`/checklists/${checklist.slug}`}
+              className="block rounded-xl border border-slate-200 bg-white p-5 shadow-sm hover:border-blue-300"
+            >
+              <h2 className="text-lg font-semibold text-slate-900">{checklist.title}</h2>
+              <p className="mt-2 text-sm text-slate-600">{checklist.description}</p>
+            </Link>
+          </li>
+        ))}
       </ul>
     </div>
   );
