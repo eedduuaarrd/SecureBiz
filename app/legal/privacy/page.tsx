@@ -15,7 +15,13 @@ export const metadata: Metadata = {
     "GDPR rights",
     "personal data processing",
   ],
-  alternates: { canonical: "/legal/privacy" },
+  alternates: {
+    canonical: "/legal/privacy",
+    languages: {
+      "x-default": "/legal/privacy",
+      en: "/legal/privacy",
+    },
+  },
   openGraph: {
     type: "article",
     url: "/legal/privacy",
@@ -377,6 +383,31 @@ export default function PrivacyPage() {
             ]}
           />
         </div>
+      </section>
+      <section className="mt-8 rounded-xl border border-slate-200 bg-white p-5">
+        <h2 className="text-lg font-semibold text-slate-900">Related pages</h2>
+        <ul className="mt-3 grid gap-2 text-sm sm:grid-cols-2">
+          <li>
+            <Link href="/legal/disclaimer" className="text-blue-700 underline-offset-2 hover:underline">
+              Legal disclaimer
+            </Link>
+          </li>
+          <li>
+            <Link href="/legal/cookies" className="text-blue-700 underline-offset-2 hover:underline">
+              Cookie policy
+            </Link>
+          </li>
+          <li>
+            <Link href="/about" className="text-blue-700 underline-offset-2 hover:underline">
+              About SecureBiz AI
+            </Link>
+          </li>
+          <li>
+            <Link href="/resources/gdpr-websites" className="text-blue-700 underline-offset-2 hover:underline">
+              Top 10 GDPR websites
+            </Link>
+          </li>
+        </ul>
       </section>
     </div>
   );

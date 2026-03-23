@@ -15,7 +15,13 @@ export const metadata: Metadata = {
     "cookie consent",
     "tracking technologies",
   ],
-  alternates: { canonical: "/legal/cookies" },
+  alternates: {
+    canonical: "/legal/cookies",
+    languages: {
+      "x-default": "/legal/cookies",
+      en: "/legal/cookies",
+    },
+  },
   openGraph: {
     type: "article",
     url: "/legal/cookies",
@@ -258,6 +264,31 @@ export default function CookiesPage() {
             ]}
           />
         </div>
+      </section>
+      <section className="mt-8 rounded-xl border border-slate-200 bg-white p-5">
+        <h2 className="text-lg font-semibold text-slate-900">Related pages</h2>
+        <ul className="mt-3 grid gap-2 text-sm sm:grid-cols-2">
+          <li>
+            <Link href="/legal/privacy" className="text-blue-700 underline-offset-2 hover:underline">
+              Privacy policy
+            </Link>
+          </li>
+          <li>
+            <Link href="/legal/disclaimer" className="text-blue-700 underline-offset-2 hover:underline">
+              Legal disclaimer
+            </Link>
+          </li>
+          <li>
+            <Link href="/resources" className="text-blue-700 underline-offset-2 hover:underline">
+              Compliance resources
+            </Link>
+          </li>
+          <li>
+            <Link href="/regulations" className="text-blue-700 underline-offset-2 hover:underline">
+              Regulation comparison hub
+            </Link>
+          </li>
+        </ul>
       </section>
     </div>
   );

@@ -25,6 +25,10 @@ export const metadata: Metadata = {
   ],
   alternates: {
     canonical: "/sectors",
+    languages: {
+      "x-default": "/sectors",
+      en: "/sectors",
+    },
   },
   openGraph: {
     url: "/sectors",

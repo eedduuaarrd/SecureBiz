@@ -104,6 +104,10 @@ export async function generateMetadata({
       description: `Sector-specific ${fallbackRegulation.name} checklist for ${fallbackSector.name}, with practical actions and evidence guidance.`,
       alternates: {
         canonical: fallbackPath,
+        languages: {
+          "x-default": fallbackPath,
+          en: fallbackPath,
+        },
       },
       openGraph: {
         type: "article",
@@ -134,6 +138,10 @@ export async function generateMetadata({
     keywords: guide.keywords?.length ? guide.keywords : undefined,
     alternates: {
       canonical: path,
+      languages: {
+        "x-default": path,
+        en: path,
+      },
     },
     openGraph: {
       type: "article",

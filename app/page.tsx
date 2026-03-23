@@ -35,6 +35,10 @@ export const metadata: Metadata = {
   ],
   alternates: {
     canonical: "/",
+    languages: {
+      "x-default": "/",
+      en: "/",
+    },
   },
   openGraph: {
     type: "website",
@@ -97,6 +101,11 @@ export default function Home() {
     alternateName: [...BRAND_ALTERNATE_NAMES],
     url: siteUrl,
     description: DEFAULT_DESCRIPTION,
+    potentialAction: {
+      "@type": "SearchAction",
+      target: `${siteUrl}/sectors#catalog-search`,
+      "query-input": "required name=search_term_string",
+    },
     publisher: {
       "@type": "Organization",
       name: SITE_NAME,
@@ -106,6 +115,18 @@ export default function Home() {
         url: absoluteUrl("/logo.png"),
       },
     },
+  };
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      {
+        "@type": "ListItem",
+        position: 1,
+        name: "Home",
+        item: absoluteUrl("/"),
+      },
+    ],
   };
 
   const featuredItemListSchema = {
@@ -227,6 +248,10 @@ export default function Home() {
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
       />
       <script
         type="application/ld+json"

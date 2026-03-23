@@ -28,7 +28,13 @@ export const metadata: Metadata = {
     "ICO GDPR guidance",
     "GDPR official sources",
   ],
-  alternates: { canonical: "/resources/gdpr-websites" },
+  alternates: {
+    canonical: "/resources/gdpr-websites",
+    languages: {
+      "x-default": "/resources/gdpr-websites",
+      en: "/resources/gdpr-websites",
+    },
+  },
   openGraph: {
     type: "article",
     url: "/resources/gdpr-websites",

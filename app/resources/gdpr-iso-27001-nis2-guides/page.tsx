@@ -27,7 +27,13 @@ export const metadata: Metadata = {
     "GDPR and cybersecurity governance",
     "GRC resources",
   ],
-  alternates: { canonical: "/resources/gdpr-iso-27001-nis2-guides" },
+  alternates: {
+    canonical: "/resources/gdpr-iso-27001-nis2-guides",
+    languages: {
+      "x-default": "/resources/gdpr-iso-27001-nis2-guides",
+      en: "/resources/gdpr-iso-27001-nis2-guides",
+    },
+  },
   openGraph: {
     type: "article",
     url: "/resources/gdpr-iso-27001-nis2-guides",

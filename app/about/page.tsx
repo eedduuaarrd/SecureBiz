@@ -14,7 +14,13 @@ export const metadata: Metadata = {
     "ISO 27001 sector guides",
     "NIS2 practical guidance",
   ],
-  alternates: { canonical: "/about" },
+  alternates: {
+    canonical: "/about",
+    languages: {
+      "x-default": "/about",
+      en: "/about",
+    },
+  },
   openGraph: {
     type: "website",
     url: "/about",

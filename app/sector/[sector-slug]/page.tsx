@@ -65,6 +65,10 @@ export async function generateMetadata({
     ],
     alternates: {
       canonical: path,
+      languages: {
+        "x-default": path,
+        en: path,
+      },
     },
     openGraph: {
       type: "website",

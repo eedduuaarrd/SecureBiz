@@ -15,7 +15,13 @@ export const metadata: Metadata = {
     "affiliate disclosure",
     "website liability limitation",
   ],
-  alternates: { canonical: "/legal/disclaimer" },
+  alternates: {
+    canonical: "/legal/disclaimer",
+    languages: {
+      "x-default": "/legal/disclaimer",
+      en: "/legal/disclaimer",
+    },
+  },
   openGraph: {
     type: "article",
     url: "/legal/disclaimer",
@@ -270,6 +276,31 @@ export default function DisclaimerPage() {
             ]}
           />
         </div>
+      </section>
+      <section className="mt-8 rounded-xl border border-slate-200 bg-white p-5">
+        <h2 className="text-lg font-semibold text-slate-900">Related pages</h2>
+        <ul className="mt-3 grid gap-2 text-sm sm:grid-cols-2">
+          <li>
+            <Link href="/about" className="text-blue-700 underline-offset-2 hover:underline">
+              About SecureBiz AI
+            </Link>
+          </li>
+          <li>
+            <Link href="/resources" className="text-blue-700 underline-offset-2 hover:underline">
+              Compliance resources
+            </Link>
+          </li>
+          <li>
+            <Link href="/legal/privacy" className="text-blue-700 underline-offset-2 hover:underline">
+              Privacy policy
+            </Link>
+          </li>
+          <li>
+            <Link href="/legal/cookies" className="text-blue-700 underline-offset-2 hover:underline">
+              Cookie policy
+            </Link>
+          </li>
+        </ul>
       </section>
     </div>
   );

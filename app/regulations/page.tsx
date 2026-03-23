@@ -22,6 +22,10 @@ export const metadata: Metadata = {
   ],
   alternates: {
     canonical: "/regulations",
+    languages: {
+      "x-default": "/regulations",
+      en: "/regulations",
+    },
   },
   openGraph: {
     url: "/regulations",

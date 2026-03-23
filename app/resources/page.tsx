@@ -14,7 +14,13 @@ export const metadata: Metadata = {
     "compliance references",
     "privacy and security guides",
   ],
-  alternates: { canonical: "/resources" },
+  alternates: {
+    canonical: "/resources",
+    languages: {
+      "x-default": "/resources",
+      en: "/resources",
+    },
+  },
   openGraph: {
     type: "website",
     url: "/resources",

@@ -52,7 +52,13 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       `${sector.name} security controls`,
       "sector compliance operations",
     ],
-    alternates: { canonical: path },
+    alternates: {
+      canonical: path,
+      languages: {
+        "x-default": path,
+        en: path,
+      },
+    },
     openGraph: {
       type: "article",
       title: doc.title,
