@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { SeoAccordion } from "@/components/seo-accordion";
 import { PageToc, UsefulDataTable } from "@/components/site-education-blocks";
 
@@ -103,9 +104,9 @@ export default function PrivacyPage() {
             </li>
             <li>
               <strong>Cookie / device identifiers</strong>: as described in our{" "}
-              <a className="text-blue-700 underline" href="/legal/cookies">
+              <Link className="text-blue-700 underline" href="/legal/cookies">
                 Cookie Policy
-              </a>
+              </Link>
               .
             </li>
           </ul>
@@ -201,9 +202,9 @@ export default function PrivacyPage() {
           <p className="mt-3 text-sm leading-relaxed">
             We may use cookies, local storage, pixels, or SDKs for essential operation, measurement, and (where
             applicable) advertising. Details, categories, and controls are in the{" "}
-            <a className="text-blue-700 underline" href="/legal/cookies">
+            <Link className="text-blue-700 underline" href="/legal/cookies">
               Cookie Policy
-            </a>
+            </Link>
             .
           </p>
         </section>

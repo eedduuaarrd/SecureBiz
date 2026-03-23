@@ -16,6 +16,13 @@ export const metadata: Metadata = {
   title: "Professional sectors | GDPR & cybersecurity guides",
   description:
     "Search 500+ sector profiles: GDPR, ISO 27001, NIS2, cookies—guides per industry with checklists, risks, and audit paths.",
+  keywords: [
+    "sector compliance guides",
+    "GDPR by industry",
+    "ISO 27001 by sector",
+    "NIS2 sectors",
+    "SMB cybersecurity by sector",
+  ],
   alternates: {
     canonical: "/sectors",
   },

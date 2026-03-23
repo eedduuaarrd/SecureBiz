@@ -13,7 +13,7 @@ export function SeoAccordion({ items }: { items: SeoAccordionItem[] }) {
     <div className="divide-y divide-slate-200 rounded-xl border border-slate-200 bg-white">
       {items.map((item, i) => (
         <details key={i} className="group p-4 open:bg-slate-50/80">
-          <summary className="cursor-pointer list-none text-sm font-semibold text-slate-900 [&::-webkit-details-marker]:hidden">
+          <summary className="min-h-11 cursor-pointer list-none py-1 text-base font-semibold text-slate-900 touch-manipulation sm:min-h-0 sm:text-sm [&::-webkit-details-marker]:hidden">
             <span className="flex w-full items-start justify-between gap-3">
               <span>{item.title}</span>
               <span
@@ -24,7 +24,7 @@ export function SeoAccordion({ items }: { items: SeoAccordionItem[] }) {
               </span>
             </span>
           </summary>
-          <div className="mt-3 text-sm leading-relaxed text-slate-700">{item.content}</div>
+          <div className="mt-3 text-[15px] leading-relaxed text-slate-700 sm:text-sm">{item.content}</div>
         </details>
       ))}
     </div>

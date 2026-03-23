@@ -12,6 +12,14 @@ export const metadata: Metadata = {
   title: "Regulations | GDPR, ISO 27001, NIS2, DORA & more",
   description:
     "Compare GDPR, ISO 27001, cookie law, NIS2, DORA, SOC 2—then open sector-specific guides with evidence, pitfalls, and rollout phases.",
+  keywords: [
+    "GDPR guide",
+    "ISO 27001 guide",
+    "NIS2 guide",
+    "DORA compliance",
+    "SOC 2 controls",
+    "regulation comparison",
+  ],
   alternates: {
     canonical: "/regulations",
   },

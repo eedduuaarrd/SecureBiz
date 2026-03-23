@@ -520,3 +520,52 @@ export function getSectorSubpageLabel(slug: SectorSubpageSlug): string {
   };
   return labels[slug];
 }
+
+export function getSectorSubpageContext(
+  sectorName: string,
+  subSlug: SectorSubpageSlug,
+): { title: string; paragraphs: string[] } {
+  if (subSlug === "checklist") {
+    return {
+      title: `How to use this checklist in ${sectorName}`,
+      paragraphs: [
+        `Run it with operations and whoever owns tooling in ${sectorName}. Mark each point as done / partial / unknown and attach one evidence item per done control.`,
+        "Avoid policy-only progress. If a control is \"done\", there should be a log, ticket, screenshot, or contract to prove it.",
+      ],
+    };
+  }
+  if (subSlug === "tools-stack") {
+    return {
+      title: `How to decide tools for ${sectorName}`,
+      paragraphs: [
+        "Choose the minimum stack that gives auditability: identity, access, backups, and vendor governance before adding extra dashboards.",
+        "Every new tool adds data transfers and contractual obligations. Consolidation often improves both security and compliance.",
+      ],
+    };
+  }
+  if (subSlug === "playbook-30") {
+    return {
+      title: `How to run the 30-day playbook`,
+      paragraphs: [
+        `Treat week goals as non-negotiable checkpoints for ${sectorName}. If a week slips, re-scope the next week instead of skipping evidence tasks.`,
+        "The objective is momentum with proof, not perfect documentation on day 30.",
+      ],
+    };
+  }
+  if (subSlug === "data-map") {
+    return {
+      title: `How to keep your data map alive`,
+      paragraphs: [
+        `For ${sectorName}, update the map on every new vendor, process, or form field. Stale maps create false confidence and bad incident response.`,
+        "Link each row to a real owner and a review cadence so it survives staff turnover.",
+      ],
+    };
+  }
+  return {
+    title: `How to use vendor and DPIA governance`,
+    paragraphs: [
+      `For ${sectorName}, treat this page as your procurement security baseline: no DPA, no production data.`,
+      "High-risk processing should trigger DPIA-style review before launch, not after customer complaints.",
+    ],
+  };
+}

@@ -21,6 +21,15 @@ export const metadata: Metadata = {
       "SecureBiz AI | GDPR, ISO 27001, NIS2 & Cybersecurity Guides by Sector",
   },
   description: DEFAULT_DESCRIPTION,
+  keywords: [
+    "SecureBiz",
+    "Secure Biz",
+    "GDPR guides",
+    "ISO 27001 guides",
+    "NIS2 guides",
+    "sector compliance",
+    "cybersecurity compliance",
+  ],
   alternates: {
     canonical: "/",
   },

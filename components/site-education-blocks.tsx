@@ -29,8 +29,8 @@ export function UsefulDataTable({
 }) {
   return (
     <div className="mt-4 overflow-x-auto rounded-lg border border-slate-200">
-      <table className="w-full min-w-[520px] border-collapse text-left text-sm text-slate-700">
-        <caption className="border-b border-slate-100 bg-slate-50 px-3 py-2 text-left text-xs font-semibold text-slate-600">
+      <table className="w-full min-w-[420px] border-collapse text-left text-[13px] text-slate-700 sm:min-w-[520px] sm:text-sm">
+        <caption className="border-b border-slate-100 bg-slate-50 px-2 py-2 text-left text-xs font-semibold text-slate-600 sm:px-3">
           {caption}
         </caption>
         {children}
@@ -51,10 +51,13 @@ export function PageToc({
       className="rounded-xl border border-slate-200 bg-slate-50 p-4 text-sm"
     >
       <p className="font-semibold text-slate-900">On this page</p>
-      <ol className="mt-2 space-y-1.5 list-decimal pl-5 text-slate-700">
+      <ol className="mt-2 flex flex-wrap gap-2 text-slate-700 sm:list-decimal sm:flex-col sm:gap-1.5 sm:pl-5">
         {items.map((item) => (
-          <li key={item.id}>
-            <a href={`#${item.id}`} className="text-blue-700 underline-offset-2 hover:underline">
+          <li key={item.id} className="sm:list-item">
+            <a
+              href={`#${item.id}`}
+              className="inline-flex min-h-10 items-center rounded-full border border-slate-200 bg-white px-3 text-blue-700 underline-offset-2 touch-manipulation hover:underline sm:inline sm:min-h-0 sm:border-0 sm:bg-transparent sm:px-0"
+            >
               {item.label}
             </a>
           </li>

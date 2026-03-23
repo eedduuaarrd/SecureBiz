@@ -51,6 +51,14 @@ export async function generateMetadata({
   return {
     title: `${sector.name} | Compliance & cybersecurity guides`,
     description,
+    keywords: [
+      sector.name,
+      `${sector.name} GDPR`,
+      `${sector.name} ISO 27001`,
+      `${sector.name} cybersecurity`,
+      `${sector.name} compliance checklist`,
+      "sector-specific compliance",
+    ],
     alternates: {
       canonical: path,
     },

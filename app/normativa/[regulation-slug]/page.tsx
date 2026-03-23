@@ -42,6 +42,14 @@ export async function generateMetadata({
   return {
     title: `${regulation.name} | Related sectors and guides`,
     description: metaDescription,
+    keywords: [
+      regulation.name,
+      `${regulation.name} implementation`,
+      `${regulation.name} checklist`,
+      `${regulation.name} by sector`,
+      "compliance evidence",
+      "risk controls",
+    ],
     alternates: {
       canonical: path,
     },

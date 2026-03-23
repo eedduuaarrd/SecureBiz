@@ -4,6 +4,7 @@ import { notFound } from "next/navigation";
 import { buildSeedSectors } from "@/lib/catalog";
 import {
   SECTOR_SUBPAGE_SLUGS,
+  getSectorSubpageContext,
   getSectorSubpageDocument,
   getSectorSubpageLabel,
   isSectorSubpageSlug,
@@ -43,6 +44,14 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return {
     title: doc.title,
     description: doc.description.slice(0, 160),
+    keywords: [
+      sector.name,
+      getSectorSubpageLabel(subpage),
+      `${sector.name} ${getSectorSubpageLabel(subpage)}`,
+      `${sector.name} GDPR`,
+      `${sector.name} security controls`,
+      "sector compliance operations",
+    ],
     alternates: { canonical: path },
     openGraph: {
       type: "article",
@@ -71,6 +80,7 @@ export default async function SectorSubpage({ params }: Props) {
   }
 
   const doc = getSectorSubpageDocument(sector.name, subpage);
+  const subpageContext = getSectorSubpageContext(sector.name, subpage);
   const pageUrl = absoluteUrl(`/sector/${sector.slug}/${subpage}`);
   const hubUrl = absoluteUrl(`/sector/${sector.slug}`);
 
@@ -192,18 +202,16 @@ export default async function SectorSubpage({ params }: Props) {
       </div>
 
       <section className="mt-12 space-y-4">
-        <UsefulContextCallout title="Turn this resource into a decision">
+        <UsefulContextCallout title={subpageContext.title}>
+          {subpageContext.paragraphs.map((p) => (
+            <p key={p}>{p}</p>
+          ))}
           <p>
-            This page is a <strong>module</strong> for {sector.name}: use it in workshops, onboarding, or vendor
-            reviews. Pair it with your real artefacts—ticket exports, incident notes, vendor contracts—so the
-            narrative matches your environment, not a generic template.
-          </p>
-          <p>
-            When you are ready for cross-regulation context, open the{" "}
+            Continue in the{" "}
             <Link href={`/sector/${sector.slug}`} className="font-semibold text-emerald-950 underline">
               sector hub
             </Link>{" "}
-            and pick the regulation that matches your current pressure (audit, insurer, website, or tender).
+            for cross-regulation sequencing (GDPR, ISO 27001, cookies, NIS2 where relevant).
           </p>
         </UsefulContextCallout>
       </section>
