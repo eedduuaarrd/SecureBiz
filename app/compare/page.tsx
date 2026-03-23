@@ -75,6 +75,30 @@ export default function CompareHubPage() {
         Compare 25 practical compliance pairings with implementation sequence, common mistakes, KPI
         targets, and FAQ guidance for better execution.
       </p>
+      <section className="mt-8 rounded-xl border border-slate-200 bg-slate-50/80 p-5">
+        <h2 className="text-lg font-semibold text-slate-900">When to use comparisons</h2>
+        <ul className="mt-3 list-disc space-y-2 pl-5 text-sm text-slate-700">
+          <li>
+            <strong>Sequencing work:</strong> when two frameworks overlap (for example GDPR and ISO 27001) and you need a
+            sensible order without duplicating controls or evidence.
+          </li>
+          <li>
+            <strong>Stakeholder alignment:</strong> when legal, IT, and leadership disagree on scope—each page spells out
+            what each framework optimises for and what it does not cover.
+          </li>
+          <li>
+            <strong>After you choose a direction:</strong> open a{" "}
+            <Link className="font-medium text-blue-700 underline" href="/sectors#catalog-search">
+              sector guide
+            </Link>{" "}
+            for industry wording, or a{" "}
+            <Link className="font-medium text-blue-700 underline" href="/checklists">
+              checklist
+            </Link>{" "}
+            for step-by-step execution.
+          </li>
+        </ul>
+      </section>
       <ul className="mt-8 grid gap-4 md:grid-cols-2">
         {comparisons.map((comparison) => (
           <li key={comparison.slug}>

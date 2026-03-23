@@ -76,7 +76,7 @@ export default function AboutPage() {
         <PageToc
           items={[
             { id: "mission", label: "What we publish" },
-            { id: "methodology", label: "Methodology & updates" },
+            { id: "methodology", label: "Methodology" },
             { id: "not", label: "What we are not" },
             { id: "trust", label: "Trust, domain & downloads" },
             { id: "official", label: "Use official sources for binding rules" },
@@ -102,18 +102,14 @@ export default function AboutPage() {
         </section>
 
         <section id="methodology" className="scroll-mt-24">
-          <h2 className="text-xl font-semibold text-slate-900">Methodology &amp; updates</h2>
+          <h2 className="text-xl font-semibold text-slate-900">Methodology</h2>
           <p className="mt-3 text-sm leading-relaxed">
             Content is structured for <strong>implementation</strong>: sector vocabulary, risk themes, evidence checkpoints,
-            and phased plans. Guides are generated and stored so pages stay useful when you return—see{" "}
-            <Link className="font-medium text-blue-700 underline" href="/updates">
-              What&apos;s new
+            and phased plans. Long-form guides pair one sector with one regulation so examples stay concrete; hubs and the{" "}
+            <Link className="font-medium text-blue-700 underline" href="/sitemap.xml">
+              XML sitemap
             </Link>{" "}
-            and subscribe via{" "}
-            <Link className="font-medium text-blue-700 underline" href="/rss.xml">
-              RSS
-            </Link>{" "}
-            for newly published long-form guides when the database is available.
+            help you discover every URL without memorising patterns.
           </p>
           <p className="mt-3 text-sm leading-relaxed">
             We do not claim to replicate national transpositions line-by-line: always verify against{" "}
@@ -185,8 +181,8 @@ export default function AboutPage() {
       <IntentLinksBlock
         title="Related by intent"
         items={[
-          { href: "/updates", label: "What's new" },
-          { href: "/rss.xml", label: "RSS feed" },
+          { href: "/sitemap.xml", label: "Sitemap (all URLs)" },
+          { href: "/sectors#catalog-search", label: "Sector search" },
           { href: "/resources", label: "Resources hub" },
           { href: "/compare", label: "Framework comparisons" },
           { href: "/checklists", label: "Execution checklists" },

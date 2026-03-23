@@ -7,7 +7,6 @@ import { BrandLogo } from "@/components/brand-logo";
 /** Primary navigation only — sitemap / llms.txt stay discoverable via robots.txt, not main chrome. */
 const PRIMARY_LINKS = [
   { href: "/about", label: "About" },
-  { href: "/updates", label: "Updates" },
   { href: "/resources", label: "Resources" },
   { href: "/compare", label: "Compare" },
   { href: "/checklists", label: "Checklists" },
@@ -52,6 +51,7 @@ export function SiteHeader() {
           <BrandLogo
             width={48}
             height={48}
+            decorative
             priority
             className="h-10 w-10 shrink-0 sm:h-14 sm:w-14 md:h-16 md:w-16"
           />

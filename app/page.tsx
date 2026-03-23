@@ -13,7 +13,6 @@ import {
   getDefaultOgImages,
   getRobotsAllowAll,
 } from "@/lib/seo";
-import { HOME_UPDATE_BULLETS } from "@/lib/updates-content";
 import { absoluteUrl, getSiteUrl } from "@/lib/site";
 
 export const metadata: Metadata = {
@@ -246,10 +245,10 @@ export default function Home() {
       },
       {
         "@type": "Question",
-        name: "How do I follow new guides and site improvements?",
+        name: "How do I get a full list of every public page?",
         acceptedAnswer: {
           "@type": "Answer",
-          text: "Open the Updates page for a full changelog and roadmap, and subscribe to the RSS feed at /rss.xml for newly persisted long-form guides when the database is connected.",
+          text: "Open /sitemap.xml for standard XML listing all indexable URLs—useful for audits, coverage checks, and migrations.",
         },
       },
       {
@@ -296,6 +295,7 @@ export default function Home() {
           <BrandLogo
             width={64}
             height={64}
+            decorative
             className="h-14 w-14 rounded-lg shadow-lg ring-1 ring-white/20 sm:h-16 sm:w-16"
           />
           <p className="text-xs uppercase tracking-[0.2em] text-slate-100 sm:text-sm">
@@ -331,31 +331,52 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="mt-10 rounded-2xl border border-emerald-200 bg-emerald-50/60 p-6 sm:p-8">
+      <section className="mt-10 rounded-2xl border border-slate-200 bg-slate-50/80 p-6 sm:p-8">
         <div className="flex flex-col gap-4 md:flex-row md:items-start md:justify-between">
           <div>
-            <h2 className="text-lg font-semibold text-slate-900">Stay current: updates &amp; RSS</h2>
+            <h2 className="text-lg font-semibold text-slate-900">Discover every public URL</h2>
             <p className="mt-2 max-w-2xl text-sm text-slate-700">
-              Follow what we ship—new comparisons, checklists, and crawl improvements—without hunting the footer on every visit.
+              Crawlers and power users can enumerate the whole site from the XML sitemap. Humans usually start from sectors,
+              regulations, or comparisons—bookmark hub searches with <code className="rounded bg-white px-1 py-0.5 text-xs text-slate-800">?q=</code> when you revisit the same niche.
             </p>
             <ul className="mt-4 list-disc space-y-1.5 pl-5 text-sm text-slate-700">
-              {HOME_UPDATE_BULLETS.map((line) => (
-                <li key={line}>{line}</li>
-              ))}
+              <li>
+                <Link className="font-medium text-blue-700 underline" href="/sitemap.xml">
+                  /sitemap.xml
+                </Link>{" "}
+                lists all indexable guide and hub URLs in one place.
+              </li>
+              <li>
+                <Link className="font-medium text-blue-700 underline" href="/robots.txt">
+                  /robots.txt
+                </Link>{" "}
+                describes crawler policy for public pages.
+              </li>
+              <li>
+                Prefer browsing? Use{" "}
+                <Link className="font-medium text-blue-700 underline" href="/sectors#catalog-search">
+                  sector search
+                </Link>{" "}
+                or{" "}
+                <Link className="font-medium text-blue-700 underline" href="/regulations#catalog-search">
+                  regulation search
+                </Link>{" "}
+                instead of guessing URL patterns.
+              </li>
             </ul>
           </div>
           <div className="flex shrink-0 flex-col gap-2 sm:flex-row md:flex-col">
             <Link
-              href="/updates"
-              className="inline-flex items-center justify-center rounded-xl bg-emerald-800 px-5 py-3 text-center text-sm font-semibold text-white hover:bg-emerald-900"
+              href="/sitemap.xml"
+              className="inline-flex items-center justify-center rounded-xl bg-slate-900 px-5 py-3 text-center text-sm font-semibold text-white hover:bg-slate-800"
             >
-              Full changelog
+              Open sitemap
             </Link>
             <Link
-              href="/rss.xml"
-              className="inline-flex items-center justify-center rounded-xl border border-emerald-800/30 bg-white px-5 py-3 text-center text-sm font-semibold text-emerald-950 hover:bg-emerald-100/80"
+              href="/compare"
+              className="inline-flex items-center justify-center rounded-xl border border-slate-300 bg-white px-5 py-3 text-center text-sm font-semibold text-slate-900 hover:bg-slate-100"
             >
-              RSS feed
+              Framework comparisons
             </Link>
           </div>
         </div>
@@ -610,12 +631,12 @@ export default function Home() {
           Use these for binding text and supervisory guidance; use SecureBiz AI for sector translation and implementation sequencing.
         </p>
         <ul className="mt-4 grid gap-2 text-sm sm:grid-cols-2">
-          <li><a className="text-blue-700 underline-offset-2 hover:underline" href="https://edpb.europa.eu/" target="_blank" rel="noreferrer">European Data Protection Board (EDPB)</a></li>
-          <li><a className="text-blue-700 underline-offset-2 hover:underline" href="https://commission.europa.eu/" target="_blank" rel="noreferrer">European Commission</a></li>
-          <li><a className="text-blue-700 underline-offset-2 hover:underline" href="https://www.aepd.es/" target="_blank" rel="noreferrer">AEPD (Spain DPA)</a></li>
-          <li><a className="text-blue-700 underline-offset-2 hover:underline" href="https://www.enisa.europa.eu/" target="_blank" rel="noreferrer">ENISA (NIS2, resilience)</a></li>
-          <li><a className="text-blue-700 underline-offset-2 hover:underline" href="https://www.iso.org/" target="_blank" rel="noreferrer">ISO Organization</a></li>
-          <li><a className="text-blue-700 underline-offset-2 hover:underline" href="https://ico.org.uk/" target="_blank" rel="noreferrer">ICO (UK guidance)</a></li>
+          <li><a className="text-blue-700 underline-offset-2 hover:underline" href="https://edpb.europa.eu/" target="_blank" rel="noopener noreferrer">European Data Protection Board (EDPB)</a></li>
+          <li><a className="text-blue-700 underline-offset-2 hover:underline" href="https://commission.europa.eu/" target="_blank" rel="noopener noreferrer">European Commission</a></li>
+          <li><a className="text-blue-700 underline-offset-2 hover:underline" href="https://www.aepd.es/" target="_blank" rel="noopener noreferrer">AEPD (Spain DPA)</a></li>
+          <li><a className="text-blue-700 underline-offset-2 hover:underline" href="https://www.enisa.europa.eu/" target="_blank" rel="noopener noreferrer">ENISA (NIS2, resilience)</a></li>
+          <li><a className="text-blue-700 underline-offset-2 hover:underline" href="https://www.iso.org/" target="_blank" rel="noopener noreferrer">ISO Organization</a></li>
+          <li><a className="text-blue-700 underline-offset-2 hover:underline" href="https://ico.org.uk/" target="_blank" rel="noopener noreferrer">ICO (UK guidance)</a></li>
         </ul>
         <div className="mt-4 flex flex-wrap gap-3">
           <Link

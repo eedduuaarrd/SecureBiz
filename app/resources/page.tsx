@@ -116,15 +116,15 @@ export default function ResourcesPage() {
         implementation, with links to official institutions and field-tested reference material.
       </p>
       <p className="mt-3 text-sm text-slate-600">
-        Want to see what we ship on the site itself (new hubs, SEO changes, RSS)? Open the{" "}
-        <Link className="font-medium text-blue-700 underline" href="/updates">
-          updates &amp; roadmap
+        Need the exhaustive list of public pages? Use{" "}
+        <Link className="font-medium text-blue-700 underline" href="/sitemap.xml">
+          /sitemap.xml
         </Link>{" "}
-        page or subscribe via{" "}
-        <Link className="font-medium text-blue-700 underline" href="/rss.xml">
-          RSS
-        </Link>
-        .
+        (standard XML for crawlers and audits) and{" "}
+        <Link className="font-medium text-blue-700 underline" href="/robots.txt">
+          /robots.txt
+        </Link>{" "}
+        for crawler policy.
       </p>
 
       <nav className="mt-4 text-sm text-slate-600" aria-label="Breadcrumb">

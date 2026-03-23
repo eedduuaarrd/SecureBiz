@@ -17,5 +17,5 @@ export const POPULAR_TOPIC_LINKS: Array<{ href: string; label: string }> = [
   { href: "/normativa/nis2", label: "NIS2 by sector" },
   { href: "/sectors#catalog-search", label: "Find your sector" },
   { href: "/regulations#catalog-search", label: "All regulations" },
-  { href: "/updates", label: "Site changelog" },
+  { href: "/sitemap.xml", label: "Sitemap (all URLs)" },
 ];

@@ -142,7 +142,7 @@ export default function GdprWebsitesPage() {
             <p className="text-sm font-semibold text-slate-900">
               {idx + 1}. {name}
             </p>
-            <a href={url} target="_blank" rel="noreferrer" className="mt-1 inline-block text-sm text-blue-700 underline-offset-2 hover:underline">
+            <a href={url} target="_blank" rel="noopener noreferrer" className="mt-1 inline-block text-sm text-blue-700 underline-offset-2 hover:underline">
               {url}
             </a>
             <p className="mt-2 text-sm text-slate-600">{why}</p>

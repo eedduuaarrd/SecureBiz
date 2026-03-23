@@ -74,12 +74,6 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${inter.variable} h-full scroll-smooth antialiased`}>
       <head>
-        <link
-          rel="alternate"
-          type="application/rss+xml"
-          title={`${SITE_NAME} — new guides (RSS)`}
-          href="/rss.xml"
-        />
         <link rel="sitemap" type="application/xml" title="Sitemap" href="/sitemap.xml" />
         <link rel="preconnect" href="https://www.googletagmanager.com" />
         <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com" />
@@ -104,7 +98,7 @@ export default function RootLayout({
                 href="/"
                 className="flex items-center gap-3 font-medium text-slate-800"
               >
-                <BrandLogo width={40} height={40} />
+                <BrandLogo width={40} height={40} decorative />
                 <span>SecureBiz AI</span>
               </Link>
               <p className="max-w-xl">
@@ -122,17 +116,8 @@ export default function RootLayout({
               <Link href="/regulations#catalog-search" className="hover:text-slate-800">
                 Regulations
               </Link>
-              <Link href="/normatives" className="hover:text-slate-800">
-                Normatives
-              </Link>
               <Link href="/about" className="hover:text-slate-800">
                 About
-              </Link>
-              <Link href="/updates" className="hover:text-slate-800">
-                Updates
-              </Link>
-              <Link href="/rss.xml" className="hover:text-slate-800">
-                RSS
               </Link>
               <Link href="/resources" className="hover:text-slate-800">
                 Resources

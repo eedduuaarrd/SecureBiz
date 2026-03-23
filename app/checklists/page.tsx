@@ -76,6 +76,26 @@ export default function ChecklistsHubPage() {
         23 execution-focused checklists with controls, evidence tracking, rollout plans, common mistakes,
         and KPI targets.
       </p>
+      <section className="mt-8 rounded-xl border border-slate-200 bg-slate-50/80 p-5">
+        <h2 className="text-lg font-semibold text-slate-900">When to use these checklists</h2>
+        <ul className="mt-3 list-disc space-y-2 pl-5 text-sm text-slate-700">
+          <li>
+            <strong>Execution mode:</strong> you already know which regulation matters and need tasks, owners, and
+            evidence—not a high-level comparison.
+          </li>
+          <li>
+            <strong>SMB constraints:</strong> each list is written for smaller teams: prioritise what moves the needle first,
+            then backfill documentation.
+          </li>
+          <li>
+            <strong>Pair with sector context:</strong> use{" "}
+            <Link className="font-medium text-blue-700 underline" href="/sectors#catalog-search">
+              sector hubs
+            </Link>{" "}
+            for industry risks and vocabulary; checklists turn that into repeatable actions.
+          </li>
+        </ul>
+      </section>
       <ul className="mt-8 grid gap-4 md:grid-cols-2">
         {checklists.map((checklist) => (
           <li key={checklist.slug}>

@@ -26,8 +26,6 @@ export const HUB_PATHS = [
   "/resources/gdpr-iso-27001-nis2-guides",
   "/sectors",
   "/regulations",
-  "/normatives",
-  "/updates",
 ];
 
 export const LEGAL_PATHS = [

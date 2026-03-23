@@ -47,10 +47,10 @@ export default function NotFound() {
           Checklists
         </Link>
         <Link
-          href="/updates"
+          href="/sitemap.xml"
           className="rounded-xl border border-slate-300 px-5 py-3 text-sm font-semibold text-slate-800 hover:bg-slate-50"
         >
-          Updates
+          Sitemap
         </Link>
       </div>
       <p className="mt-10 text-xs text-slate-500">
