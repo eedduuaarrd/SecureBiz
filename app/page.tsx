@@ -11,6 +11,7 @@ import {
   SITE_NAME,
   getDefaultOgImageUrl,
   getDefaultOgImages,
+  getOrganizationSameAsUrls,
   getRobotsAllowAll,
 } from "@/lib/seo";
 import { HOME_UPDATE_BULLETS } from "@/lib/updates-content";
@@ -78,6 +79,7 @@ export default function Home() {
     .map((slug) => seedRegulations.find((r) => r.slug === slug))
     .filter((r): r is (typeof seedRegulations)[number] => Boolean(r));
 
+  const sameAs = getOrganizationSameAsUrls();
   const organizationSchema = {
     "@context": "https://schema.org",
     "@type": "Organization",
@@ -86,12 +88,19 @@ export default function Home() {
     url: siteUrl,
     logo: absoluteUrl("/logo.png"),
     description: DEFAULT_DESCRIPTION,
+    ...(sameAs.length > 0 ? { sameAs } : {}),
+    areaServed: [
+      { "@type": "AdministrativeArea", name: "European Union" },
+      { "@type": "Place", name: "Global (informational guides)" },
+    ],
     knowsAbout: [
       "GDPR",
       "ISO 27001",
+      "NIS2",
       "Cookie law",
       "Cybersecurity",
       "Data protection compliance",
+      "Information security management",
     ],
   };
 
@@ -101,6 +110,7 @@ export default function Home() {
     name: SITE_NAME,
     alternateName: [...BRAND_ALTERNATE_NAMES],
     url: siteUrl,
+    inLanguage: "en",
     description: DEFAULT_DESCRIPTION,
     potentialAction: {
       "@type": "SearchAction",

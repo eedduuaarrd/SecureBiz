@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from "next";
 import Link from "next/link";
 import { Inter } from "next/font/google";
 import { BrandLogo } from "@/components/brand-logo";
+import { FooterTrafficLinks } from "@/components/footer-traffic-links";
 import { SiteHeader } from "@/components/site-header";
 import { AdsenseLoader } from "@/components/adsense-loader";
 import { DeferredAnalytics } from "@/components/deferred-analytics";
@@ -151,6 +152,7 @@ export default function RootLayout({
                 Disclaimer
               </Link>
             </nav>
+            <FooterTrafficLinks />
           </div>
         </footer>
       </body>
