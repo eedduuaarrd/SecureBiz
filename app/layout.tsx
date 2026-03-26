@@ -8,6 +8,7 @@ import { SiteHeader } from "@/components/site-header";
 import { AdsenseLoader } from "@/components/adsense-loader";
 import { DeferredAnalytics } from "@/components/deferred-analytics";
 import { GoogleTagManager } from "@/components/google-tag-manager";
+import { GoogleAdsTag } from "@/components/google-ads-tag";
 import {
   DEFAULT_DESCRIPTION,
   DEFAULT_KEYWORDS,
@@ -57,6 +58,7 @@ export const metadata: Metadata = {
     description: DEFAULT_DESCRIPTION,
   },
   ...getGoogleSiteVerificationMetadata(),
+  lastModified: new Date(),
   // Tab icons: `app/favicon.ico` and `app/icon.png` (same brand asset as `public/logo.png`).
 };
 
@@ -86,6 +88,12 @@ export default function RootLayout({
           Skip to main content
         </a>
         <GoogleTagManager />
+        <GoogleAdsTag />
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `gtag('event', 'conversion', {'send_to': 'AW-18028490691/-M2FCPyKtY4cEMPf05RD'});`,
+          }}
+        />
         <DeferredAnalytics />
         <AdsenseLoader />
         <SiteHeader />

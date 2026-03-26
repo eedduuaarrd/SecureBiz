@@ -29,6 +29,7 @@ export default function robots(): MetadataRoute.Robots {
         userAgent: "Googlebot",
         allow: "/",
         disallow: ["/admin", "/admin/"],
+        noindex: ["/admin", "/admin/"],
       },
       {
         userAgent: "ClaudeBot",

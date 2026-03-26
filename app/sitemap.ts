@@ -28,19 +28,19 @@ const PRIORITY = {
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const baseUrl = getSiteUrl();
-  const lastMod = new Date();
   const guideLastMods = await getGuidePathToLastModified();
+  const now = new Date();
 
   const hubEntries: MetadataRoute.Sitemap = HUB_PATHS.map((path) => ({
     url: `${baseUrl}${path}`,
-    lastModified: lastMod,
+    lastModified: now,
     changeFrequency: "weekly",
     priority: path === "" ? PRIORITY.home : PRIORITY.hub,
   }));
 
   const legalEntries: MetadataRoute.Sitemap = LEGAL_PATHS.map((path) => ({
     url: `${baseUrl}${path}`,
-    lastModified: lastMod,
+    lastModified: now,
     changeFrequency: "yearly",
     priority: PRIORITY.legal,
   }));
@@ -48,7 +48,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const sectorEntries: MetadataRoute.Sitemap = iterSectorHubUrls(baseUrl).map(
     (row) => ({
       url: row.url,
-      lastModified: lastMod,
+      lastModified: now,
       changeFrequency: "weekly" as const,
       priority: PRIORITY.sectorHub,
     }),
@@ -58,7 +58,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     baseUrl,
   ).map((row) => ({
     url: row.url,
-    lastModified: lastMod,
+    lastModified: now,
     changeFrequency: "monthly" as const,
     priority: PRIORITY.sectorResource,
   }));
@@ -67,7 +67,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     baseUrl,
   ).map((row) => ({
     url: row.url,
-    lastModified: lastMod,
+    lastModified: now,
     changeFrequency: "weekly" as const,
     priority: PRIORITY.regulationPage,
   }));
@@ -78,14 +78,14 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       const fromDb = guideLastMods.get(pathKey);
       return {
         url: row.url,
-        lastModified: fromDb ?? lastMod,
+        lastModified: fromDb ?? now,
         changeFrequency: "monthly" as const,
         priority: PRIORITY.guide,
       };
     },
   );
 
-  return [
+  const allEntries: MetadataRoute.Sitemap = [
     ...hubEntries,
     ...sectorEntries,
     ...sectorSubEntries,
@@ -93,4 +93,14 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     ...guideEntries,
     ...legalEntries,
   ];
+
+  // Keep sitemap deterministic and avoid duplicate URLs in case route lists overlap.
+  const seen = new Set<string>();
+  const deduped: MetadataRoute.Sitemap = [];
+  for (const entry of allEntries) {
+    if (seen.has(entry.url)) continue;
+    seen.add(entry.url);
+    deduped.push(entry);
+  }
+  return deduped;
 }
