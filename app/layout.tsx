@@ -89,11 +89,6 @@ export default function RootLayout({
         </a>
         <GoogleTagManager />
         <GoogleAdsTag />
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `gtag('event', 'conversion', {'send_to': 'AW-18028490691/-M2FCPyKtY4cEMPf05RD'});`,
-          }}
-        />
         <DeferredAnalytics />
         <AdsenseLoader />
         <SiteHeader />

@@ -51,6 +51,13 @@ export function LeadCaptureWidget({ sector, variant = "A" }: LeadCaptureWidgetPr
         form_name: "auditoria_personalitzada",
         variant,
       });
+
+      // Fire Google Ads conversion tracking
+      if (typeof window !== "undefined" && typeof (window as any).gtag === "function") {
+        (window as any).gtag("event", "conversion", {
+          send_to: "AW-18028490691/-M2FCPyKtY4cEMPf05RD",
+        });
+      }
     } catch {
       setStatus("error");
       setErrorMessage("Could not send your request. Please try again.");
