@@ -290,44 +290,47 @@ export default function Home() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
       />
-      <section className="rounded-2xl bg-gradient-to-br from-slate-900 via-blue-900 to-slate-800 p-6 text-white sm:p-10">
-        <div className="flex items-center gap-3 sm:gap-4">
-          <BrandLogo
-            width={64}
-            height={64}
-            decorative
-            className="h-14 w-14 rounded-lg shadow-lg ring-1 ring-white/20 sm:h-16 sm:w-16"
-          />
-          <p className="text-xs uppercase tracking-[0.2em] text-slate-100 sm:text-sm">
-            SecureBiz AI
+      <section className="relative overflow-hidden rounded-3xl bg-slate-900 px-6 py-12 text-white shadow-2xl sm:px-12 sm:py-20">
+        {/* Decorative background elements */}
+        <div className="absolute -top-24 -right-24 h-96 w-96 rounded-full bg-blue-600/20 blur-3xl"></div>
+        <div className="absolute -bottom-24 -left-24 h-96 w-96 rounded-full bg-indigo-600/20 blur-3xl"></div>
+        
+        <div className="relative z-10 flex flex-col items-start">
+          <div className="flex items-center gap-3 sm:gap-4 mb-6">
+            <BrandLogo
+              width={64}
+              height={64}
+              decorative
+              className="h-14 w-14 rounded-xl shadow-lg ring-1 ring-white/20 sm:h-16 sm:w-16"
+            />
+            <span className="rounded-full bg-white/10 border border-white/20 px-3 py-1 text-xs font-semibold tracking-wider text-blue-200 backdrop-blur-sm sm:text-sm">
+              SECUREBIZ AI
+            </span>
+          </div>
+          <h1 className="max-w-4xl text-4xl font-extrabold tracking-tight sm:text-5xl lg:text-6xl text-transparent bg-clip-text bg-gradient-to-r from-white via-blue-100 to-slate-300">
+            GDPR, ISO 27001 &amp; NIS2 guides built for your sector.
+          </h1>
+          <p className="mt-6 max-w-2xl text-base leading-relaxed text-slate-300 sm:text-lg">
+            Actionable checklists, risk framing, and regulation-specific wording for real businesses. Pick your industry,
+            open a guide, and move from reading to an audit request in one seamless flow.
           </p>
-        </div>
-        <h1 className="mt-4 max-w-3xl text-3xl font-bold leading-tight sm:mt-3 sm:text-4xl">
-          GDPR, ISO 27001 &amp; NIS2 guides built for your sector—not generic compliance filler.
-        </h1>
-        <p className="mt-4 max-w-2xl text-sm text-slate-200 sm:text-base">
-          Actionable checklists, risk framing, and regulation-specific wording for real businesses. Pick your industry,
-          open a guide, and move from reading to an audit request in one flow.
-        </p>
-        <div className="mt-6 flex flex-col gap-2 sm:mt-8 sm:flex-row sm:flex-wrap sm:gap-3">
-          <Link
-            href={`/guia/${featuredSectors[0].slug}/${rgpdSlug}`}
-            className="rounded-xl bg-white px-5 py-3.5 text-center text-sm font-semibold text-slate-900 touch-manipulation min-h-12 flex items-center justify-center sm:min-h-0 sm:py-2.5"
-          >
-            Enter a real guide
-          </Link>
-          <Link
-            href="/sectors#catalog-search"
-            className="rounded-xl border border-white/30 px-5 py-3.5 text-center text-sm font-semibold text-white touch-manipulation min-h-12 flex items-center justify-center sm:min-h-0 sm:py-2.5"
-          >
-            Explore sectors
-          </Link>
-          <Link
-            href="/legal/disclaimer"
-            className="rounded-xl border border-white/30 px-5 py-3.5 text-center text-sm font-semibold text-white touch-manipulation min-h-12 flex items-center justify-center sm:min-h-0 sm:py-2.5"
-          >
-            Legal disclaimer
-          </Link>
+          <div className="mt-8 flex flex-col w-full gap-3 sm:w-auto sm:flex-row sm:items-center sm:gap-4">
+            <Link
+              href={`/guia/${featuredSectors[0].slug}/${rgpdSlug}`}
+              className="group relative flex h-14 items-center justify-center overflow-hidden rounded-xl bg-blue-600 px-8 text-sm font-semibold text-white shadow-lg transition-all hover:bg-blue-500 hover:shadow-blue-600/25 sm:w-auto focus:ring-2 focus:ring-blue-400 focus:outline-none"
+            >
+              <span className="relative z-10 flex items-center gap-2">
+                Start your first guide
+                <svg className="h-4 w-4 transition-transform group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+              </span>
+            </Link>
+            <Link
+              href="/sectors#catalog-search"
+              className="flex h-14 items-center justify-center rounded-xl border border-slate-700 bg-slate-800/50 px-8 text-sm font-semibold text-slate-200 backdrop-blur-sm transition-all hover:border-slate-500 hover:bg-slate-800 sm:w-auto focus:ring-2 focus:ring-slate-400 focus:outline-none"
+            >
+              Explore sectors
+            </Link>
+          </div>
         </div>
       </section>
 
@@ -563,10 +566,13 @@ export default function Home() {
             <Link
               key={sector.slug}
               href={`/guia/${sector.slug}/rgpd`}
-              className="rounded-lg border border-slate-200 bg-white p-4 text-slate-800 shadow-sm hover:border-blue-300"
+              className="group flex flex-col justify-between rounded-xl border border-slate-200 bg-white p-5 text-slate-800 shadow-sm transition-all duration-200 hover:-translate-y-1 hover:border-blue-500 hover:shadow-md hover:shadow-blue-500/10"
             >
-              <p className="font-medium">{sector.name}</p>
-              <p className="mt-1 text-sm text-slate-600">GDPR applied + checklist</p>
+              <div className="flex items-center justify-between">
+                <p className="font-semibold text-slate-900 group-hover:text-blue-700">{sector.name}</p>
+                <svg className="h-5 w-5 text-slate-400 opacity-0 transition-all duration-200 group-hover:translate-x-1 group-hover:opacity-100 group-hover:text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+              </div>
+              <p className="mt-2 text-sm text-slate-500">GDPR applied + checklist</p>
             </Link>
           ))}
         </div>

@@ -9,6 +9,7 @@ import { AdsenseLoader } from "@/components/adsense-loader";
 import { DeferredAnalytics } from "@/components/deferred-analytics";
 import { GoogleTagManager } from "@/components/google-tag-manager";
 import { GoogleAdsTag } from "@/components/google-ads-tag";
+import { CookieConsent } from "@/components/cookie-consent";
 import {
   DEFAULT_DESCRIPTION,
   DEFAULT_KEYWORDS,
@@ -58,7 +59,6 @@ export const metadata: Metadata = {
     description: DEFAULT_DESCRIPTION,
   },
   ...getGoogleSiteVerificationMetadata(),
-  lastModified: new Date(),
   // Tab icons: `app/favicon.ico` and `app/icon.png` (same brand asset as `public/logo.png`).
 };
 
@@ -128,6 +128,9 @@ export default function RootLayout({
               <Link href="/about" className="hover:text-slate-800">
                 About
               </Link>
+              <Link href="/contact" className="hover:text-slate-800">
+                Contact
+              </Link>
               <Link href="/resources" className="hover:text-slate-800">
                 Resources
               </Link>
@@ -136,6 +139,9 @@ export default function RootLayout({
               </Link>
               <Link href="/checklists" className="hover:text-slate-800">
                 Checklists
+              </Link>
+              <Link href="/legal/terms" className="hover:text-slate-800">
+                Terms
               </Link>
               <Link href="/legal/privacy" className="hover:text-slate-800">
                 Privacy
@@ -151,6 +157,7 @@ export default function RootLayout({
             <FooterTrafficLinks />
           </div>
         </footer>
+        <CookieConsent />
       </body>
     </html>
   );

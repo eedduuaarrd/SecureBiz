@@ -17,6 +17,7 @@ const CHECKLIST_PATHS = getAllChecklistContent().map((item) => `/checklists/${it
 export const HUB_PATHS = [
   "",
   "/about",
+  "/contact",
   "/compare",
   ...COMPARE_PATHS,
   "/checklists",
@@ -29,6 +30,7 @@ export const HUB_PATHS = [
 ];
 
 export const LEGAL_PATHS = [
+  "/legal/terms",
   "/legal/disclaimer",
   "/legal/privacy",
   "/legal/cookies",

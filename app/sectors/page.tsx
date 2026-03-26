@@ -179,16 +179,19 @@ export default async function SectorsHubPage({
             return (
               <li
                 key={cluster.label}
-                className="rounded-lg border border-slate-200 bg-slate-50/80 p-4"
+                className="group relative overflow-hidden rounded-xl border border-slate-200 bg-white p-5 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-blue-400 hover:shadow-lg hover:shadow-blue-500/10"
               >
-                <p className="font-semibold text-slate-900">{cluster.label}</p>
-                <p className="mt-1 text-xs text-slate-600">{cluster.hint}</p>
-                <Link
-                  href={`/sector/${example.slug}`}
-                  className="mt-3 inline-block text-sm font-medium text-blue-800 underline-offset-2 hover:underline"
-                >
-                  Open example: {example.name}
-                </Link>
+                <div className="relative z-10 transition-transform duration-300 group-hover:translate-x-1">
+                  <p className="font-bold text-slate-900 group-hover:text-blue-700 transition-colors">{cluster.label}</p>
+                  <p className="mt-2 text-xs leading-relaxed text-slate-600">{cluster.hint}</p>
+                  <Link
+                    href={`/sector/${example.slug}`}
+                    className="mt-4 inline-flex items-center gap-1 text-sm font-semibold text-blue-600 transition-colors hover:text-blue-800"
+                  >
+                    Open example: {example.name}
+                    <svg className="h-4 w-4 transition-transform group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+                  </Link>
+                </div>
               </li>
             );
           })}
@@ -275,10 +278,13 @@ export default async function SectorsHubPage({
               >
                 <Link
                   href={`/sector/${sector.slug}`}
-                  className="block h-full rounded-lg border border-slate-200 bg-white p-4 transition hover:border-blue-300 hover:shadow-sm"
+                  className="group flex h-full items-center justify-between rounded-xl border border-slate-200 bg-white p-4 shadow-sm transition-all duration-200 hover:-translate-y-0.5 hover:border-blue-400 hover:shadow-md focus:ring-2 focus:ring-blue-500 focus:outline-none"
                 >
-                  <p className="font-medium text-slate-900">{sector.name}</p>
-                  <p className="mt-1 text-sm text-slate-500">Open hub →</p>
+                  <p className="font-semibold text-slate-900 group-hover:text-blue-700 transition-colors">{sector.name}</p>
+                  <div className="flex items-center gap-2">
+                    <span className="text-xs font-medium text-slate-500 transition-colors group-hover:text-blue-600">Open hub</span>
+                    <svg className="h-4 w-4 text-slate-400 transition-transform group-hover:translate-x-1 group-hover:text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7"/></svg>
+                  </div>
                 </Link>
               </li>
             ))}

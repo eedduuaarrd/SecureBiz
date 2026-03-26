@@ -7,6 +7,7 @@ import { BrandLogo } from "@/components/brand-logo";
 /** Primary navigation only — sitemap / llms.txt stay discoverable via robots.txt, not main chrome. */
 const PRIMARY_LINKS = [
   { href: "/about", label: "About" },
+  { href: "/contact", label: "Contact" },
   { href: "/resources", label: "Resources" },
   { href: "/compare", label: "Compare" },
   { href: "/checklists", label: "Checklists" },
@@ -15,6 +16,7 @@ const PRIMARY_LINKS = [
 ] as const;
 
 const LEGAL_LINKS = [
+  { href: "/legal/terms", label: "Terms" },
   { href: "/legal/privacy", label: "Privacy" },
   { href: "/legal/cookies", label: "Cookies" },
   { href: "/legal/disclaimer", label: "Disclaimer" },

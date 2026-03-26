@@ -11,8 +11,8 @@ import { getGuidePathToLastModified } from "@/lib/guide-sitemap";
 import { getSiteUrl } from "@/lib/site";
 
 /**
- * Single sitemap at `/sitemap.xml` (required for robots.txt + Search Console).
- * Using one file is fine well under Google's 50,000 URL / 50MB limits.
+ * Split the sitemap using generateSitemaps.
+ * This prevents Googlebot from experiencing timeouts when calculating an XML with >20k URLs.
  */
 export const revalidate = 3600;
 
@@ -26,21 +26,46 @@ const PRIORITY = {
   legal: 0.35,
 } as const;
 
-export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
+const URLS_PER_SITEMAP = 2500;
+
+export async function generateSitemaps() {
+  const baseUrl = getSiteUrl();
+
+  const total =
+    HUB_PATHS.length +
+    LEGAL_PATHS.length +
+    iterSectorHubUrls(baseUrl).length +
+    iterSectorSubpageUrls(baseUrl).length +
+    iterRegulationPages(baseUrl).length +
+    iterGuideUrls(baseUrl).length;
+
+  const numSitemaps = Math.ceil(total / URLS_PER_SITEMAP);
+  const sitemaps = [];
+  for (let i = 0; i < numSitemaps; i++) {
+    sitemaps.push({ id: i });
+  }
+
+  return sitemaps;
+}
+
+export default async function sitemap({
+  id,
+}: {
+  id: number;
+}): Promise<MetadataRoute.Sitemap> {
   const baseUrl = getSiteUrl();
   const guideLastMods = await getGuidePathToLastModified();
-  const now = new Date();
 
   const hubEntries: MetadataRoute.Sitemap = HUB_PATHS.map((path) => ({
     url: `${baseUrl}${path}`,
-    lastModified: now,
+    lastModified: new Date(),
     changeFrequency: "weekly",
     priority: path === "" ? PRIORITY.home : PRIORITY.hub,
   }));
 
   const legalEntries: MetadataRoute.Sitemap = LEGAL_PATHS.map((path) => ({
     url: `${baseUrl}${path}`,
-    lastModified: now,
+    lastModified: new Date(),
     changeFrequency: "yearly",
     priority: PRIORITY.legal,
   }));
@@ -48,7 +73,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const sectorEntries: MetadataRoute.Sitemap = iterSectorHubUrls(baseUrl).map(
     (row) => ({
       url: row.url,
-      lastModified: now,
+      lastModified: new Date(),
       changeFrequency: "weekly" as const,
       priority: PRIORITY.sectorHub,
     }),
@@ -58,7 +83,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     baseUrl,
   ).map((row) => ({
     url: row.url,
-    lastModified: now,
+    lastModified: new Date(),
     changeFrequency: "monthly" as const,
     priority: PRIORITY.sectorResource,
   }));
@@ -67,7 +92,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     baseUrl,
   ).map((row) => ({
     url: row.url,
-    lastModified: now,
+    lastModified: new Date(),
     changeFrequency: "weekly" as const,
     priority: PRIORITY.regulationPage,
   }));
@@ -78,7 +103,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       const fromDb = guideLastMods.get(pathKey);
       return {
         url: row.url,
-        lastModified: fromDb ?? now,
+        ...(fromDb ? { lastModified: fromDb } : {}),
         changeFrequency: "monthly" as const,
         priority: PRIORITY.guide,
       };
@@ -102,5 +127,9 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     seen.add(entry.url);
     deduped.push(entry);
   }
-  return deduped;
+
+  const start = id * URLS_PER_SITEMAP;
+  const end = start + URLS_PER_SITEMAP;
+
+  return deduped.slice(start, end);
 }

@@ -225,14 +225,19 @@ export default async function RegulationsHubPage({
               >
                 <Link
                   href={`/normativa/${regulation.slug}`}
-                  className="block h-full rounded-lg border border-slate-200 bg-white p-5 transition hover:border-blue-300 hover:shadow-sm"
+                  className="group relative flex h-full flex-col justify-between overflow-hidden rounded-xl border border-slate-200 bg-white p-6 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-blue-400 hover:shadow-lg hover:shadow-blue-500/10 focus:ring-2 focus:ring-blue-500 focus:outline-none"
                 >
-                  <p className="text-lg font-semibold text-slate-900">
-                    {regulation.name}
-                  </p>
-                  <p className="mt-1 line-clamp-3 text-sm text-slate-600">
-                    {regulation.description}
-                  </p>
+                  <div className="absolute top-0 right-0 p-4 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+                    <svg className="h-5 w-5 text-blue-500" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                  </div>
+                  <div>
+                    <h2 className="text-lg font-bold text-slate-900 group-hover:text-blue-700 transition-colors">
+                      {regulation.name}
+                    </h2>
+                    <p className="mt-2 line-clamp-3 text-sm leading-relaxed text-slate-600">
+                      {regulation.description}
+                    </p>
+                  </div>
                 </Link>
               </li>
             ))}

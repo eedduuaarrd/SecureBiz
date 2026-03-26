@@ -104,10 +104,18 @@ export default function CompareHubPage() {
           <li key={comparison.slug}>
             <Link
               href={`/compare/${comparison.slug}`}
-              className="block rounded-xl border border-slate-200 bg-white p-5 shadow-sm hover:border-blue-300"
+              className="group relative flex h-full flex-col justify-between overflow-hidden rounded-xl border border-slate-200 bg-white p-6 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-blue-400 hover:shadow-lg hover:shadow-blue-500/10 focus:ring-2 focus:ring-blue-500 focus:outline-none"
             >
-              <h2 className="text-lg font-semibold text-slate-900">{comparison.title}</h2>
-              <p className="mt-2 text-sm text-slate-600">{comparison.description}</p>
+              <div className="absolute top-0 right-0 p-4 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+                <svg className="h-5 w-5 text-blue-500" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+              </div>
+              <div>
+                <div className="mb-3 inline-flex items-center rounded-full bg-slate-100 px-2.5 py-0.5 text-xs font-semibold text-slate-600 transition-colors group-hover:bg-blue-50 group-hover:text-blue-700">
+                  Comparison
+                </div>
+                <h2 className="text-xl font-bold text-slate-900 group-hover:text-blue-700 transition-colors">{comparison.title}</h2>
+                <p className="mt-3 text-sm leading-relaxed text-slate-600">{comparison.description}</p>
+              </div>
             </Link>
           </li>
         ))}

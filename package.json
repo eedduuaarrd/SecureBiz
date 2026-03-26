@@ -14,6 +14,8 @@
     "start": "next start",
     "lint": "eslint",
     "audit:indexing": "tsx scripts/audit-indexing.ts",
+    "audit:indexing:batches": "tsx scripts/run-indexing-audit-batches.ts",
+    "indexing:full": "tsx scripts/run-indexing-audit-batches.ts",
     "test:e2e": "playwright test",
     "test:e2e:ui": "playwright test --ui",
     "seed": "tsx scripts/seed-postgres.ts",

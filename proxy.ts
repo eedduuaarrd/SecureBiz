@@ -22,7 +22,7 @@ function applySecurityHeaders(response: NextResponse) {
   return response;
 }
 
-export function middleware(request: NextRequest) {
+export function proxy(request: NextRequest) {
   const proto = request.headers.get("x-forwarded-proto");
   const host = request.headers.get("host") ?? "";
 
