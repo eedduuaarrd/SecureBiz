@@ -3,7 +3,7 @@ import type { GuideFaq } from "@/lib/types";
 function getRegulationSpecificBlock(regulationName: string): string {
   const r = regulationName.toLowerCase();
 
-  const isGdpr = r.includes("rgpd") || r.includes("gdpr");
+  const isGdpr = r.includes("gdpr") || r.includes("gdpr");
 
   if (isGdpr) {
     return `## Tailored for GDPR: what we prioritize
@@ -184,7 +184,7 @@ function getRegulationSpecificBlock(regulationName: string): string {
 - Incident response: what to do when you suspect compromise.`;
   }
 
-  if (r.includes("lopdgdd") || r.includes("lopd-gdd")) {
+  if (r.includes("lopdgdd") || r.includes("spanish-lopdgdd")) {
     return `## Tailored for LOPDGDD: Spain’s GDPR complement
 - Digital rights and guarantees: internal procedures so they are actually actionable.
 - Transparency: keep consistent rules between website and documentation.

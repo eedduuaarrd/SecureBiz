@@ -56,7 +56,7 @@ const DEFAULT_EXTRA: RegulationNarrativeExtra = {
 };
 
 const BY_SLUG: Partial<Record<string, Partial<RegulationNarrativeExtra>>> = {
-  rgpd: {
+  gdpr: {
     deepDiveParagraphs: [
       "GDPR is not only “privacy policy text”: it is demonstrable governance—lawful bases, data subject rights, retention, DPIAs when appropriate, and breach timelines. Sector guides focus on where personal data actually lives in your stack.",
       "Controllers vs processors: many SMBs are both. The guides call out when you must flow obligations into contracts and when you must prove internal segregation of duties.",
@@ -88,7 +88,7 @@ const BY_SLUG: Partial<Record<string, Partial<RegulationNarrativeExtra>>> = {
       "Ignoring shadow IT that holds client data outside approved systems.",
     ],
   },
-  "llei-cookies": {
+  "cookie-law": {
     deepDiveParagraphs: [
       "Cookie and tracker rules intersect marketing, analytics, and product. Practical work is tag inventory, consent state, and logging changes—especially when agencies add pixels without security review.",
       "Mobile apps and embedded webviews must follow the same transparency principles as classic websites.",

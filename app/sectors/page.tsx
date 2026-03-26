@@ -48,7 +48,7 @@ export default async function SectorsHubPage({
 }) {
   const { q } = await searchParams;
   const sectors = buildSeedSectors();
-  const rgpdSectors = sectors.slice(0, 6);
+  const gdprSectors = sectors.slice(0, 6);
 
   const collectionSchema = {
     "@context": "https://schema.org",
@@ -243,11 +243,11 @@ export default async function SectorsHubPage({
           The first cards are practical entry points where GDPR requirements usually appear first in day-to-day operations.
         </p>
         <ul className="mt-4 grid gap-3 md:grid-cols-3">
-          {rgpdSectors.map((sector) => (
+          {gdprSectors.map((sector) => (
             <li key={sector.slug} className="rounded-lg border border-slate-200 bg-slate-50 p-3">
               <div className="text-sm font-semibold text-slate-900">{sector.name}</div>
               <Link
-                href={`/guia/${sector.slug}/rgpd`}
+                href={`/guide/${sector.slug}/rgpd`}
                 className="mt-2 inline-block rounded-md bg-slate-900 px-3 py-2 text-xs font-semibold text-white hover:bg-slate-800"
               >
                 Get the GDPR guide
@@ -340,7 +340,7 @@ export default async function SectorsHubPage({
         </p>
         <div className="mt-4 flex flex-wrap gap-3">
           <Link
-            href={`/guia/${rgpdSectors[0].slug}/rgpd`}
+            href={`/guide/${gdprSectors[0].slug}/rgpd`}
             className="rounded-md bg-slate-900 px-4 py-2 text-sm font-semibold text-white hover:bg-slate-800"
           >
             View first guide

@@ -45,9 +45,9 @@ export default async function RegulationsHubPage({
   const { q } = await searchParams;
   const sectors = buildSeedSectors();
   const exampleSector = sectors[0];
-  const rgpd = seedRegulations.find((r) => r.slug === "rgpd");
+  const rgpd = seedRegulations.find((r) => r.slug === "gdpr");
   const iso = seedRegulations.find((r) => r.slug === "iso-27001");
-  const cookies = seedRegulations.find((r) => r.slug === "llei-cookies");
+  const cookies = seedRegulations.find((r) => r.slug === "cookie-law");
 
   const collectionSchema = {
     "@context": "https://schema.org",
@@ -67,7 +67,7 @@ export default async function RegulationsHubPage({
       "@type": "ListItem",
       position: index + 1,
       name: regulation.name,
-      url: absoluteUrl(`/normativa/${regulation.slug}`),
+      url: absoluteUrl(`/regulation/${regulation.slug}`),
     })),
   };
   const breadcrumbSchema = {
@@ -224,7 +224,7 @@ export default async function RegulationsHubPage({
                 data-catalog-search={`${regulation.name.toLowerCase()} ${regulation.country.toLowerCase()} ${regulation.slug.toLowerCase()} ${regulation.description.toLowerCase()}`}
               >
                 <Link
-                  href={`/normativa/${regulation.slug}`}
+                  href={`/regulation/${regulation.slug}`}
                   className="group relative flex h-full flex-col justify-between overflow-hidden rounded-xl border border-slate-200 bg-white p-6 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-blue-400 hover:shadow-lg hover:shadow-blue-500/10 focus:ring-2 focus:ring-blue-500 focus:outline-none"
                 >
                   <div className="absolute top-0 right-0 p-4 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
@@ -254,7 +254,7 @@ export default async function RegulationsHubPage({
         <div className="mt-4 flex flex-wrap gap-3">
           {cookies ? (
             <Link
-              href={`/guia/${exampleSector.slug}/${cookies.slug}`}
+              href={`/guide/${exampleSector.slug}/${cookies.slug}`}
               className="rounded-md bg-slate-900 px-4 py-2 text-sm font-semibold text-white hover:bg-slate-800"
             >
               View Cookie Law guide (example)
@@ -262,7 +262,7 @@ export default async function RegulationsHubPage({
           ) : null}
           {iso ? (
             <Link
-              href={`/guia/${exampleSector.slug}/${iso.slug}`}
+              href={`/guide/${exampleSector.slug}/${iso.slug}`}
               className="rounded-md border border-slate-300 px-4 py-2 text-sm font-semibold text-slate-700 hover:bg-slate-50"
             >
               View ISO 27001 guide (example)

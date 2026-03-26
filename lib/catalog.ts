@@ -266,7 +266,7 @@ export function buildSeedSectors(): SeedSector[] {
 const seedRegulationsUnsorted: RegulationSeed[] = [
   {
     name: "GDPR",
-    slug: "rgpd",
+    slug: "gdpr",
     description:
       "EU General Data Protection Regulation (GDPR) covering personal data, rights, lawful bases, and accountability.",
     country: "EU",
@@ -280,7 +280,7 @@ const seedRegulationsUnsorted: RegulationSeed[] = [
   },
   {
     name: "Cookie Law",
-    slug: "llei-cookies",
+    slug: "cookie-law",
     description:
       "Rules for consent, cookies, and similar tracking technologies on websites (including disclosures and consent management).",
     country: "Spain",
@@ -329,7 +329,7 @@ const seedRegulationsUnsorted: RegulationSeed[] = [
   },
   {
     name: "LOPDGDD",
-    slug: "lopd-gdd",
+    slug: "spanish-lopdgdd",
     description:
       "Spain’s Organic Law 3/2018 on Data Protection and Digital Rights (LOPDGDD).",
     country: "Spain",
@@ -452,12 +452,12 @@ export const affiliateTools = [
 
 const commonRegulationSlugs = [
   // Core compliance and security building blocks
-  "rgpd", // GDPR
+  "gdpr", // GDPR
   "iso-27001",
   "iso-27002",
   "iso-27005",
-  "llei-cookies", // Cookie Law
-  "lopd-gdd",
+  "cookie-law", // Cookie Law
+  "spanish-lopdgdd",
   "nist-csf",
   "cis-controls",
   "eprivacy",

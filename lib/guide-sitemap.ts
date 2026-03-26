@@ -1,7 +1,7 @@
 import { ensurePostgresSchema, getPgPool } from "@/lib/postgres";
 
 /**
- * Map `/guia/{sector}/{regulation}` path → last modified time from Postgres.
+ * Map `/guide/{sector}/{regulation}` path → last modified time from Postgres.
  * `created_at` is refreshed on guide upsert, so it tracks the latest generated version.
  */
 export async function getGuidePathToLastModified(): Promise<Map<string, Date>> {
@@ -17,7 +17,7 @@ export async function getGuidePathToLastModified(): Promise<Map<string, Date>> {
       `SELECT sector_slug, regulation_slug, created_at FROM generated_content`,
     );
     for (const row of res.rows) {
-      const path = `/guia/${row.sector_slug}/${row.regulation_slug}`;
+      const path = `/guide/${row.sector_slug}/${row.regulation_slug}`;
       map.set(path, new Date(row.created_at));
     }
   } catch {

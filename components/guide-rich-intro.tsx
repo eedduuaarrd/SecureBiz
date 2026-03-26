@@ -87,7 +87,7 @@ export function GuideRichIntro({
             <p className="text-xs text-slate-500">
               Related reference:{" "}
               <Link
-                href={`/normativa/${regulationSlug}`}
+                href={`/regulation/${regulationSlug}`}
                 className="font-medium text-indigo-600 transition-colors hover:text-indigo-800"
               >
                 {regulationName} — all sectors

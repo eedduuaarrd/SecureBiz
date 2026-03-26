@@ -20,7 +20,7 @@ export function GuideImplementationExtras({
 }: Props) {
   const risks = getSectorMainRisksForName(sectorName).slice(0, 3);
   const focusByRegulation: Record<string, { title: string; bullets: string[] }> = {
-    rgpd: {
+    gdpr: {
       title: `Priority controls for ${sectorName} under GDPR`,
       bullets: [
         "Map lawful bases by workflow (service delivery vs. marketing vs. legal obligation).",
@@ -44,7 +44,7 @@ export function GuideImplementationExtras({
         "Assess critical suppliers and concentration risk before renewal windows.",
       ],
     },
-    "llei-cookies": {
+    "cookie-law": {
       title: `Priority controls for ${sectorName} under cookie/ePrivacy rules`,
       bullets: [
         "Inventory every tracker/pixel and classify essential vs non-essential.",
@@ -160,7 +160,7 @@ export function GuideImplementationExtras({
             <div>
               <Link
                 className="font-semibold text-blue-700 underline-offset-4 hover:underline transition-all"
-                href={`/normativa/${regulationSlug}`}
+                href={`/regulation/${regulationSlug}`}
               >
                 Regulation hub for {regulationName}
               </Link>

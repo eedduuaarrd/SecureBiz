@@ -57,7 +57,7 @@ export function iterGuideUrls(baseUrl: string): Array<{
   for (const sector of buildSeedSectors()) {
     for (const regulation of getRegulationSeedsForSectorSlug(sector.slug)) {
       out.push({
-        url: `${baseUrl}/guia/${sector.slug}/${regulation.slug}`,
+        url: `${baseUrl}/guide/${sector.slug}/${regulation.slug}`,
         sectorSlug: sector.slug,
         regulationSlug: regulation.slug,
       });
@@ -80,7 +80,7 @@ export function sampleGuideUrlsForLlms(
       maxRegsPerSector,
     );
     for (const regulation of regs) {
-      links.push(`${baseUrl}/guia/${sector.slug}/${regulation.slug}`);
+      links.push(`${baseUrl}/guide/${sector.slug}/${regulation.slug}`);
     }
   }
   return links;
@@ -113,7 +113,7 @@ export function iterSectorSubpageUrls(baseUrl: string) {
 
 export function iterRegulationPages(baseUrl: string) {
   return seedRegulations.map((regulation) => ({
-    url: `${baseUrl}/normativa/${regulation.slug}`,
+    url: `${baseUrl}/regulation/${regulation.slug}`,
     slug: regulation.slug,
   }));
 }

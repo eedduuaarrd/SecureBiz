@@ -99,7 +99,7 @@ export default async function sitemap({
 
   const guideEntries: MetadataRoute.Sitemap = iterGuideUrls(baseUrl).map(
     (row) => {
-      const pathKey = `/guia/${row.sectorSlug}/${row.regulationSlug}`;
+      const pathKey = `/guide/${row.sectorSlug}/${row.regulationSlug}`;
       const fromDb = guideLastMods.get(pathKey);
       return {
         url: row.url,

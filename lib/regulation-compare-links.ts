@@ -6,7 +6,7 @@ export function getCompareLinksForRegulationSlug(regulationSlug: string): Array<
   label: string;
 }> {
   const map: Record<string, Array<{ href: string; label: string }>> = {
-    rgpd: [
+    gdpr: [
       { href: "/compare/gdpr-vs-iso-27001", label: "GDPR vs ISO 27001" },
       { href: "/compare/gdpr-vs-nis2", label: "GDPR vs NIS2" },
       { href: "/compare/gdpr-vs-soc2", label: "GDPR vs SOC 2" },
@@ -31,7 +31,7 @@ export function getCompareLinksForRegulationSlug(regulationSlug: string): Array<
       { href: "/compare/soc2-vs-nis2", label: "SOC 2 vs NIS2" },
       { href: "/compare/gdpr-vs-soc2", label: "GDPR vs SOC 2" },
     ],
-    "llei-cookies": [
+    "cookie-law": [
       { href: "/compare/cookie-law-vs-gdpr", label: "Cookie law vs GDPR" },
       { href: "/compare/cookie-law-vs-iso-27001", label: "Cookie law vs ISO 27001" },
       { href: "/compare/gdpr-vs-iso-27001", label: "GDPR vs ISO 27001" },

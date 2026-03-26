@@ -94,7 +94,7 @@ export async function generateMetadata({
     guide = null;
   }
 
-  const fallbackPath = `/guia/${resolvedParams["sector-slug"]}/${resolvedParams["regulations-slug"]}`;
+  const fallbackPath = `/guide/${resolvedParams["sector-slug"]}/${resolvedParams["regulations-slug"]}`;
 
   if (!guide) {
     if (!fallbackSector || !fallbackRegulation) {
@@ -129,7 +129,7 @@ export async function generateMetadata({
     };
   }
 
-  const path = `/guia/${guide.sector_slug}/${guide.regulation_slug}`;
+  const path = `/guide/${guide.sector_slug}/${guide.regulation_slug}`;
   const published = toIsoDate(guide.created_at);
   const seoTitle = `${guide.title} | Checklist and Action Plan`;
 
@@ -257,7 +257,7 @@ export default async function GuidePage({ params }: GuidePageProps) {
         );
 
   const pageUrl = absoluteUrl(
-    `/guia/${effectiveGuide.sector_slug}/${effectiveGuide.regulation_slug}`,
+    `/guide/${effectiveGuide.sector_slug}/${effectiveGuide.regulation_slug}`,
   );
   const published = toIsoDate(effectiveGuide.created_at);
 

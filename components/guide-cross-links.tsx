@@ -47,7 +47,7 @@ export function GuideCrossLinks({
         </li>
         <li>
           <Link
-            href={`/normativa/${regulationSlug}`}
+            href={`/regulation/${regulationSlug}`}
             className="text-sm font-medium text-blue-800 underline-offset-2 hover:underline"
           >
             All sectors × {regulationName}
@@ -69,7 +69,7 @@ export function GuideCrossLinks({
         {others.map((r) => (
           <li key={r.slug}>
             <Link
-              href={`/guia/${sectorSlug}/${r.slug}`}
+              href={`/guide/${sectorSlug}/${r.slug}`}
               className="text-blue-700 underline-offset-2 hover:underline"
             >
               {r.name}
@@ -85,7 +85,7 @@ export function GuideCrossLinks({
             {randomSectors.map((s) => (
               <li key={s.slug}>
                 <Link
-                  href={`/guia/${s.slug}/${regulationSlug}`}
+                  href={`/guide/${s.slug}/${regulationSlug}`}
                   className="text-blue-700 underline-offset-2 hover:underline"
                 >
                   {regulationName} for {s.name}

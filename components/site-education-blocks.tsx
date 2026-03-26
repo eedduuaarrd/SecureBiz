@@ -107,12 +107,12 @@ export function HubFooterLinks() {
           </Link>
         </li>
         <li>
-          <Link href="/normativa/rgpd" className="font-medium text-blue-700 hover:underline">
+          <Link href="/regulation/rgpd" className="font-medium text-blue-700 hover:underline">
             GDPR — all sector guides
           </Link>
         </li>
         <li>
-          <Link href="/normativa/iso-27001" className="font-medium text-blue-700 hover:underline">
+          <Link href="/regulation/iso-27001" className="font-medium text-blue-700 hover:underline">
             ISO 27001 — all sector guides
           </Link>
         </li>

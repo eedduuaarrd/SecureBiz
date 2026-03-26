@@ -26,7 +26,7 @@ export function RelatedGuides({ guides }: RelatedGuidesProps) {
         {guides.map((guide) => (
           <li key={String(guide._id)} className="rounded-md border border-slate-200 p-3">
             <Link
-              href={`/guia/${guide.sector_slug}/${guide.regulation_slug}`}
+              href={`/guide/${guide.sector_slug}/${guide.regulation_slug}`}
               className="font-medium text-blue-700 hover:text-blue-800"
             >
               {guide.title}

@@ -37,7 +37,7 @@ export async function generateMetadata({
     return { title: "Regulation not found" };
   }
 
-  const path = `/normativa/${regulation.slug}`;
+  const path = `/regulation/${regulation.slug}`;
   const metaDescription = (() => {
     const core = `${regulation.description} Compare sector-by-sector implementation with evidence, pitfalls, and phased rollout guidance.`;
     return core.length > 158 ? `${core.slice(0, 155)}…` : core;
@@ -100,7 +100,7 @@ export default async function RegulationPage({
   }
 
   const extra = getRegulationNarrativeExtra(regulation.slug);
-  const pageUrl = absoluteUrl(`/normativa/${regulation.slug}`);
+  const pageUrl = absoluteUrl(`/regulation/${regulation.slug}`);
   const breadcrumbSchema = {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
@@ -119,7 +119,7 @@ export default async function RegulationPage({
       "@type": "ListItem",
       position: index + 1,
       name: `${regulation.name} for ${sector.name}`,
-      url: absoluteUrl(`/guia/${sector.slug}/${regulation.slug}`),
+      url: absoluteUrl(`/guide/${sector.slug}/${regulation.slug}`),
     })),
   };
 
@@ -292,7 +292,7 @@ export default async function RegulationPage({
             <div key={s.slug} className="rounded-lg border border-slate-200 bg-slate-50 p-4">
               <p className="text-sm font-semibold text-slate-900">{s.name}</p>
               <Link
-                href={`/guia/${s.slug}/${regulation.slug}`}
+                href={`/guide/${s.slug}/${regulation.slug}`}
                 className="mt-2 inline-block rounded-md bg-slate-900 px-3 py-2 text-xs font-semibold text-white hover:bg-slate-800"
               >
                 View guide
@@ -320,7 +320,7 @@ export default async function RegulationPage({
               data-catalog-search={`${sector.name.toLowerCase()} ${sector.slug.toLowerCase()}`}
             >
               <Link
-                href={`/guia/${sector.slug}/${regulation.slug}`}
+                href={`/guide/${sector.slug}/${regulation.slug}`}
                 className="block rounded-lg border border-slate-200 bg-white p-4 transition hover:border-blue-300 hover:shadow-sm"
               >
                 <p className="font-medium text-slate-900">{sector.name}</p>

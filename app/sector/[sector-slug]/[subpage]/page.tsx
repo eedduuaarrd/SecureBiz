@@ -174,7 +174,7 @@ export default async function SectorSubpage({ params }: Props) {
             Sector hub
           </Link>
           <Link
-            href={`/guia/${sector.slug}/rgpd`}
+            href={`/guide/${sector.slug}/rgpd`}
             className="rounded-lg border border-slate-300 px-4 py-2.5 text-sm font-semibold text-slate-800 hover:bg-slate-50"
           >
             GDPR guide

@@ -62,13 +62,13 @@ export default function Home() {
   const allSectors = buildSeedSectors();
   const featuredSectors = allSectors.slice(0, 9);
   const siteUrl = getSiteUrl();
-  const rgpdSlug =
-    seedRegulations.find((r) => r.slug === "rgpd")?.slug ?? "rgpd";
+  const gdprSlug =
+    seedRegulations.find((r) => r.slug === "gdpr")?.slug ?? "gdpr";
 
   const topRegulationSlugs = [
-    "rgpd",
+    "gdpr",
     "iso-27001",
-    "llei-cookies",
+    "cookie-law",
     "nis2",
     "dora",
     "soc-2",
@@ -145,7 +145,7 @@ export default function Home() {
       "@type": "ListItem",
       position: index + 1,
       name: sector.name,
-      url: absoluteUrl(`/guia/${sector.slug}/rgpd`),
+      url: absoluteUrl(`/guide/${sector.slug}/rgpd`),
     })),
   };
 
@@ -316,7 +316,7 @@ export default function Home() {
           </p>
           <div className="mt-8 flex flex-col w-full gap-3 sm:w-auto sm:flex-row sm:items-center sm:gap-4">
             <Link
-              href={`/guia/${featuredSectors[0].slug}/${rgpdSlug}`}
+              href={`/guide/${featuredSectors[0].slug}/${gdprSlug}`}
               className="group relative flex h-14 items-center justify-center overflow-hidden rounded-xl bg-blue-600 px-8 text-sm font-semibold text-white shadow-lg transition-all hover:bg-blue-500 hover:shadow-blue-600/25 sm:w-auto focus:ring-2 focus:ring-blue-400 focus:outline-none"
             >
               <span className="relative z-10 flex items-center gap-2">
@@ -383,7 +383,7 @@ export default function Home() {
               <tr className="border-b border-slate-100">
                 <td className="px-3 py-2">You want a single actionable document</td>
                 <td className="px-3 py-2">
-                  <Link className="text-blue-700 underline" href={`/guia/${featuredSectors[0].slug}/${rgpdSlug}`}>
+                  <Link className="text-blue-700 underline" href={`/guide/${featuredSectors[0].slug}/${gdprSlug}`}>
                     A full guide
                   </Link>
                 </td>
@@ -415,7 +415,7 @@ export default function Home() {
           {topRegulations.map((reg) => (
             <li key={reg.slug}>
               <Link
-                href={`/normativa/${reg.slug}`}
+                href={`/regulation/${reg.slug}`}
                 className="flex flex-col rounded-lg border border-slate-200 bg-slate-50/80 px-3 py-2.5 text-sm transition hover:border-blue-300 hover:bg-white"
               >
                 <span className="font-semibold text-slate-900">{reg.name}</span>
@@ -504,7 +504,7 @@ export default function Home() {
                 <td className="px-3 py-3 font-medium">Cookie law</td>
                 <td className="px-3 py-3">You run ads, analytics, chat widgets, or A/B tests on your site.</td>
                 <td className="px-3 py-3">
-                  <Link href={`/guia/${featuredSectors[0].slug}/llei-cookies`} className="text-blue-700 underline-offset-2 hover:underline">
+                  <Link href={`/guide/${featuredSectors[0].slug}/llei-cookies`} className="text-blue-700 underline-offset-2 hover:underline">
                     Example cookie guide
                   </Link>
                 </td>
@@ -565,7 +565,7 @@ export default function Home() {
           {featuredSectors.map((sector) => (
             <Link
               key={sector.slug}
-              href={`/guia/${sector.slug}/rgpd`}
+              href={`/guide/${sector.slug}/rgpd`}
               className="group flex flex-col justify-between rounded-xl border border-slate-200 bg-white p-5 text-slate-800 shadow-sm transition-all duration-200 hover:-translate-y-1 hover:border-blue-500 hover:shadow-md hover:shadow-blue-500/10"
             >
               <div className="flex items-center justify-between">
@@ -724,11 +724,11 @@ export default function Home() {
             <dd className="mt-1">
               ISO 27001 is a certifiable security management system (ISMS). NIS2 is an EU directive with reporting and
               governance expectations in scope sectors—they solve different questions. Use{" "}
-              <Link href="/normativa/iso-27001" className="text-blue-700 underline-offset-2 hover:underline">
+              <Link href="/regulation/iso-27001" className="text-blue-700 underline-offset-2 hover:underline">
                 ISO 27001 hub
               </Link>{" "}
               and{" "}
-              <Link href="/normativa/nis2" className="text-blue-700 underline-offset-2 hover:underline">
+              <Link href="/regulation/nis2" className="text-blue-700 underline-offset-2 hover:underline">
                 NIS2 hub
               </Link>{" "}
               to pick sector guides, then validate scope with professionals.

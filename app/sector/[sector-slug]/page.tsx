@@ -125,7 +125,7 @@ export default async function SectorPage({ params }: SectorPageProps) {
       "@type": "ListItem",
       position: index + 1,
       name: regulation.name,
-      url: absoluteUrl(`/guia/${sector.slug}/${regulation.slug}`),
+      url: absoluteUrl(`/guide/${sector.slug}/${regulation.slug}`),
     })),
   };
 
@@ -162,7 +162,7 @@ export default async function SectorPage({ params }: SectorPageProps) {
         <p className="mt-2 text-sm text-blue-100 sm:text-base">{sector.name}</p>
         <div className="mt-5 flex flex-col gap-2 sm:flex-row sm:flex-wrap sm:gap-3">
           <Link
-            href={`/guia/${sector.slug}/rgpd`}
+            href={`/guide/${sector.slug}/rgpd`}
             className="inline-flex justify-center rounded-lg bg-white px-5 py-3 text-sm font-semibold text-slate-900 sm:py-2.5"
           >
             Open GDPR guide
@@ -243,7 +243,7 @@ export default async function SectorPage({ params }: SectorPageProps) {
           {regulations.map((regulation) => (
             <li key={regulation.slug}>
               <Link
-                href={`/guia/${sector.slug}/${regulation.slug}`}
+                href={`/guide/${sector.slug}/${regulation.slug}`}
                 className="group flex h-full flex-col rounded-xl border border-slate-200 bg-white p-5 shadow-sm transition hover:border-blue-300 hover:shadow-md"
               >
                 <span className="text-xs font-semibold uppercase tracking-wide text-blue-600">

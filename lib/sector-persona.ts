@@ -197,11 +197,11 @@ export function getSectorRegulationFocus(
   const slug = regulation.slug;
 
   const dental = () => {
-    if (slug === "rgpd")
+    if (slug === "gdpr")
       return "Patient records, consent for treatment & marketing, DPA with labs and hosting.";
     if (slug === "iso-27001")
       return "ISMS for insurers, chains, or tenders asking for certified security.";
-    if (slug === "llei-cookies")
+    if (slug === "cookie-law")
       return "Booking widgets, analytics, chat—consent before non-essential scripts run.";
     if (slug === "nis2")
       return "Incident reporting if you’re an essential operator in your Member State.";
@@ -209,11 +209,11 @@ export function getSectorRegulationFocus(
   };
 
   const legal = () => {
-    if (slug === "rgpd")
+    if (slug === "gdpr")
       return "Client data, conflict checks, retention after matter end, transfers to clients.";
     if (slug === "iso-27001")
       return "Prove confidentiality controls for enterprise clients and cyber insurance.";
-    if (slug === "llei-cookies")
+    if (slug === "cookie-law")
       return "Lead forms, chatbots, and newsletter pixels on your firm’s site.";
     return regulation.description;
   };
@@ -222,11 +222,11 @@ export function getSectorRegulationFocus(
   if (base.includes("law") || base.includes("notary") || base.includes("legal"))
     return legal();
 
-  if (slug === "rgpd")
+  if (slug === "gdpr")
     return `Personal data for customers, staff, and suppliers—mapped to how ${sectorName} operates day to day.`;
   if (slug === "iso-27001")
     return `Security management when partners or contracts require demonstrable controls.`;
-  if (slug === "llei-cookies")
+  if (slug === "cookie-law")
     return `Website trackers, CRM embeds, and consent UX for your market.`;
 
   return regulation.description;
@@ -243,9 +243,9 @@ export function getGuidePersonaNarrative(
   if (base.includes("dental") || base.includes("orthodont")) {
     return [
       `In ${sectorName}, ${regulationName} shows up in everyday tools: practice software, radiology storage, WhatsApp reminders, and payroll. This guide frames obligations as chairside and reception workflows—not abstract “company” duties.`,
-      regulationSlug === "rgpd"
+      regulationSlug === "gdpr"
         ? `Expect concrete angles: health data categories, lawful bases for care vs. marketing, retention of ortho files, and what to put in agreements with labs and marketing agencies.`
-        : regulationSlug === "llei-cookies"
+        : regulationSlug === "cookie-law"
           ? `Your site likely runs booking, maps, analytics, or ads—here’s how to align banners, CMPs, and logging with enforcement reality.`
           : `You’ll see how ${regulationName} expectations translate into policies, access control, and evidence ${sectorName} can maintain with limited IT staff.`,
     ];
