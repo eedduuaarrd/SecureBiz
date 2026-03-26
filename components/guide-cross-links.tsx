@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { getRegulationSeedsForSectorSlug } from "@/lib/catalog";
+import { getRegulationSeedsForSectorSlug, buildSeedSectors } from "@/lib/catalog";
 
 type Props = {
   sectorName: string;
@@ -19,6 +19,13 @@ export function GuideCrossLinks({
 }: Props) {
   const others = getRegulationSeedsForSectorSlug(sectorSlug)
     .filter((r) => r.slug !== regulationSlug)
+    .slice(0, 6);
+
+  // Pick 6 random sectors that are NOT the current one to cross-pollinate PageRank
+  const allSectors = buildSeedSectors();
+  const randomSectors = [...allSectors]
+    .filter((s) => s.slug !== sectorSlug)
+    .sort(() => 0.5 - Math.random())
     .slice(0, 6);
 
   return (
@@ -70,6 +77,24 @@ export function GuideCrossLinks({
           </li>
         ))}
       </ul>
+
+      {randomSectors.length > 0 && (
+        <>
+          <h3 className="mt-6 text-sm font-semibold text-slate-800">Similar guides for {regulationName}</h3>
+          <ul className="mt-2 flex flex-wrap gap-x-4 gap-y-2 text-sm">
+            {randomSectors.map((s) => (
+              <li key={s.slug}>
+                <Link
+                  href={`/guia/${s.slug}/${regulationSlug}`}
+                  className="text-blue-700 underline-offset-2 hover:underline"
+                >
+                  {regulationName} for {s.name}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </>
+      )}
     </section>
   );
 }

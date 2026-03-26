@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { SeoAccordion } from "@/components/seo-accordion";
+import { AdBanner } from "@/components/ad-banner";
 import { UsefulContextCallout, UsefulDataTable } from "@/components/site-education-blocks";
 import {
   buildSeedSectors,
@@ -180,6 +181,8 @@ export default async function SectorPage({ params }: SectorPageProps) {
           <p key={i}>{p}</p>
         ))}
       </div>
+
+      <AdBanner slotId="2000000001" className="mt-8 mb-4 border-y border-slate-100 py-4" />
 
       <section className="mt-10 rounded-2xl border border-slate-200 bg-white p-5 shadow-sm sm:p-8">
         <h2 className="text-lg font-semibold text-slate-900 sm:text-xl">

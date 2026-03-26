@@ -8,6 +8,7 @@ import { GuideFaqSection } from "@/components/guide-faq-section";
 import { GuideRichIntro } from "@/components/guide-rich-intro";
 import { LeadCaptureWidget } from "@/components/lead-capture-widget";
 import { MarkdownArticle } from "@/components/markdown-article";
+import { AdBanner } from "@/components/ad-banner";
 import { RelatedGuides } from "@/components/related-guides";
 import { MobileStickyLead } from "@/components/mobile-sticky-lead";
 import {
@@ -467,7 +468,11 @@ export default async function GuidePage({ params }: GuidePageProps) {
             </details>
           </section>
 
+          <AdBanner slotId="1000000001" className="mt-8 mb-4 border-y border-slate-100 py-4" />
+
           <MarkdownArticle markdown={effectiveGuide.full_text} />
+
+          <AdBanner slotId="1000000002" className="mt-8 mb-4 border-y border-slate-100 py-4" />
 
           <GuideImplementationExtras
             sectorName={effectiveSectorName}

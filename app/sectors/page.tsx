@@ -5,6 +5,7 @@ import { IntentLinksBlock } from "@/components/intent-links-block";
 import { SeoAccordion } from "@/components/seo-accordion";
 import { HubFooterLinks, UsefulContextCallout, UsefulDataTable } from "@/components/site-education-blocks";
 import { VisualStepTimeline } from "@/components/visual-step-timeline";
+import { AdBanner } from "@/components/ad-banner";
 import { buildSeedSectors } from "@/lib/catalog";
 import { SECTOR_VERTICAL_CLUSTERS } from "@/lib/expanded-content";
 import { getRobotsAllowAll } from "@/lib/seo";
@@ -167,6 +168,8 @@ export default async function SectorsHubPage({
         clear audit request path.
       </p>
 
+      <AdBanner slotId="3000000001" className="mt-8 mb-4 border-y border-slate-100 py-4" />
+
       <section className="mt-8 rounded-xl border border-slate-200 bg-white p-5">
         <h2 className="text-lg font-semibold text-slate-900">Browse by vertical (examples)</h2>
         <p className="mt-2 text-sm text-slate-600">
@@ -278,6 +281,7 @@ export default async function SectorsHubPage({
               >
                 <Link
                   href={`/sector/${sector.slug}`}
+                  prefetch={false}
                   className="group flex h-full items-center justify-between rounded-xl border border-slate-200 bg-white p-4 shadow-sm transition-all duration-200 hover:-translate-y-0.5 hover:border-blue-400 hover:shadow-md focus:ring-2 focus:ring-blue-500 focus:outline-none"
                 >
                   <p className="font-semibold text-slate-900 group-hover:text-blue-700 transition-colors">{sector.name}</p>

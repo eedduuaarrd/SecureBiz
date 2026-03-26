@@ -11,6 +11,15 @@ const nextConfig: NextConfig = {
     formats: ["image/avif", "image/webp"],
     minimumCacheTTL: 60 * 60 * 24 * 30,
   },
+  async redirects() {
+    return [
+      {
+        source: "/normatives",
+        destination: "/regulations",
+        permanent: true,
+      },
+    ];
+  },
   // Evita el warning de "multiple lockfiles" quan hi ha package-lock fora del projecte
   turbopack: {
     root: projectRoot,
