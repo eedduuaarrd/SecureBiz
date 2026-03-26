@@ -5,7 +5,7 @@ const projectRoot = path.resolve(process.cwd());
 
 const nextConfig: NextConfig = {
   /** Hub pages (e.g. /sectors) render many links; default 60s can fail on Vercel. */
-  staticPageGenerationTimeout: 180,
+  staticPageGenerationTimeout: 2000,
   poweredByHeader: false,
   images: {
     formats: ["image/avif", "image/webp"],
