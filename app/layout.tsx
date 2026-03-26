@@ -82,13 +82,13 @@ export default function RootLayout({
         <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com" />
         <link rel="dns-prefetch" href="https://fundingchoicesmessages.google.com" />
         <link rel="dns-prefetch" href="https://googleads.g.doubleclick.net" />
+        <GoogleTagManager />
+        <GoogleAdsTag />
       </head>
       <body className="min-h-full flex flex-col bg-slate-50 text-slate-900 text-base antialiased sm:text-[15px]">
         <a href="#main-content" className="skip-to-content">
           Skip to main content
         </a>
-        <GoogleTagManager />
-        <GoogleAdsTag />
         <DeferredAnalytics />
         <AdsenseLoader />
         <SiteHeader />

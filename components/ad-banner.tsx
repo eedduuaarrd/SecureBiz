@@ -33,11 +33,11 @@ export function AdBanner({ slotId, format = "auto", responsive = true, className
   }, []);
 
   return (
-    <div key={slotId} className={`my-8 flex w-full justify-center overflow-hidden bg-slate-50 text-center ${className}`}>
+    <div key={slotId} className={`flex w-full justify-center overflow-hidden text-center ${className}`}>
       <ins
         ref={adRef}
         className="adsbygoogle"
-        style={{ display: "block", minHeight: "250px", minWidth: "300px" }}
+        style={{ display: "block", minHeight: "1px" }}
         data-ad-client={ADSENSE_PUBLISHER_CA}
         data-ad-slot={slotId}
         data-ad-format={format}

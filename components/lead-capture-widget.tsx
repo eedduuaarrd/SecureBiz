@@ -1,5 +1,6 @@
 "use client";
 
+import { useRouter } from "next/navigation";
 import { FormEvent, useId, useState } from "react";
 import { trackEvent } from "@/lib/analytics-events";
 
@@ -9,6 +10,7 @@ type LeadCaptureWidgetProps = {
 };
 
 export function LeadCaptureWidget({ sector, variant = "A" }: LeadCaptureWidgetProps) {
+  const router = useRouter();
   const fieldId = useId();
   const nameId = `${fieldId}-name`;
   const emailId = `${fieldId}-email`;
@@ -52,12 +54,8 @@ export function LeadCaptureWidget({ sector, variant = "A" }: LeadCaptureWidgetPr
         variant,
       });
 
-      // Fire Google Ads conversion tracking
-      if (typeof window !== "undefined" && typeof (window as any).gtag === "function") {
-        (window as any).gtag("event", "conversion", {
-          send_to: "AW-18028490691/-M2FCPyKtY4cEMPf05RD",
-        });
-      }
+      // Redirect to the success page to fire the conversion tracking in Google Ads
+      router.push("/success");
     } catch {
       setStatus("error");
       setErrorMessage("Could not send your request. Please try again.");

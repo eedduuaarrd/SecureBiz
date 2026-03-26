@@ -182,7 +182,7 @@ export default async function SectorPage({ params }: SectorPageProps) {
         ))}
       </div>
 
-      <AdBanner slotId="2000000001" className="mt-8 mb-4 border-y border-slate-100 py-4" />
+      <AdBanner slotId="2000000001" className="my-8" />
 
       <section className="mt-10 rounded-2xl border border-slate-200 bg-white p-5 shadow-sm sm:p-8">
         <h2 className="text-lg font-semibold text-slate-900 sm:text-xl">

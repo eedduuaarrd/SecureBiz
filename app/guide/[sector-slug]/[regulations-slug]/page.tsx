@@ -468,11 +468,11 @@ export default async function GuidePage({ params }: GuidePageProps) {
             </details>
           </section>
 
-          <AdBanner slotId="1000000001" className="mt-8 mb-4 border-y border-slate-100 py-4" />
+          <AdBanner slotId="1000000001" className="my-8" />
 
           <MarkdownArticle markdown={effectiveGuide.full_text} />
 
-          <AdBanner slotId="1000000002" className="mt-8 mb-4 border-y border-slate-100 py-4" />
+          <AdBanner slotId="1000000002" className="my-8" />
 
           <GuideImplementationExtras
             sectorName={effectiveSectorName}
