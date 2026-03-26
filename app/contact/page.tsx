@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { IntentLinksBlock } from "@/components/intent-links-block";
+import { LeadCaptureWidget } from "@/components/lead-capture-widget";
 import { SITE_NAME, getRobotsAllowAll } from "@/lib/seo";
 import { absoluteUrl } from "@/lib/site";
 
@@ -46,9 +47,19 @@ export default function ContactPage() {
 
       <div className="mt-10 space-y-10 text-slate-700">
         <section>
-          <h2 className="text-xl font-semibold text-slate-900">General Inquiries & Feedback</h2>
+          <h2 className="text-xl font-semibold text-slate-900">Send us a Message</h2>
+          <p className="mt-3 text-sm leading-relaxed text-slate-600">
+            Have a question or need assistance? Fill out the form below and we'll get back to you.
+          </p>
+          <div className="mt-6">
+            <LeadCaptureWidget sector="General Inquiry" variant="A" />
+          </div>
+        </section>
+
+        <section>
+          <h2 className="text-xl font-semibold text-slate-900">Direct Contact</h2>
           <p className="mt-3 text-sm leading-relaxed">
-            For general questions, content suggestions, or feedback, please email us directly:
+            For content suggestions or business partnerships, you can email us directly:
           </p>
           <div className="mt-4 rounded-xl border border-blue-100 bg-blue-50/50 p-6">
             <p className="text-lg font-medium text-blue-900">
@@ -57,9 +68,6 @@ export default function ContactPage() {
               </a>
             </p>
           </div>
-          <p className="mt-4 text-sm leading-relaxed text-slate-600">
-            We aim to respond to all inquiries within 2-3 business days. Please note that {SITE_NAME} does not provide legal advice or personalized consulting services.
-          </p>
         </section>
 
         <section>

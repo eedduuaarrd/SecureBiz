@@ -37,9 +37,14 @@ export async function POST(request: Request) {
       [result.data.name, result.data.email, result.data.company, result.data.sector],
     );
 
+    // [MODIFIED]: Send email notification to user
+    const { sendLeadNotification } = await import("@/lib/email");
+    await sendLeadNotification(result.data);
+
     return NextResponse.json({ ok: true });
-  } catch {
-    // Fallback: if MongoDB is unreachable, persist leads to a local jsonl file
+  } catch (error) {
+    console.error("Lead processing error:", error);
+    // Fallback: if Postgres or Email fails, persist leads to a local jsonl file
     // so the CTA doesn't break. (Note: in serverless, this is best-effort.)
     try {
       const fs = await import("node:fs/promises");
