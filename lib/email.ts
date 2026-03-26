@@ -1,23 +1,23 @@
 import { Resend } from "resend";
 
-export const resend = process.env.RESEND_API_KEY
-  ? new Resend(process.env.RESEND_API_KEY)
-  : null;
-
 export async function sendLeadNotification(data: {
   name: string;
   email: string;
   company: string;
   sector: string;
 }) {
-  if (!resend) {
-    console.warn("Resend API key missing. Email not sent.");
+  if (!process.env.RESEND_API_KEY) {
+    console.warn("DEBUG: RESEND_API_KEY is NOT defined in environment variables.");
     return;
   }
 
+  const resend = new Resend(process.env.RESEND_API_KEY);
+
   try {
-    await resend.emails.send({
-      from: "SecureBiz AI <onboarding@resend.dev>",
+    console.log(`DEBUG: Attempting to send lead email for ${data.email} to edu12713@gmail.com`);
+    
+    const { data: resendData, error } = await resend.emails.send({
+      from: "onboarding@resend.dev",
       to: "edu12713@gmail.com",
       subject: `New Lead: ${data.name} - ${data.sector}`,
       html: `
@@ -27,10 +27,16 @@ export async function sendLeadNotification(data: {
         <p><strong>Company:</strong> ${data.company}</p>
         <p><strong>Sector:</strong> ${data.sector}</p>
         <hr />
-        <p>This lead has been saved to the database.</p>
+        <p>Time: ${new Date().toLocaleString()}</p>
       `,
     });
+
+    if (error) {
+      console.error("DEBUG: Resend API returned an error:", error);
+    } else {
+      console.log("DEBUG: Resend email sent successfully:", resendData);
+    }
   } catch (error) {
-    console.error("Failed to send lead notification email:", error);
+    console.error("DEBUG: Exception in sendLeadNotification:", error);
   }
 }

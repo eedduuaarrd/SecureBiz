@@ -2,7 +2,7 @@ import { NextResponse } from "next/server";
 import { z } from "zod";
 import { ensurePostgresSchema, getPgPool } from "@/lib/postgres";
 
-// Ensure this route runs on Node.js runtime (MongoDB driver may not work in Edge runtime)
+// Ensure this route runs on Node.js runtime
 export const runtime = "nodejs";
 
 const leadSchema = z.object({
@@ -13,7 +13,7 @@ const leadSchema = z.object({
 });
 
 export async function POST(request: Request) {
-  let leadData: z.infer<typeof leadSchema> | null = null;
+  let leadData: any = null;
   try {
     const payload = await request.json();
     const result = leadSchema.safeParse(payload);
@@ -37,15 +37,21 @@ export async function POST(request: Request) {
       [result.data.name, result.data.email, result.data.company, result.data.sector],
     );
 
-    // [MODIFIED]: Send email notification to user
-    const { sendLeadNotification } = await import("@/lib/email");
-    await sendLeadNotification(result.data);
+    // Send email notification (non-blocking)
+    try {
+      const { sendLeadNotification } = await import("@/lib/email");
+      sendLeadNotification(result.data).catch(err => {
+        console.error("Async email error:", err);
+      });
+    } catch (e) {
+      console.error("Email service import failed:", e);
+    }
 
     return NextResponse.json({ ok: true });
-  } catch (error) {
-    console.error("Lead processing error:", error);
-    // Fallback: if Postgres or Email fails, persist leads to a local jsonl file
-    // so the CTA doesn't break. (Note: in serverless, this is best-effort.)
+  } catch (error: any) {
+    console.error("CRITICAL API Error:", error);
+    
+    // Fallback persistence
     try {
       const fs = await import("node:fs/promises");
       const os = await import("node:os");
@@ -53,8 +59,8 @@ export async function POST(request: Request) {
 
       if (!leadData) {
         return NextResponse.json(
-          { ok: false, error: "Lead persistence failed", reason: "Missing parsed lead data" },
-          { status: 503 },
+          { ok: false, error: "Lead processing failed", detail: error?.message },
+          { status: 500 },
         );
       }
 
@@ -63,14 +69,14 @@ export async function POST(request: Request) {
 
       await fs.appendFile(
         filePath,
-        `${JSON.stringify({ ...leadData, timestamp: new Date().toISOString() })}\n`,
+        `${JSON.stringify({ ...leadData, error: error?.message, timestamp: new Date().toISOString() })}\n`,
         "utf8",
       );
 
       return NextResponse.json({ ok: true, fallback: "file" });
-    } catch {
+    } catch (fallbackError) {
       return NextResponse.json(
-        { ok: false, error: "Lead persistence failed", reason: "File fallback write failed" },
+        { ok: false, error: "Total failure", reason: error?.message },
         { status: 503 },
       );
     }
