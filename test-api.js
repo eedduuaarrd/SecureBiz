@@ -17,5 +17,4 @@ async function testLead() {
     console.error("Test failed:", error);
   }
 }
-
 testLead();
