@@ -11,9 +11,6 @@ import { SECTOR_VERTICAL_CLUSTERS } from "@/lib/expanded-content";
 import { getRobotsAllowAll } from "@/lib/seo";
 import { absoluteUrl } from "@/lib/site";
 
-/** Huge list + search: skip static HTML at build (avoids Vercel 60–180s page timeouts). */
-export const dynamic = "force-dynamic";
-
 export const metadata: Metadata = {
   title: "Sector Directory | Find GDPR, ISO 27001 and NIS2 guides",
   description:

@@ -2,13 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { buildSeedSectors } from "@/lib/catalog";
-import {
-  SECTOR_SUBPAGE_SLUGS,
-  getSectorSubpageContext,
-  getSectorSubpageDocument,
-  getSectorSubpageLabel,
-  isSectorSubpageSlug,
-} from "@/lib/sector-subpage-content";
+import { SECTOR_SUBPAGE_SLUGS, getSectorSubpageContext, getSectorSubpageDocument, getSectorSubpageLabel, isSectorSubpageSlug } from "@/lib/sector-subpage-content";
 import { UsefulContextCallout } from "@/components/site-education-blocks";
 import { getDefaultOgImageUrl, getDefaultOgImages, getRobotsAllowAll } from "@/lib/seo";
 import { absoluteUrl } from "@/lib/site";
@@ -20,17 +14,18 @@ type Props = {
   }>;
 };
 
-/**
- * Do not pre-render all sector×resource URLs at build time — ~4k+ pages exceeds Vercel output limits.
- * URLs are still listed in sitemap.xml; first request generates the page (on-demand ISR cache).
- */
-export const dynamicParams = true;
-
-/** Cache each generated sector resource page (ISR). */
-export const revalidate = 86400;
-
 export async function generateStaticParams() {
-  return [];
+  const sectors = buildSeedSectors();
+  const params: { "sector-slug": string; subpage: string }[] = [];
+  for (const sector of sectors) {
+    for (const subpage of SECTOR_SUBPAGE_SLUGS) {
+      params.push({
+        "sector-slug": sector.slug,
+        subpage,
+      });
+    }
+  }
+  return params;
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {

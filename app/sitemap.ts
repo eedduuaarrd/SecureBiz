@@ -14,7 +14,7 @@ import { getSiteUrl } from "@/lib/site";
  * Split the sitemap using generateSitemaps.
  * This prevents Googlebot from experiencing timeouts when calculating an XML with >20k URLs.
  */
-export const revalidate = 3600;
+export const revalidate = 86400;
 
 const PRIORITY = {
   home: 1,
@@ -48,24 +48,21 @@ export async function generateSitemaps() {
   return sitemaps;
 }
 
-export default async function sitemap({
-  id,
-}: {
-  id: number;
-}): Promise<MetadataRoute.Sitemap> {
+export default async function sitemap({ id }: { id: number }): Promise<MetadataRoute.Sitemap> {
   const baseUrl = getSiteUrl();
   const guideLastMods = await getGuidePathToLastModified();
+  const now = new Date();
 
   const hubEntries: MetadataRoute.Sitemap = HUB_PATHS.map((path) => ({
     url: `${baseUrl}${path}`,
-    lastModified: new Date(),
+    lastModified: now,
     changeFrequency: "weekly",
     priority: path === "" ? PRIORITY.home : PRIORITY.hub,
   }));
 
   const legalEntries: MetadataRoute.Sitemap = LEGAL_PATHS.map((path) => ({
     url: `${baseUrl}${path}`,
-    lastModified: new Date(),
+    lastModified: now,
     changeFrequency: "yearly",
     priority: PRIORITY.legal,
   }));
@@ -73,7 +70,7 @@ export default async function sitemap({
   const sectorEntries: MetadataRoute.Sitemap = iterSectorHubUrls(baseUrl).map(
     (row) => ({
       url: row.url,
-      lastModified: new Date(),
+      lastModified: now,
       changeFrequency: "weekly" as const,
       priority: PRIORITY.sectorHub,
     }),
@@ -83,7 +80,7 @@ export default async function sitemap({
     baseUrl,
   ).map((row) => ({
     url: row.url,
-    lastModified: new Date(),
+    lastModified: now,
     changeFrequency: "monthly" as const,
     priority: PRIORITY.sectorResource,
   }));
@@ -92,7 +89,7 @@ export default async function sitemap({
     baseUrl,
   ).map((row) => ({
     url: row.url,
-    lastModified: new Date(),
+    lastModified: now,
     changeFrequency: "weekly" as const,
     priority: PRIORITY.regulationPage,
   }));

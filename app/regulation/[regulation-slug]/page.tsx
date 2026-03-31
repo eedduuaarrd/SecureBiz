@@ -22,8 +22,11 @@ type RegulationPageProps = {
   searchParams: Promise<{ q?: string }>;
 };
 
-/** Large sector grids per regulation: render on demand so `next build` stays fast on Vercel. */
-export const dynamic = "force-dynamic";
+export async function generateStaticParams() {
+  return seedRegulations.map((regulation) => ({
+    "regulation-slug": regulation.slug,
+  }));
+}
 
 export async function generateMetadata({
   params,

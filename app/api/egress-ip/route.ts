@@ -2,12 +2,10 @@ import { NextResponse } from "next/server";
 
 // Returns the public egress IP of this serverless environment.
 // Useful when your upstream (e.g. MongoDB Atlas) requires IP allowlisting.
+export const revalidate = 3600;
 export async function GET() {
   try {
-    const res = await fetch("https://api.ipify.org?format=json", {
-      // Keep it resilient if the upstream is slow.
-      headers: { "cache-control": "no-cache" },
-    });
+    const res = await fetch("https://api.ipify.org?format=json");
     if (!res.ok) {
       return NextResponse.json(
         { ok: false, error: `ipify http ${res.status}` },
